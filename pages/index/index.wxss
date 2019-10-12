@@ -1,0 +1,465 @@
+page {
+  background-color: white;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+  font-size: 28rpx;
+  font-family: PingFangSC;
+  /* font-weight: bold; */
+  color: #4d4d4d;
+}
+
+.header {
+  width: 690rpx;
+  height: 390rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(152, 152, 152, 0.35);
+  border-radius: 6rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header_img {
+  width: 250rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+  margin-top: 31rpx;
+}
+
+.check_on {
+  border: 3rpx solid rgba(236, 98, 23, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 9rpx;
+}
+
+.check_off {
+  border: 3rpx solid rgba(152, 152, 152, 1);
+  display: flex;
+  align-items: center;
+  padding-left: 9rpx;
+}
+
+.kaiguan {
+  width: 250rpx;
+  /* font-weight: bold; */
+  color: #eb5e2b;
+  line-height: 47rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.state {
+  width: 265rpx;
+  height: 41rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 6rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  /* font-weight: bold; */
+  color: rgba(81, 81, 81, 1);
+  text-align: center;
+  line-height: 41rpx;
+  letter-spacing: 2rpx;
+}
+
+.electricity {
+  line-height: 60rpx;
+  letter-spacing: 5.5rpx;
+}
+
+.header_img image {
+  width: 116rpx;
+  height: 82rpx;
+  border-radius: 6rpx;
+}
+
+.mid {
+  width: 690rpx;
+  height: 140rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(80, 80, 80, 0.2);
+  border-radius: 6rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.miditem {
+  width: 229rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miditem image {
+  height: 49rpx;
+  width: 49rpx;
+}
+
+.itemmsg {
+  width: 145rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 40rpx;
+}
+.itemmsg>text:last-child{
+  font-size: 30rpx;
+}
+.foot {
+  width: 690rpx;
+  height: 340rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(80, 80, 80, 0.2);
+  border-radius: 6rpx;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.foot_header {
+  line-height: 60rpx;
+  width: 630rpx;
+  height: 60rpx;
+  border-bottom: 1rpx solid rgba(221, 221, 221, 1);
+  margin-left: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.choosetime {
+  width: 630rpx;
+  height: 256rpx;
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  line-height: 50rpx;
+}
+
+.foot_header image {
+  width: 50rpx;
+  height: 30rpx;
+}
+
+.time_header {
+  width: 418rpx;
+  padding-left: 106rpx;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 4rpx;
+  color: rgba(152, 152, 152, 1);
+}
+
+.check_time {
+  width: 418rpx;
+  padding-left: 106rpx;
+  padding-right: 106rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 4rpx;
+  background-color: #eee;
+  color: #eb5e2b;
+}
+
+.time_num {
+  width: 120rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: space-between;
+  line-height: 60rpx;
+}
+
+.time_henxian {
+  width: 77rpx;
+  height: 2rpx;
+  background-color: rgba(235, 94, 43, 1);
+}
+
+.dian {
+  margin-top: 18rpx;
+  height: 20rpx;
+  width: 4rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dianitem {
+  height: 4rpx;
+  width: 4rpx;
+  border-radius: 50%;
+  background-color: rgba(235, 94, 43, 1);
+}
+
+.admin_content {
+  width: 630rpx;
+  margin-left: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  /* font-weight: bold; */
+  color: rgba(78, 77, 77, 1);
+}
+
+.admin_logo {
+  width: 238rpx;
+  height: 233rpx;
+  margin-top: 44rpx;
+}
+
+.admin_binduser {
+  width: 690rpx;
+  height: 80rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  line-height: 80rpx;
+  text-align: center;
+  letter-spacing: 6rpx;
+  color: white;
+  margin-top: 111rpx;
+  font-size: 30rpx;
+}
+
+.admin_out {
+  width: 630rpx;
+  height: 70rpx;
+  background: rgba(191, 191, 191, 1);
+  border-radius: 6rpx;
+  line-height: 70rpx;
+  text-align: center;
+  letter-spacing: 6rpx;
+  color: white;
+  margin-top: 30rpx;
+}
+
+.admin_inputitems {
+  display: flex;
+  justify-content: center;
+  margin-top: 36rpx;
+}
+
+.admin_xiaoqu {
+  width: 235rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  margin-right: 25rpx;
+}
+
+.admin_xiaoqu input {
+  height: 60rpx;
+  width: 190rpx;
+  padding: 0 10rpx;
+}
+
+.admin_xiaoquitems {
+  position: absolute;
+  top: 62rpx;
+  left: 0rpx;
+  width: 215rpx;
+  height: 400rpx;
+  background-color: #f5f5f5;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  overflow-y: scroll;
+}
+
+.admin_dongitems {
+  position: absolute;
+  top: 62rpx;
+  left: 0rpx;
+  width: 173rpx;
+  height: 400rpx;
+  background-color: #f5f5f5;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  overflow-y: scroll;
+}
+
+.admin_xiaoquitem {
+  margin-top: 15rpx;
+}
+
+.admin_up {
+  width: 12rpx;
+  height: 6rpx;
+}
+
+.admin_dong {
+  width: 193rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.admin_dong input {
+  height: 60rpx;
+  width: 150rpx;
+  padding: 0 10rpx;
+}
+
+.admin_header {
+  height: 70rpx;
+  width: 690rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  color: rgba(78, 77, 77, 1);
+  border-bottom: 1rpx solid #ddd;
+}
+
+.rightimg {
+  width: 13rpx;
+  height: 23rpx;
+  margin-left: 19rpx;
+}
+
+.admin_change {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.admin_items {
+  width: 690rpx;
+  height: 250rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(80, 80, 80, 0.2);
+  border-radius: 4rpx;
+  margin-left: 30rpx;
+  margin-top: 29rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  color: rgba(78, 77, 77, 1);
+  line-height: 55rpx;
+}
+
+.item_header {
+  margin-left: 30rpx;
+  letter-spacing: 2rpx;
+  display: flex;
+  align-items: center;
+}
+
+.item_msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 6rpx;
+}
+
+.admin_item_state {
+  width: 257rpx;
+  height: 46rpx;
+  background: rgba(238, 238, 238, 1);
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC;
+  color: rgba(81, 81, 81, 1);
+  letter-spacing: 2rpx;
+  line-height: 46rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.admin_price {
+  font-size: 36rpx;
+  color: #eb5e2b;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.mycoupon {
+  position: fixed;
+  width: 630rpx;
+  height: 270rpx;
+  left: 60rpx;
+  top: 418rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4rpx;
+  z-index: 9999;
+  font-size: 30rpx;
+  font-family: PingFangSC;
+  font-weight: 400;
+  color: rgba(42, 42, 42, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close {
+  width: 25rpx;
+  height: 25rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.coupon_bto {
+  width: 230rpx;
+  height: 55rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  /* font-size: 26rpx; */
+  line-height: 55rpx;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 46rpx;
+}
+
+.gouser {
+  width: 208rpx;
+  height: 23rpx;
+  margin-top: 23rpx;
+}
+.coupon_title{
+  margin-top: 42rpx;
+}

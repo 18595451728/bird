@@ -1,0 +1,168 @@
+<block wx:if="{{is_admin}}">
+  <block wx:if="{{!showinfo}}">
+    <view class="admin_content">
+      <image class="admin_logo" src="/images/logo.png"></image>
+      <view class="admin_inputitems">
+        <view class="admin_xiaoqu" bindtap="showxiaoqu">
+          <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+          <image class="admin_up" src="/images/up.png"></image>
+          <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
+            <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假的假的据开发的贷款</text>
+          </view>
+        </view>
+        <view class="admin_dong" bindtap="showdong">
+          <input disabled="true" placeholder="请选择幢"></input>
+          <image class="admin_up" src="/images/up.png"></image>
+          <view wx:if="{{showdong}}" class="admin_dongitems">
+            <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假</text>
+          </view>
+        </view>
+      </view>
+      <view class="admin_binduser" bindtap="showinfo">立即查看</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="admin_header">
+      <text>XX小区  3幢</text>
+      <view class="admin_change" bindtap="changeselect">
+        <text>切换</text>
+        <image class="rightimg" src="/images/arrow-right.png"></image>
+      </view>
+    </view>
+
+    <view class="admin_items" wx:for="{{list}}">
+      <view class="item_header">
+        <text>3幢</text>
+        <text style="margin-left:20rpx">601室</text>
+      </view>
+      <view class="item_msg">
+        <view>
+          已使用电量：
+          <text class="admin_price">37.66</text>
+          <text style="color: #EB5E2B;">度</text>
+        </view>
+        <view>
+          已使用电费：
+          <text class="admin_price">37.66</text>
+          <text style="color: #EB5E2B;">元</text>
+        </view>
+        <text class="admin_item_state">当前状态：关闭</text>
+      </view>
+    </view>
+  </block>
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showcoupon}}"></view>
+  <view wx:if="{{showcoupon}}" class="mycoupon">
+    <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+    <text class="coupon_title">您有一张30天的会员体验券未使用</text>
+    <view class="coupon_bto">
+      立即使用
+    </view>
+    <image src="/images/gouser.png" bindtap="gouserinfo" class="gouser"></image>
+  </view>
+</block>
+<block wx:else>
+  <view class="content">
+    <view class="header">
+      <view class="header_img {{is_open?'check_on':'check_off'}}" bindtap="changestate">
+        <image src="{{is_open?'/images/index1.png':'/images/index2.png'}}"></image>
+      </view>
+      <view class="kaiguan">
+        <text>OFF</text>
+        <text>ON</text>
+      </view>
+
+      <view class="state">
+        <text>当前状态：{{is_open?'开启':'关闭'}}</text>
+      </view>
+      <view class="electricity" style="margin-top:30rpx;">
+        <text>已使用电量：</text>
+        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{is_open?money:'00.00'}}</text>
+        <text style="color:rgba(235,94,43,1);">度</text>
+      </view>
+      <view class="electricity">
+        <text>已使用电费：</text>
+        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{is_open?'37.66':'00.00'}}</text>
+        <text style="color:rgba(235,94,43,1);">元</text>
+      </view>
+    </view>
+
+    <view class="mid">
+      <view class="miditem" style="border-right:1rpx solid #BFBFBF">
+        <image src="/images/index3.png"></image>
+        <view class="itemmsg">
+          <text style="letter-spacing: 4rpx;">总电量</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'37.66':'00.00'}}度</text>
+        </view>
+      </view>
+      <view class="miditem" style="border-right:1rpx solid #BFBFBF">
+        <image src="/images/index4.png"></image>
+        <view class="itemmsg">
+          <text style="letter-spacing: 4rpx;">电费余额</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'37.66':'00.00'}}元</text>
+        </view>
+      </view>
+      <view class="miditem">
+        <image src="/images/index5.png" style='width:47rpx;height:47rpx;'></image>
+        <view class="itemmsg">
+          <text style="letter-spacing: 4rpx;">功率</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'6.6':'0.0'}}W</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="foot">
+      <view class="foot_header">
+        <text>定时任务</text>
+        <image bindtap="changetime" src="{{is_time?'/images/check.png':'/images/nocheck.png'}}"></image>
+      </view>
+      <view class="choosetime">
+        <view class="time_header" style="margin-top:30rpx;color:#4D4D4D">
+          <text>开始时间</text>
+          <text>结束时间</text>
+        </view>
+        <view class="time_header">
+          <view class="time_num">
+            <text bindtap="upstarthour" style="width:35rpx;">{{start_hour<11&&start_hour!=0?'0':''}}{{start_hour=='0'?'':start_hour-1}}</text>
+            <text bindtap="upstartminute" style="width:35rpx;">{{start_minute<11&&start_minute!=0?'0':''}}{{start_minute=='0'?'':start_minute-1}}</text>
+          </view>
+          <view class="time_num">
+            <text bindtap="upendhour" style="width:35rpx;">{{end_hour<11&&end_hour!=0?'0':''}}{{end_hour=='0'?'':end_hour-1}}</text>
+            <text bindtap="upendminute" style="width:35rpx;">{{end_minute<11&&end_minute!=0?'0':''}}{{end_minute=='0'?'':end_minute-1}}</text>
+          </view>
+        </view>
+        <view class="check_time">
+          <view class="time_num">
+            <text style="width:35rpx;" data-id='0' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{start_hour<10?'0':''}}{{start_hour}}</text>
+            <!-- <text>:</text> -->
+            <view class="dian">
+              <view class="dianitem"></view>
+              <view class="dianitem"></view>
+            </view>
+            <text style="width:35rpx;" data-id='1' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{start_minute<10?'0':''}}{{start_minute}}</text>
+          </view>
+          <view class="time_henxian">
+          </view>
+          <view class="time_num">
+            <text style="width:35rpx;" data-id='2' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{end_hour<10?'0':''}}{{end_hour}}</text>
+            <!-- <text>:</text> -->
+            <view class="dian">
+              <view class="dianitem"></view>
+              <view class="dianitem"></view>
+            </view>
+            <text style="width:35rpx;" data-id='3' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{end_minute<10?'0':''}}{{end_minute}}</text>
+          </view>
+        </view>
+        <view class="time_header">
+          <view class="time_num">
+            <text bindtap="downstarthour" style="width:35rpx;">{{start_hour<9?'0':''}}{{start_hour=='23'?'':start_hour+1}}</text>
+            <text bindtap="downstartminute" style="width:35rpx;">{{start_minute<9?'0':''}}{{start_minute=='59'?'':start_minute+1}}</text>
+          </view>
+          <view class="time_num">
+            <text bindtap="downendhour" style="width:35rpx;">{{end_hour<9?'0':''}}{{end_hour=='23'?'':end_hour+1}}</text>
+            <text bindtap="downendminute" style="width:35rpx;">{{end_minute<9?'0':''}}{{end_minute=='59'?'':end_minute+1}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,177 @@
+.content {
+  width: 630rpx;
+  margin-left: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  /* font-weight: bold; */
+  color: rgba(78, 77, 77, 1);
+}
+
+.logo {
+  width: 323rpx;
+  height: 300rpx;
+  margin-top: 55rpx;
+}
+
+.name {
+  width: 406rpx;
+  height: 50rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  padding: 0 10rpx;
+  margin-top: 60rpx;
+}
+
+.binduser {
+  width: 630rpx;
+  height: 70rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  line-height: 70rpx;
+  text-align: center;
+  letter-spacing: 6rpx;
+  color: white;
+  margin-top: 90rpx;
+  font-size: 30rpx;
+}
+
+.out {
+  width: 630rpx;
+  height: 70rpx;
+  background: rgba(191, 191, 191, 1);
+  border-radius: 6rpx;
+  line-height: 70rpx;
+  text-align: center;
+  letter-spacing: 6rpx;
+  color: white;
+  margin-top: 30rpx;
+  font-size: 30rpx;
+}
+
+.inputitems {
+  width: 630rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 90rpx;
+}
+
+.xiaoqu {
+  width: 235rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.xiaoqu input {
+  height: 60rpx;
+  width: 190rpx;
+  padding: 0 10rpx;
+}
+
+.xiaoquitems {
+  position: absolute;
+  top: 62rpx;
+  left: 0rpx;
+  width: 215rpx;
+  height: 400rpx;
+  background-color: #f5f5f5;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  overflow-y: scroll;
+}
+
+.dongitems {
+  position: absolute;
+  top: 62rpx;
+  left: 0rpx;
+  width: 173rpx;
+  height: 400rpx;
+  background-color: #f5f5f5;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  overflow-y: scroll;
+}
+
+.roomitems {
+  position: absolute;
+  top: 62rpx;
+  left: 0rpx;
+  width: 132rpx;
+  height: 400rpx;
+  background-color: #f5f5f5;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  line-height: 40rpx;
+  padding: 0 10rpx;
+  font-weight: bold;
+  overflow-y: scroll;
+}
+
+.xiaoquitem {
+  margin-top: 15rpx;
+}
+
+.up {
+  width: 12rpx;
+  height: 6rpx;
+}
+
+.dong {
+  width: 193rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.dong input {
+  height: 60rpx;
+  width: 150rpx;
+  padding: 0 10rpx;
+}
+
+.room {
+  width: 152rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.room input {
+  height: 60rpx;
+  width: 110rpx;
+  padding: 0 10rpx;
+}
+
+.bind{
+  color: #4e4d4d;
+  font-size: 26rpx;
+  line-height: 60rpx;
+}

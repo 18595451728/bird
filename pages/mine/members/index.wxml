@@ -1,0 +1,58 @@
+<view class="coupon">
+  <image class="backimg" src="/images/couponbg.png"></image>
+  <view>
+    <view class="name">
+      <text>会员体验卡</text>
+      <view>
+        <text class="qixian">30</text>天
+      </view>
+    </view>
+    <text class="endtime">有效期：2019年9月24日——2019年10月24日</text>
+  </view>
+  <view class="caozuo">立即使用
+  </view>
+</view>
+<view class="vipheader">
+  <image src="/images/vip1.png" class="vipicon"></image>
+  <text>成为波得会员，即可成为管理员</text>
+</view>
+<view class="vipheader username">
+  <image src="/images/vip2.png" class="vipicon1"></image>
+  <text>陈鸿宇</text>
+</view>
+<view class="vipheader time">
+  <image src="/images/vip3.png" class="vipicon2"></image>
+  <view class="timeitems">
+    <block wx:for="{{timelist}}">
+      <view wx:if="{{index!=3&&index!=7}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem" data-index="{{index}}" bindtap="choose">{{item}}</view>
+      <view wx:if="{{index==3}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem tesu" data-index="{{index}}" bindtap="choose">
+        <input type="number" class="mounthinput"></input>
+        个月</view>
+      <view wx:if="{{index==7}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem tesu" data-index="{{index}}" bindtap="choose">
+        <input type="number" class="yearinput"></input>
+        年</view>
+    </block>
+  </view>
+</view>
+<view class="vipheader xufei">
+  <view class="xufei_item">
+    <image src="/images/vip4.png" class="vipicon3"></image>
+    <text style='color: rgba(235, 94, 43, 1);font-size:45rpx;'>120</text>元
+  </view>
+  <view class="xufei_item">
+    <image src="/images/vip5.png" class="vipicon4"></image>
+    <text>到期自动续费</text>
+  </view>
+</view>
+<view class="bto">
+  立即开通
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text>会员开通成功</text>
+  <view class="queding" bindtap="backmine">
+    返回会员中心
+  </view>
+</view>

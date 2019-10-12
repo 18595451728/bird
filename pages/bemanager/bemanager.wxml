@@ -1,0 +1,29 @@
+<!--pages/bemanager/bemanager.wxml-->
+<view class="container">
+  <view class="logo">
+    <image src="/images/logo.png"></image>
+  </view>
+  <view class="hd">
+    <view bindtap="change" data-index='0'>
+      <image src="{{choose?'/images/choosed.png':'/images/unchoosed.png'}}"></image>
+      <text>公司</text>
+    </view>
+    <view bindtap="change">
+      <image src="{{!choose?'/images/choosed.png':'/images/unchoosed.png'}}"></image>
+      <text>个人</text>
+    </view>
+  </view>
+  <view class="bd">
+    <view wx:if='{{choose}}'>
+      <input placeholder-class='placeholder' placeholder="请输入公司名称"></input>
+      <input placeholder-class='placeholder' placeholder="请输入统一信用代码"></input>
+      <input placeholder-class='placeholder' placeholder="请输入负责人姓名"></input>
+      <input placeholder-class='placeholder' placeholder="请输入负责人联系电话"></input>
+    </view>
+    <view wx:else>
+      <input placeholder-class='placeholder' placeholder="请输入姓名"></input>
+      <input placeholder-class='placeholder' placeholder="请输入联系电话"></input>
+    </view>
+  </view>
+  <view class="apply">确认申请</view>
+</view>

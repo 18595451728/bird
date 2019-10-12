@@ -1,0 +1,26 @@
+<view class="content">
+
+  <view class="type">
+    <view class="typeitem" data-id="0" bindtap="changetype" style="{{selectindex==0?'color:white;background:rgba(235,94,43,1);':''}}">消费记录</view>
+    <view class="typeitem" data-id="1" bindtap="changetype" style="{{selectindex==1?'color:white;background:rgba(235,94,43,1);':''}}">充值记录</view>
+  </view>
+
+  <view wx:for="{{msg}}" class="msgitems">
+    <view>
+      <text>2019年9月9日</text>
+      <text style="margin-left:30rpx;">星期一</text>
+    </view>
+    <view class="endmsg">
+      <block wx:if="{{selectindex==0}}">
+        <text>6.5度</text>
+        <text>-6.5元</text>
+      </block>
+      <block wx:if="{{selectindex==1}}">
+        <text>+6.5元</text>
+      </block>
+    </view>
+  </view>
+  <view class="loadmore">
+    查看更多...
+  </view>
+</view>

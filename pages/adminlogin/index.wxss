@@ -1,0 +1,50 @@
+page {
+  background-color: white;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  color: rgba(78, 77, 77, 1);
+  letter-spacing: 2rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 264rpx;
+  height: 250rpx;
+  margin-top: 130rpx;
+  margin-bottom: 65rpx;
+}
+
+.account {
+  width: 386rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  padding: 0 10rpx;
+  line-height: 60rpx;
+  margin-top: 60rpx;
+}
+
+.bto {
+  width: 630rpx;
+  height: 70rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  text-align: center;
+  line-height: 70rpx;
+  color: white;
+  font-size: 33rpx;
+  margin-top: 350rpx;
+}
+.form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

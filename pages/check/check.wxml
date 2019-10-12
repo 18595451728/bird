@@ -1,0 +1,70 @@
+<block wx:if="{{is_select}}">
+  <view wx:if="{{is_admin}}" class="header">
+    <text>XX小区 3幢</text>
+    <view bindtap="changeitem">
+      <text>切换</text>
+      <image src="/images/arrow-right.png" class="right_icon"></image>
+    </view>
+  </view>
+  <view class="container">
+    <view class="hd">
+      <view wx:for='{{time}}' data-index='{{index}}' bindtap="choose" class="{{choose==index?'active':''}}">{{item}}</view>
+    </view>
+    <view class="qigesha">
+      <image src="/images/small-arrow.png" bindtap="prevMonth"></image>
+      <text>{{year}}年{{month}}月</text>
+      <image src="/images/small-arrow.png" bindtap="nextMonth"></image>
+    </view>
+    <scroll-view scroll-x class="calendar" bindscroll='bindscroll' scroll-into-view='{{scrollLeft}}' wx:if='{{choose!=1}}'>
+      <view id="{{currentTab1==index+4?'currentTime':''}}" class="day {{currentTab==index?'active':''}}" wx:for='{{days}}' data-index='{{index}}' bindtap="changeTab">{{item+1}}</view>
+    </scroll-view>
+    <view class="ec-title">
+      <view class="e-left">
+        <view class="e-left_title">电量电费统计</view>
+        <view>
+          <text></text> 峰值
+          <text></text> 谷值
+        </view>
+      </view>
+      <view class="e-right">
+        <view class="{{dian?'active':''}}" bindtap="dian" data-index='0'>电量</view>
+        <view class="{{!dian?'active':''}}" bindtap="dian">电费</view>
+      </view>
+    </view>
+    <view class="echarts">
+      <ec-canvas ec='{{ec}}'></ec-canvas>
+    </view>
+    <block wx:if="{{is_admin}}">
+      <view class="todaytop">峰值：4.01度 谷值：3.12度</view>
+      <view class="daochu" bindtap="daochu">
+        一键导出
+      </view>
+    </block>
+    <block wx:else>
+      <view class="todaytop">今日峰值:4.01度</view>
+      <view class="todaylow">今日谷值:3.12度</view>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="admin_content">
+    <image class="admin_logo" src="/images/logo.png"></image>
+    <view class="admin_inputitems">
+      <view class="admin_xiaoqu" bindtap="showxiaoqu">
+        <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+        <image class="admin_up" src="/images/up.png"></image>
+        <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
+          <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假的假的据开发的贷款</text>
+        </view>
+      </view>
+      <view class="admin_dong" bindtap="showdong">
+        <input disabled="true" placeholder="请选择幢"></input>
+        <image class="admin_up" src="/images/up.png"></image>
+        <view wx:if="{{showdong}}" class="admin_dongitems">
+          <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假</text>
+        </view>
+      </view>
+    </view>
+    <view class="admin_binduser" bindtap="showinfo">立即查看</view>
+  </view>
+</block>

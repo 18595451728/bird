@@ -1,0 +1,9 @@
+<view class="content">
+  <image src="/images/logo.png"></image>
+  <view class="user" style="margin-top:150rpx;" bindtap="gotologin">
+    用户端
+  </view>
+  <view class="user" bindtap="adminlogin">
+    管理端
+  </view>
+</view>

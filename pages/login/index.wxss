@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content image {
+  width: 280rpx;
+  height: 261rpx;
+  margin-top: 150rpx;
+}
+
+.user {
+  width: 264rpx;
+  height: 70rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  color: white;
+  text-align: center;
+  line-height: 70rpx;
+  letter-spacing: 6rpx;
+  margin-top: 112rpx;
+}

@@ -1,0 +1,22 @@
+<view class="content">
+  <view class="item">
+    <text>警戒电量</text>
+    <view class="input">
+      <input type="number" maxlength="3"></input>
+      度
+    </view>
+  </view>
+  <text>当可用电量低于此度时将以微信提示的形式告诉用户。</text>
+  <view class="bto" bindtap="submit">
+    确认设置
+  </view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text>低电提醒设置成功</text>
+  <view class="bto queding" bindtap="backmine">
+    返回会员中心
+  </view>
+</view>

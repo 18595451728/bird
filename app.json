@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/check/check",
+    "pages/withdrawal/index",
+    "pages/Exportdata/index",
+    "pages/adminlogin/index",
+    "pages/mine/mine",
+    "pages/mine/setupuser/index",
+    "pages/mine/warning/index",
+    "pages/mine/audit/index",
+    "pages/mine/updatepassword/index",
+    "pages/mine/setupprice/index",
+    "pages/index/index",
+    "pages/mine/bindammeter/index",
+    "pages/mine/members/index",
+    
+    "pages/userlogin/index",
+    "pages/recharge/index",
+    "pages/usemsg/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#eb5e2b",
+    "navigationBarTitleText": "波得物联智能电表",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "text": "设备信息",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon1.jpg",
+        "selectedIconPath": "images/icon2.jpg"
+      },
+      {
+        "text": "实时监测",
+        "pagePath": "pages/check/check",
+        "iconPath": "images/icon3.jpg",
+        "selectedIconPath": "images/icon4.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icon5.jpg",
+        "selectedIconPath": "images/icon6.jpg"
+      }
+    ],
+    "color": "#4d4d4d",
+    "selectedColor": "#eb5e2b"
+  }
+}

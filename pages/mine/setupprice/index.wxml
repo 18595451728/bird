@@ -1,0 +1,72 @@
+<view class="content">
+  <view class="item">
+    <text>峰电价</text>
+    <view class="pick">
+      <view class="pickitem">
+        <text class="otheritem" data-id='1' bindtap="up_feng_one">{{feng_one=='0'?'':feng_one-1}}</text>
+        <text class="otheritem"></text>
+        <text class="otheritem" data-id='1' bindtap="up_feng_two">{{feng_two=='0'?'':feng_two-1}}</text>
+        <text class="otheritem" data-id='1' bindtap="up_feng_three">{{feng_three=='0'?'':feng_three-1}}</text>
+        <text class="otheritem" data-id='1' bindtap="up_feng_four">{{feng_four=='0'?'':feng_four-1}}</text>
+      </view>
+      <view class="mid">
+        <text class="miditem">{{feng_one}}</text>
+        <text class="miditem">.</text>
+        <text class="miditem" data-id='1' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_two}}</text>
+        <text class="miditem" data-id='2' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_three}}</text>
+        <text class="miditem" data-id='3' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_four}}</text>
+      </view>
+      <view class="pickitem">
+        <text class="otheritem" data-id='1' bindtap="down_feng_one">{{feng_one=='1'?'':feng_one+1}}</text>
+        <text class="otheritem"></text>
+        <text class="otheritem" data-id='1' bindtap="down_feng_two">{{feng_two=='9'?'':feng_two+1}}</text>
+        <text class="otheritem" data-id='1' bindtap="down_feng_three">{{feng_three=='9'?'':feng_three+1}}</text>
+        <text class="otheritem" data-id='1' bindtap="down_feng_four">{{feng_four=='9'?'':feng_four+1}}</text>
+      </view>
+    </view>
+    <text>元</text>
+  </view>
+  <view class="item">
+    <text>谷电价</text>
+    <view class="pick">
+      <view class="pickitem">
+        <text class="otheritem" data-id='2' bindtap="up_feng_one">{{gu_one=='0'?'':gu_one-1}}</text>
+        <text class="otheritem"></text>
+        <text class="otheritem" data-id='2' bindtap="up_feng_two">{{gu_two=='0'?'':gu_two-1}}</text>
+        <text class="otheritem" data-id='2' bindtap="up_feng_three">{{gu_three=='0'?'':gu_three-1}}</text>
+        <text class="otheritem" data-id='2' bindtap="up_feng_four">{{gu_four=='0'?'':gu_four-1}}</text>
+      </view>
+      <view class="mid">
+        <text class="miditem">{{gu_one}}</text>
+        <text class="miditem">.</text>
+        <text class="miditem" data-id='4' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_two}}</text>
+        <text class="miditem" data-id='5' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_three}}</text>
+        <text class="miditem" data-id='6' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_four}}</text>
+      </view>
+      <view class="pickitem">
+        <text class="otheritem" data-id='2' bindtap="down_feng_one">{{gu_one=='1'?'':gu_one+1}}</text>
+        <text class="otheritem"></text>
+        <text class="otheritem" data-id='2' bindtap="down_feng_two">{{gu_two=='9'?'':gu_two+1}}</text>
+        <text class="otheritem" data-id='2' bindtap="down_feng_three">{{gu_three=='9'?'':gu_three+1}}</text>
+        <text class="otheritem" data-id='2' bindtap="down_feng_four">{{gu_four=='9'?'':gu_four+1}}</text>
+      </view>
+    </view>
+    <text>元</text>
+  </view>
+  <view class="msg">
+    <text>高峰时段:8:00-22:00</text>
+    <text>低谷时段:22:00-次日8:00</text>
+  </view>
+  <view class="bto">
+    确认修改
+  </view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmsg}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text>峰谷电价设置成功</text>
+  <view class="bto queding" bindtap="backmine">
+    返回会员中心
+  </view>
+</view>

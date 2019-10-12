@@ -1,0 +1,164 @@
+<block wx:if="{{is_admin}}">
+  <view class="container">
+    <view class="hasbind" wx:if='{{hasbind}}'>
+      <view class="logo">
+        <view>
+          <image src="/images/logo1.png" class="admin_logo1"></image>
+          <text class="admin_username">陈鸿宇</text>
+        </view>
+      </view>
+      <view class="func">
+        <view class="yue" bindtap="huiyuan">
+          <view class="y-left">会员中心</view>
+          <view class="y-right">
+            <text style="color:#989898;font-size:24rpx;">有效期至2022年9月24日</text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="binddianbiao">
+          <view class="y-left">绑定电表</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="setupinfo">
+          <view class="y-left">峰谷电价设置</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="setuppassword">
+          <view class="y-left">修改密码</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="func">
+        <view class="yue" bindtap="bindaudit">
+          <view class="y-left">绑定审核</view>
+          <view class="y-right">
+            <view class="auditnum">99</view>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="bindtishi">
+          <view class="y-left">低电提醒</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="setupuser">
+          <view class="y-left">用户解绑</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="unbind" bindtap="loginout">退出登录</view>
+    </view>
+    <view class="nobind" wx:else>
+      <view class="logo">
+        <image src="/images/logo.png"></image>
+      </view>
+      <view class="func">
+        <view class="yue">
+          <view class="y-left">余额充值</view>
+          <view class="y-right">
+            <text>170.66</text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue">
+          <view class="y-left">提现</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="bemanager">
+          <view class="y-left">成为管理员</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="bind" bindtap="gotologin">立即绑定</view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="container">
+    <view class="hasbind" wx:if='{{hasbind}}'>
+      <view class="logo">
+        <view>
+          <image src="/images/logo1.png" class="logo1"></image>
+          <text class="username">陈鸿宇</text>
+          <text class="usermes">XX小区  3幢  606—A室</text>
+        </view>
+      </view>
+      <view class="func">
+        <view class="yue" bindtap="chongzhi">
+          <view class="y-left">余额充值</view>
+          <view class="y-right">
+            <text>170.66</text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="tixian">
+          <view class="y-left">提现</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="bemanager">
+          <view class="y-left">成为管理员</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </view>
+
+      <view class="unbind" bindtap="loginout">退出登录</view>
+    </view>
+    <view class="nobind" wx:else>
+      <view class="logo">
+        <image src="/images/logo.png"></image>
+      </view>
+      <view class="func">
+        <view class="yue">
+          <view class="y-left">余额充值</view>
+          <view class="y-right">
+            <text>170.66</text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue">
+          <view class="y-left">提现</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+        <view class="yue" bindtap="bemanager">
+          <view class="y-left">成为管理员</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="bind" bindtap="gotologin">立即绑定</view>
+    </view>
+  </view>
+</block>

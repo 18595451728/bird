@@ -1,0 +1,65 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  font-size: 36rpx;
+  font-family: PingFangSC;
+  /* font-weight: bold; */
+  color: rgba(78, 77, 77, 1);
+  line-height: 60rpx;
+  letter-spacing: 6rpx;
+}
+
+.header {
+  margin-top: 120rpx;
+  margin-left: 218rpx;
+}
+
+.mymoney {
+  margin-left: 206rpx;
+  font-size: 80rpx;
+  margin-top: 40rpx;
+}
+
+.xian {
+  width: 690rpx;
+  height: 2rpx;
+  background-color: rgba(221, 221, 221, 1);
+  margin-left: 30rpx;
+  margin-top: 160rpx;
+}
+
+.inputmoney {
+  margin-left: 206rpx;
+  font-size: 80rpx;
+  margin-top: 40rpx;
+  display: flex;
+  line-height: 80rpx;
+}
+
+.inputmoney input {
+  width: 350rpx;
+  font-size: 80rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+.buttom {
+  width: 690rpx;
+  height: 70rpx;
+  background: linear-gradient(90deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  line-height: 70rpx;
+  text-align: center;
+  margin-left: 30rpx;
+  letter-spacing: 7rpx;
+  color: white;
+  margin-top: 250rpx;
+  font-size: 33rpx;
+}
+
+.foot {
+  margin-left: 300rpx;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;
+}

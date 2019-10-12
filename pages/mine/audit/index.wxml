@@ -1,0 +1,20 @@
+<view class="content">
+  <view class="item" wx:for="{{list}}">
+    <view>
+      <view>
+        <text class="name">陈鸿宇</text>
+        <image src="/images/new.png" class="icon"></image>
+      </view>
+      <text class="room">很多很多哈哈动画基督教XX小区 3幢 603室</text>
+    </view>
+    <view class="two">
+      <text class="time">2019年9月23日</text>
+      <view class="caozuoitem">
+        <view wx:if="{{item.state==0}}" class="caozuo" data-index="{{index}}" data-id='0' bindtap="change">忽略</view>
+        <view wx:if="{{item.state==0}}" class="caozuo tongguo" data-index="{{index}}" data-id='1' bindtap="change">通过</view>
+        <view wx:if="{{item.state==1}}" class="caozuo">已通过</view>
+        <view wx:if="{{item.state==2}}" class="caozuo">已忽略</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,114 @@
+.content {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFangSC;
+  color: rgba(78, 77, 77, 1);
+}
+
+.bto {
+  width: 630rpx;
+  height: 70rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  text-align: center;
+  font-size: 33rpx;
+  font-family: PingFangSC;
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 4rpx;
+  line-height: 70rpx;
+  margin-top: 74rpx;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  font-size: 26rpx;
+  color: rgba(152, 152, 152, 1);
+  margin-top: 180rpx;
+}
+
+.item {
+  width: 500rpx;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 100rpx;
+}
+
+.pick {
+  width: 336rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mid {
+  width: 100%;
+  height: 50rpx;
+  background-color: #eee;
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pickitem {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miditem {
+  width: 60rpx;
+  text-align: center;
+  color: #eb5e2b;
+}
+
+.otheritem {
+  width: 60rpx;
+  text-align: center;
+  color: #989898;
+}
+
+.tishimsg {
+  height: 400rpx;
+  width: 630rpx;
+  position: fixed;
+  top: 400rpx;
+  left: 60rpx;
+  background-color: white;
+  z-index: 9001;
+  border-radius: 4rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 36rpx;
+}
+
+.close {
+  width: 26rpx;
+  height: 25rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.success {
+  width: 136rpx;
+  height: 136rpx;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+.queding{
+  width: 300rpx;
+  margin-top: 34rpx;
+}

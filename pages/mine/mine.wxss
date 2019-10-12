@@ -1,0 +1,132 @@
+/* pages/mine/mine.wxss */
+
+.container {
+  width: 750rpx;
+  margin: 0 auto;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 690rpx;
+  height: 320rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(152, 152, 152, 0.35);
+  border-radius: 6rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo view {
+  text-align: center;
+}
+
+.logo text {
+  display: block;
+  letter-spacing: 4rpx;
+  color: #4d4d4d;
+}
+
+.username {
+  font-size: 30rpx;
+  margin: 30rpx 0;
+}
+
+.admin_username {
+  font-size: 36rpx;
+}
+
+.usermes {
+  font-size: 26rpx;
+}
+
+.logo image {
+  width: 225rpx;
+  height: 210rpx;
+}
+
+.logo image.logo1 {
+  width: 109rpx;
+  height: 109rpx;
+  border-radius: 50%;
+}
+
+.logo image.admin_logo1 {
+  width: 123rpx;
+  height: 123rpx;
+  border-radius: 50%;
+  margin-bottom: 30rpx;
+}
+
+.func {
+  width: 690rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5rpx 28rpx 2rpx rgba(80, 80, 80, 0.2);
+  border-radius: 6rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+
+.func>view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 75rpx;
+  font-size: 26rpx;
+  color: #4d4d4d;
+  letter-spacing: 2rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.func>view:last-child {
+  border-bottom: none;
+}
+
+.y-right image {
+  width: 13rpx;
+  height: 23rpx;
+  margin-left: 15rpx;
+}
+
+.bind {
+  width: 690rpx;
+  height: 85rpx;
+  background: linear-gradient(90deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  margin-top: 30rpx;
+  line-height: 85rpx;
+  color: white;
+  font-size: 33rpx;
+  text-align: center;
+}
+
+.unbind {
+  width: 690rpx;
+  height: 85rpx;
+  background: rgba(191, 191, 191, 1);
+  border-radius: 6rpx;
+  margin-top: 30rpx;
+  line-height: 85rpx;
+  color: white;
+  font-size: 33rpx;
+  text-align: center;
+}
+
+.func .yue .y-right .auditnum {
+  width: 32rpx;
+  height: 32rpx;
+  padding: 5rpx;
+  border-radius: 50%;
+  background-color: #eb5e2b;
+  text-align: center;
+  line-height: 32rpx;
+  color: white;
+  font-size: 22rpx;
+}
+.yue .y-right{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

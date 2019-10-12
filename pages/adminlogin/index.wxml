@@ -1,0 +1,10 @@
+<view class="content">
+  <image src="/images/logo.png" class="logo"></image>
+  <form bindsubmit="formSubmit">
+    <view class="form">
+      <input class="account" placeholder="请输入账号"></input>
+      <input class="account" placeholder="请输入密码"></input>
+      <button formType="submit" class="bto">快速登录</button>
+    </view>
+  </form>
+</view>

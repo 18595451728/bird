@@ -1,0 +1,49 @@
+.content {
+  height: 100%;
+  width: 690rpx;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC;
+  color: rgba(78, 77, 77, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type {
+  width: 343rpx;
+  height: 60rpx;
+  border: 3rpx solid rgba(235, 94, 43, 1);
+  border-radius: 6rpx;
+  margin-top: 30rpx;
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.typeitem {
+  width: 50%;
+  text-align: center;
+  font-size: 30rpx;
+  color: rgba(77, 77, 77, 1);
+  line-height: 60rpx;
+}
+
+.msgitems{
+  width: 100%;
+  height: 94rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+.endmsg{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size:22rpx;
+  line-height: 35rpx;
+}
+.loadmore{
+  margin-top: 21rpx;
+}

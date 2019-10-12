@@ -1,0 +1,14 @@
+<view class="content">
+  <text class="header">可用余额：</text>
+  <text class="mymoney">￥170.66</text>
+  <view class="buttom">确认提现</view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text class="tishidata">提现成功金额将在一天内返回原支付账户</text>
+  <view class="queding" bindtap="hideModal">
+    确定
+  </view>
+</view>

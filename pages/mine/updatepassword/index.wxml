@@ -1,0 +1,32 @@
+<view class="content">
+  <view class="item" style=" margin-top: 100rpx;">
+    <text class='i-left'>原密码</text>
+    <input class="yuan" maxlength="15" bindblur="oldinput" password></input>
+    <image wx:if="{{old_state==2}}" class="icon" src="/images/correct.png"></image>
+    <image wx:if="{{old_state==1}}" class="icon" src="/images/wrong.png"></image>
+  </view>
+  <view class="item">
+    <text class='i-left'>新密码</text>
+    <input class="yuan" maxlength="15" bindblur="newinput" password></input>
+    <image wx:if="{{new_state==2}}" class="icon" src="/images/correct.png"></image>
+    <image wx:if="{{new_state==1}}" class="icon" src="/images/wrong.png"></image>
+  </view>
+  <view class="item">
+    <text class='i-left'>确认密码</text>
+    <input class="queren" maxlength="15" bindblur="checkinput" password></input>
+    <image wx:if="{{new_check_state==2}}" class="icon" src="/images/correct.png"></image>
+    <image wx:if="{{new_check_state==1}}" class="icon" src="/images/wrong.png"></image>
+  </view>
+  <view class="bto" bindtap="submit">
+    确认修改
+  </view>
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text>修改密码成功</text>
+  <view class="bto queding" bindtap="backmine">
+    返回会员中心
+  </view>
+</view>

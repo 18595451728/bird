@@ -1,0 +1,30 @@
+<view class="content">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="form">
+      <view class="inputmsg">
+        <input class="xiaoqu" name="xiaoqu" value="{{xiaoqu}}" placeholder="请输入小区"></input>
+        <input class="xiaoqu dong" placeholder="请输入幢"></input>
+        <input class="xiaoqu room" placeholder="输入门牌"></input>
+      </view>
+      <input class="dianbiao" placeholder="请输入电表ID"></input>
+      <text class="tishi">WIFI版本请在公众号（波得物联）进行配网</text>
+      <block wx:if="{{!showpassword}}">
+        <input class="password" placeholder="请输入统一登录密码"></input>
+      </block>
+      <block wx:else>
+        <text style="margin-top:260rpx; margin-bottom: 50rpx;">统一登录密码:123456</text>
+      </block>
+      <button class="bto" formType="submit">确认绑定</button>
+    </view>
+  </form>
+  <!-- <view class="bto">
+    确认绑定
+  </view> -->
+</view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
+<view wx:if="{{showmsg}}" class="tishimsg">
+  <image src="/images/close.png" bindtap="hideModal" class="close"></image>
+  <image src="/images/success.png" class="success"></image>
+  <text>电表绑定成功</text>
+  <image src="/images/continue.png" bindtap="formReset" class="continue"></image>
+</view>
