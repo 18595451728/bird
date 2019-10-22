@@ -4,17 +4,18 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
+		"checkInvalidKey": true,
 		"coverView": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx18a4532076f60c39",
+	"appid": "wx49377c96496c3e5d",
 	"projectname": "bird",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -40,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -75,6 +76,19 @@
 					"name": "pages/usemsg/index",
 					"pathName": "pages/usemsg/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "图表",
+					"pathName": "pages/check/check",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "电价设置",
+					"pathName": "pages/mine/setupprice/index",
 					"scene": null
 				}
 			]

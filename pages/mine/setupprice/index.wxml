@@ -1,4 +1,8 @@
 <view class="content">
+  <view class="msg">
+    <text>高峰时段:8:00-22:00</text>
+    <text>低谷时段:22:00-次日8:00</text>
+  </view>
   <view class="item">
     <text>峰电价</text>
     <view class="pick">
@@ -10,7 +14,7 @@
         <text class="otheritem" data-id='1' bindtap="up_feng_four">{{feng_four=='0'?'':feng_four-1}}</text>
       </view>
       <view class="mid">
-        <text class="miditem">{{feng_one}}</text>
+        <text class="miditem" data-id='0' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_one}}</text>
         <text class="miditem">.</text>
         <text class="miditem" data-id='1' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_two}}</text>
         <text class="miditem" data-id='2' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{feng_three}}</text>
@@ -37,7 +41,7 @@
         <text class="otheritem" data-id='2' bindtap="up_feng_four">{{gu_four=='0'?'':gu_four-1}}</text>
       </view>
       <view class="mid">
-        <text class="miditem">{{gu_one}}</text>
+        <text class="miditem" data-id='7' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_one}}</text>
         <text class="miditem">.</text>
         <text class="miditem" data-id='4' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_two}}</text>
         <text class="miditem" data-id='5' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{gu_three}}</text>
@@ -53,11 +57,37 @@
     </view>
     <text>元</text>
   </view>
-  <view class="msg">
-    <text>高峰时段:8:00-22:00</text>
-    <text>低谷时段:22:00-次日8:00</text>
+
+  <view class='chooseStyle'>
+    <view class='alls'>
+      <image bindtap='chooseStyle' data-style='0' src="{{chooseStyle==0?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
+      <text>所有小区统一设置</text>
+    </view>
+    <view class='special'>
+      <image bindtap='chooseStyle' data-style='1' src="{{chooseStyle==1?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
+      <text>指定小区</text>
+      <picker mode='selector' range='{{commu}}' bindchange="bindPickerChange">
+        <view class='choosecom'>
+        <input disabled='true' value="{{community || '请选择小区'}}"></input>
+        <image class='up' src='/images/up.png'></image>
+      </view>
+      </picker>
+    </view>
   </view>
-  <view class="bto">
+
+  <view class='prices'>
+    <scroll-view scroll-y>
+      <view class='pric' wx:for='{{10}}'>
+        <view class='p-left'>XX小区</view>
+        <view class='p-right'>
+          <view>峰电价：0.560元/千瓦时 </view>
+          <view>谷电价：0.288元/千瓦时 </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="bto" bindtap='bto'>
     确认修改
   </view>
 </view>

@@ -1,9 +1,9 @@
 <view class="content">
   <image src="/images/logo.png"></image>
-  <view class="user" style="margin-top:150rpx;" bindtap="gotologin">
+  <button class="user" data-id='0' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" style="margin-top:150rpx;" bindtap="gotologin">
     用户端
-  </view>
-  <view class="user" bindtap="adminlogin">
+  </button>
+  <button class="user" data-id='1' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" bindtap="adminlogin">
     管理端
-  </view>
+  </button>
 </view>

@@ -1,12 +1,12 @@
 <view class="content">
   <view class="item">
-    <text>警戒电量</text>
+    <text>警戒余额</text>
     <view class="input">
       <input type="number" maxlength="3"></input>
-      度
+      元
     </view>
   </view>
-  <text>当可用电量低于此度时将以微信提示的形式告诉用户。</text>
+  <text>当可用余额低于此数值时将以微信提示的形式告诉用户。</text>
   <view class="bto" bindtap="submit">
     确认设置
   </view>

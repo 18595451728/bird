@@ -90,7 +90,7 @@
       <view class="miditem" style="border-right:1rpx solid #BFBFBF">
         <image src="/images/index3.png"></image>
         <view class="itemmsg">
-          <text style="letter-spacing: 4rpx;">总电量</text>
+          <text style="letter-spacing: 4rpx;">使用电量</text>
           <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'37.66':'00.00'}}度</text>
         </view>
       </view>

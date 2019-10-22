@@ -36,7 +36,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    is_admin: false
+    is_admin: false,
+    url:'https://www.boardiot.com'
   },
   updateicon: function() {
     wx.setTabBarItem({

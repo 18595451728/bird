@@ -21,15 +21,17 @@
   color: rgba(255, 255, 255, 1);
   letter-spacing: 4rpx;
   line-height: 70rpx;
-  margin-top: 74rpx;
+  /* margin-top: 74rpx; */
 }
 
 .msg {
+  width: 630rpx;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  /* flex-direction: column; */
   font-size: 26rpx;
   color: rgba(152, 152, 152, 1);
-  margin-top: 180rpx;
+  margin-top: 30rpx;
 }
 
 .item {
@@ -38,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 100rpx;
+  margin-top: 50rpx;
 }
 
 .pick {
@@ -111,4 +113,72 @@
 .queding{
   width: 300rpx;
   margin-top: 34rpx;
+}
+
+
+
+
+
+.chooseStyle image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 17rpx;
+}
+.chooseStyle image.up{
+  width: 12rpx;
+  height: 6rpx;
+}
+.chooseStyle>view{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.choosecom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 229rpx;
+  height: 52rpx;
+  border: 1px solid #eb5e2b;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #989898;
+  padding: 0 8rpx;
+  line-height: 48rpx;
+  border-radius: 6rpx;
+  margin-left: 15rpx;
+}
+.choosecom image{
+  margin-right: 0
+}
+.chooseStyle{
+  margin-top: 50rpx;
+}
+
+.prices{
+  width: 630rpx;
+  margin: 0 auto;
+  border-top: 1px solid #d5d5d5;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+scroll-view{
+  height: 400rpx;
+}
+::-webkit-scrollbar
+{
+width: 0;
+height: 0;
+color: transparent;
+}
+.pric{
+  display: flex;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #989898;
+  line-height: 45rpx;
+}
+.p-left{
+  width: 120rpx;
+  margin-right: 10rpx;
 }

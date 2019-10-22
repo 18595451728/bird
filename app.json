@@ -22,7 +22,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#eb5e2b",
-    "navigationBarTitleText": "波得物联智能电表",
+    "navigationBarTitleText": "波得小管家",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",

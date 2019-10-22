@@ -47,7 +47,7 @@
           </view>
         </view>
         <view class="yue" bindtap="bindtishi">
-          <view class="y-left">低电提醒</view>
+          <view class="y-left">余额提醒</view>
           <view class="y-right">
             <text></text>
             <image src="/images/arrow-right.png"></image>

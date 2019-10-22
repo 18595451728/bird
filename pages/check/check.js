@@ -61,6 +61,13 @@ import * as echarts from '../ec-canvas/echarts';
 
 function getOption(xData, data_cur, data_his) {
   var option = {
+
+    
+    textStyle: {
+      fontWeight: '400',
+      fontSize: 12,
+      color: '#989898'
+    },
     color: ['#eb5e2b', '#f5aa33'],
     legend: {},
     tooltip: {},
@@ -85,6 +92,9 @@ function getOption(xData, data_cur, data_his) {
     },
     xAxis: {
       type: 'category',
+      axisLabel: {
+        fontSize: '12'
+      }
     },
     yAxis: {
       type: 'value',
@@ -92,14 +102,28 @@ function getOption(xData, data_cur, data_his) {
       max: 16,
       splitNumber: 8,
       name: '(度)',
+      axisLabel: {
+        fontSize: '13'
+      }
     },
     // Declare several bar series, each will be mapped
     // to a column of dataset.source by default.
     series: [{
+        lable: {
+          normal: {
+            rich: {}
+          }
+        },
         type: 'bar',
         barGap: 0
       },
       {
+        lable: {
+          normal: {
+            fontSize: 28,
+            rich: {}
+          }
+        },
         type: 'bar',
         barGap: 0
       }
@@ -141,7 +165,7 @@ Page({
     days: '',
     dian: !0,
     is_admin: true,
-    is_select:false,
+    is_select: false,
     communitylist: ['', '', '', '', '', ''],
   },
 
@@ -196,7 +220,7 @@ Page({
     this.setData({
       is_admin: app.globalData.is_admin
     })
-    if(!this.data.is_admin){
+    if (!this.data.is_admin) {
       this.setData({
         is_select: true
       })
@@ -272,7 +296,7 @@ Page({
       year: year,
       month: month,
       days: days,
-      currentTab1: 4
+      currentTab1: this.data.currentTab1
     })
     var that = this
     setTimeout(function() {
@@ -295,7 +319,7 @@ Page({
       year: year,
       month: month,
       days: days,
-      currentTab1: 4
+      currentTab1: this.data.currentTab1
     })
     var that = this
     setTimeout(function() {
@@ -315,27 +339,27 @@ Page({
       },
     });
   },
-  daochu:function(){
+  daochu: function() {
     wx.navigateTo({
       url: '/pages/Exportdata/index',
     })
   },
-  showinfo: function () {
+  showinfo: function() {
     this.setData({
       is_select: true
     })
   },
-  changeitem:function(){
+  changeitem: function() {
     this.setData({
       is_select: false
     })
   },
-  showxiaoqu: function () {
+  showxiaoqu: function() {
     this.setData({
       showxiaoqu: !this.data.showxiaoqu
     })
   },
-  showdong: function () {
+  showdong: function() {
     this.setData({
       showdong: !this.data.showdong
     })

@@ -1,4 +1,4 @@
-const app = getApp()
+const app = getApp(),r=require('../../utils/request.js'),l=require('../../utils/login.js'),u=app.globalData.url
 Page({
 
   /**
@@ -14,7 +14,31 @@ Page({
   onLoad: function (options) {
 
   },
-
+  bindGetUserInfo: function (e) {
+    var that = this
+    console.log(e)
+    var id =e.currentTarget
+    if (e.detail.userInfo) {
+      console.log(e.detail.userInfo)
+      l.login(function (t) {
+        console.log(t)
+        wx.setStorageSync('token', t)
+        wx.setStorageSync('haslogin', !0)
+      });
+    } else {
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击了“返回授权”')
+          }
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

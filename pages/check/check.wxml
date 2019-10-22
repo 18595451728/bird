@@ -6,6 +6,7 @@
       <image src="/images/arrow-right.png" class="right_icon"></image>
     </view>
   </view>
+  
   <view class="container">
     <view class="hd">
       <view wx:for='{{time}}' data-index='{{index}}' bindtap="choose" class="{{choose==index?'active':''}}">{{item}}</view>

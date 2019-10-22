@@ -20,4 +20,9 @@
   line-height: 70rpx;
   letter-spacing: 6rpx;
   margin-top: 112rpx;
+  font-size: 32rpx;
+}
+
+.user::after{
+  border: none;
 }

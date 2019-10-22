@@ -15,16 +15,34 @@ Page({
     gu_four: 9,
     lastY: 0,
     showmodal: false,
-    showmsg: !0,
+    showmsg: !1,
+    chooseStyle:0,
+    commu:['绿城理想家','西湖杨柳郡']
   },
-
+  bto:function(){
+    this.setData({
+      showmsg:!0
+    })
+  },
+  bindPickerChange:function(e){
+    console.log(e.detail.value)
+    console.log(this.data.commu[e.detail.value])
+    this.setData({
+      community: this.data.commu[e.detail.value]
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
 
   },
-
+  chooseStyle:function(e){
+    var style = e.currentTarget.dataset.style
+    this.setData({
+      chooseStyle:style
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -187,6 +205,7 @@ Page({
   },
   down_feng_four: function(e) {
     var id = e.currentTarget.dataset.id
+    console.log(id)
     if (id == "1") {
       if (this.data.feng_four < 9) {
         this.setData({
@@ -206,6 +225,11 @@ Page({
     let currentY = event.touches[0].pageY
     let ty = currentY - this.data.lastY
     if (ty < 0) {
+      if (id == '0' && this.data.feng_one < 9) {
+        this.setData({
+          feng_one: this.data.feng_one + 1
+        })
+      }
       if (id == '1' && this.data.feng_two < 9) {
         this.setData({
           feng_two: this.data.feng_two + 1
@@ -221,7 +245,32 @@ Page({
           feng_four: this.data.feng_four + 1
         })
       }
+      if (id == '4' && this.data.gu_two < 9) {
+        this.setData({
+          gu_two: this.data.gu_two + 1
+        })
+      }
+      if (id == '5' && this.data.gu_three < 9) {
+        this.setData({
+          gu_three: this.data.gu_three + 1
+        })
+      }
+      if (id == '6' && this.data.gu_four < 9) {
+        this.setData({
+          gu_four: this.data.gu_four + 1
+        })
+      }
+      if (id == '7' && this.data.gu_one < 9) {
+        this.setData({
+          gu_one: this.data.gu_one + 1
+        })
+      }
     } else if (ty > 0) {
+      if (id == '0' && this.data.feng_one >0) {
+        this.setData({
+          feng_one: this.data.feng_one - 1
+        })
+      }
       if (id == '1' && this.data.feng_two > 0) {
         this.setData({
           feng_two: this.data.feng_two - 1
@@ -235,6 +284,27 @@ Page({
       if (id == '3' && this.data.feng_four > 0) {
         this.setData({
           feng_four: this.data.feng_four - 1
+        })
+      }
+
+      if (id == '4' && this.data.gu_two > 0) {
+        this.setData({
+          gu_two: this.data.gu_two -1
+        })
+      }
+      if (id == '5' && this.data.gu_three > 0) {
+        this.setData({
+          gu_three: this.data.gu_three - 1
+        })
+      }
+      if (id == '6' && this.data.gu_four >0) {
+        this.setData({
+          gu_four: this.data.gu_four - 1
+        })
+      }
+      if (id == '7' && this.data.gu_one >0) {
+        this.setData({
+          gu_one: this.data.gu_one - 1
         })
       }
     }
