@@ -10,6 +10,7 @@ Page({
   data: {
     hasbind: true,
     is_admin: true,
+    user:''
   },
 
   /**
@@ -83,28 +84,11 @@ Page({
       is_admin: app.globalData.is_admin
     })
 
-    // console.log(e.detail.userInfo)
     var that = this
+
  
-    var haslogin = wx.getStorageSync('haslogin')
-   
-    r.req(u + '/api/user/center', {
-      token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
 
-
-      console.log(res)
-      that.setData({
-        userinfo: res.data.user,
-        haslogin: haslogin
-      })
-    })
-    // that.setData({
-     
-    // })
-
-
-
+    this.init();
   },
 
   /**
@@ -141,11 +125,26 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // loginout:function(){
-  //   this.setData({
-  //     hasbind:false
-  //   })
-  // },
+  init(){
+     
+    var haslogin = wx.getStorageSync('haslogin')
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/landlord/center',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+        that.setData({
+          user:res.data.data,
+          haslogin: haslogin
+        })
+      },
+
+    })
+  },
 
   loginout: function () {
     var that = this

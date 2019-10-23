@@ -4,14 +4,17 @@
       <view class="logo">
         <view>
           <image src="/images/logo1.png" class="admin_logo1"></image>
-          <text class="admin_username">陈鸿宇</text>
+          <text class="admin_username">{{user.landlord_name=='' ? '房东' : user.landlord_name}}</text>
         </view>
       </view>
       <view class="func">
         <view class="yue" bindtap="huiyuan">
           <view class="y-left">会员中心</view>
           <view class="y-right">
-            <text style="color:#989898;font-size:24rpx;">有效期至2022年9月24日</text>
+            <view style="color:#989898;font-size:24rpx;">
+
+            {{!user.end_time ? '' : '有效期至'+user.end_time}}
+            </view>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user:'',
+    pwd:''
   },
 
   /**
@@ -63,11 +64,61 @@ Page({
   onShareAppMessage: function () {
 
   },
-  formSubmit:function(e){
-    console.log(e)
-    app.globalData.is_admin=true
-    wx.switchTab({
-      url: '/pages/index/index',
+  userInput(e) {
+    this.setData({
+      user:e.detail.value
     })
+  },
+  pwdInput(e){
+    this.setData({
+      pwd: e.detail.value
+    })
+  },
+  formSubmit:function(e){
+
+    app.globalData.is_admin=true
+
+      let that=this;
+  if(this.data.user=='' || this.data.pwd==''){
+    wx.showModal({
+      title: '提示',
+      content: '请完整填写信息',
+      showCancel:false
+    })
+  }else{
+    wx.request({
+      url: app.globalData.url+'/api/landlord/login',
+      data: {
+        username:that.data.user,
+        password:that.data.pwd,
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+          console.log(res)
+          if(res.data.code==1){
+            wx.showToast({
+              title:'登陆成功',
+              icon:'success',
+              duration:1500
+            })
+            setTimeout(function(){
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            },1500)
+          }else{
+            wx.showToast({
+              title:'登陆失败',
+              icon:'none',
+              duration:1500
+            })
+          }
+      },
+
+    })
+
+  }
+
   }
 })

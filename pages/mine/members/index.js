@@ -7,8 +7,10 @@ Page({
   data: {
     timelist: ['1个月', '3个月', '6个月', '', '1 年', '2 年','3 年',''],
     selectindex:1,
-    showmodal: true,
-    showmsg: true,
+    showmodal: false,
+    showmsg:false,
+    user:'',
+    code:''
   },
 
   /**
@@ -22,14 +24,30 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/is_use_card',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        // success
+        console.log(res)
+        that.setData({
+          code:res.data.data.is_use_card
+        })
+      },
 
+    })
+    this.init();
   },
 
   /**
@@ -85,6 +103,37 @@ Page({
   backmine: function () {
     wx.navigateBack({
       delta: 1
+    })
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/rechargePage',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+        that.setData({
+          user:res.data.data
+        })
+      },
+
+    })
+  },
+  useCoupon(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/useCard',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+      },
+
     })
   }
 })
