@@ -83,7 +83,12 @@ Page({
     this.setData({
       is_admin: app.globalData.is_admin
     })
-
+    var adminHasBind = wx.getStorageSync('adminHasBind')
+    if (adminHasBind) {
+      this.setData({
+        hasbind: !0
+      })
+    }
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')
@@ -168,6 +173,7 @@ Page({
               that.setData({
                 hasbind:!1
               })
+              wx.clearStorage()
             }else{
               
             }
