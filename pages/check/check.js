@@ -62,7 +62,7 @@ import * as echarts from '../ec-canvas/echarts';
 function getOption(xData, data_cur, data_his) {
   var option = {
 
-    
+
     textStyle: {
       fontWeight: '400',
       fontSize: 12,
@@ -80,14 +80,11 @@ function getOption(xData, data_cur, data_his) {
     },
     dataset: {
       source: [
-        // ['product', '峰值', '谷值'],
-        ['10', 10.25, 6.8],
-        ['11', 10.25, 6.8],
-        ['12', 10.25, 6.8],
-        ['13', 10.25, 6.8],
-        ['14', 10.25, 6.8],
-        ['15', 10.25, 6.8],
-        ['16', 10.25, 6.8]
+        ['1', 0, 0],
+        ['2', 0, 0],
+        ['3', 0, 0],
+        ['4', 0, 0],
+        ['5', 0, 0]
       ]
     },
     xAxis: {
@@ -99,7 +96,6 @@ function getOption(xData, data_cur, data_his) {
     yAxis: {
       type: 'value',
       min: 0,
-      max: 16,
       splitNumber: 8,
       name: '(度)',
       axisLabel: {
@@ -133,7 +129,9 @@ function getOption(xData, data_cur, data_his) {
 }
 
 let chartLine;
-const app = getApp()
+const app = getApp(),
+  r = require('../../utils/request.js'),
+  u = app.globalData.url
 Page({
 
   /**
@@ -172,23 +170,67 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  choosedong:function(e){
+    var dong=this.data.dong,index=e.currentTarget.dataset.index
+    this.setData({
+      dos: dong[index].class_name,
+      dosid: dong[index].community_build_id
+    })
+  },
+  choosecom: function(e) {
+    var index = e.currentTarget.dataset.index,
+      communitylist = this.data.communitylist
+    this.setData({
+      community: communitylist[index].class_name,
+      communityid: communitylist[index].community_id
+    })
+    this.getdong();
+  },
+  getdong: function() {
+    var that = this
+    r.req(u + '/api/Community/changeCommunity', {
+      community_id: this.data.communityid
+    }, 'post').then(res => {
+      console.log(res)
+      if (res.code == 1) {
+        that.setData({
+          dong: res.data.community
+        })
+      }
+    })
+  },
   onLoad: function(options) {
     this.getCurrentTime();
+    var that = this
+
+    r.req(u + '/api/Community/getCommunity', {
+      token: wx.getStorageSync('token')
+    }, 'post').then(res => {
+      console.log(res)
+      that.setData({
+        communitylist: res.data.community
+      })
+    })
+
   },
   choose: function(e) {
     var index = e.currentTarget.dataset.index
     this.setData({
       choose: index
     })
+    var dian = this.data.dian?1:2
+    this.getCharts(dian);
   },
   changeTab: function(e) {
     var index = e.currentTarget.dataset.index
     this.setData({
       currentTab: index,
-      currentTab1: index
+      currentTab1: index,
+      day:index+1
     })
-    console
-      .log(this.data.year, this.data.month, index + 1)
+    var dian = this.data.dian?1:2
+    this.getCharts(dian)
+    console.log(this.data.year, this.data.month, index + 1)
   },
   bindscroll: function(e) {
     console.log(e.detail.scrollLeft)
@@ -199,11 +241,13 @@ Page({
         dian: !0
       })
       this.updatemsg("(度)")
+      this.getCharts(1);
     } else {
       this.setData({
         dian: !1
       })
       this.updatemsg("(元)")
+      this.getCharts(2);
     }
   },
   /**
@@ -220,10 +264,14 @@ Page({
     this.setData({
       is_admin: app.globalData.is_admin
     })
-    if (!this.data.is_admin) {
-      this.setData({
-        is_select: true
-      })
+    if (this.data.is_admin) {
+      var charts= wx.getStorageSync('charts')
+      if (charts){
+        this.setData({
+          is_select: true
+        })
+      }
+      
     }
   },
 
@@ -270,6 +318,7 @@ Page({
     this.setData({
       year: year,
       month: month,
+      day:day,
       currentTab: day - 1,
       currentTab1: day - 1,
       days: days
@@ -304,6 +353,9 @@ Page({
         scrollLeft: 'currentTime'
       })
     }, 1)
+
+    var dian = this.data.dian?1:2
+    this.getCharts(dian)
   },
   nextMonth: function() {
     var year = this.data.year,
@@ -327,6 +379,8 @@ Page({
         scrollLeft: 'currentTime'
       })
     }, 1)
+    var dian =this.data.dian?1:2
+    this.getCharts(dian)
   },
   updatemsg: function(text) {
     var option = getOption();
@@ -345,10 +399,88 @@ Page({
     })
   },
   showinfo: function() {
+    var that = this, communityid = this.data.communityid,dosid=this.data.dosid
+    if (communityid!=0 && !communityid){
+      wx.showToast({
+        title: '请选择小区',
+        icon:'none'
+      })
+      return false;
+    }
+    if (dosid != 0 && !dosid) {
+      wx.showToast({
+        title: '请选择幢',
+        icon: 'none'
+      })
+      return false;
+    }
+    this.getCharts(1);
     this.setData({
       is_select: true
     })
+    wx.setStorageSync('charts', !0)
   },
+
+  getCharts:function(type){
+    var that =this
+    var d={
+      token: wx.getStorageSync('token'),
+      community_id: this.data.communityid,
+      community_build_id: this.data.dosid,
+      year: this.data.year,
+      month: this.data.month,
+      type: type
+    }
+    var choose=this.data.choose
+    if(choose==0){
+      d.day=this.data.day
+    }
+    r.req(u + '/api/device/detectionLandlord', d, 'post').then(res => {
+
+      if (res.code == 1) {
+        var data = res.data.device_record
+        console.log(data)
+        var source = []
+        for (var i = 0; i < data.length; i++) {
+          var arr = [], jsonlength = -1;
+          for (var j in data[i]) {
+            jsonlength++;
+            console.log(data[i][j])
+            arr[jsonlength] = data[i][j]
+          }
+          console.log(arr)
+          source[i] = arr
+        }
+        console.log(source)
+        that.setData({
+          source: source
+        })
+        // var option = getOption();
+        // chartLine.setOption(option);
+        //如果上面初始化时候，已经chartLine已经setOption了，
+        //那么建议不要重新setOption，官方推荐写法，重新赋数据即可。
+        chartLine.setOption({
+          dataset: {
+            source: source,
+          },
+        });
+      }else{
+        chartLine.setOption({
+          dataset: {
+            source: [
+              ['1',0,0],
+              ['2', 0, 0],
+              ['3', 0, 0],
+              ['4', 0, 0],
+              ['5', 0, 0]
+            ],
+          },
+        });
+      }
+    })
+  },
+
+
   changeitem: function() {
     this.setData({
       is_select: false

@@ -28,7 +28,7 @@ Page({
     showinfo:false,
     // list:['','',''],
     showmodal: false,
-    showcoupon: true,
+    showcoupon: false,
   },
 
 
@@ -65,6 +65,7 @@ Page({
      this.setData({
        is_admin: app.globalData.is_admin
      })
+    this.init();
      
   },
 
@@ -75,6 +76,25 @@ Page({
       showdong: true,
       community_build: this.data.donglist[e.currentTarget.dataset.index].class_name,
       community_build_id: this.data.donglist[e.currentTarget.dataset.index].community_build_id,
+    })
+  
+  },
+     
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/is_use_card',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        // success
+        console.log(res)
+        that.setData({
+          showcoupon:res.data.data.is_use_card==0 ?  true : false
+        })
+      },
     })
   },
 

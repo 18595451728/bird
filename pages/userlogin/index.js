@@ -98,14 +98,16 @@ Page({
   dongchoose:function(e){
     this.setData({
       showdong: true,
-      community_build: this.data.donglist[e.currentTarget.dataset.index].class_name
+      community_build: this.data.donglist[e.currentTarget.dataset.index].class_name,
+      community_build_id: this.data.donglist[e.currentTarget.dataset.index].community_build_id,
+      // community_build: ''
     })
   },
 
   roomchoose:function(e){
     this.setData({
       showroom: true,
-      community_room: this.data.roomlist[e.currentTarget.dataset.index]
+      community_room: this.data.roomlist[e.currentTarget.dataset.index].class_name
     })
   },
 
@@ -113,58 +115,58 @@ Page({
     console.log(e)
     var that = this
 
-    var community = e.detail.value.community;
-    var city = that.data.city_id;
+    // var community = e.detail.value.community;
+    // var city = that.data.city_id;
 
-    var consignee = e.detail.value.consignee;
-    var telephone = e.detail.value.telephone;
+    // var consignee = e.detail.value.consignee;
+    // var telephone = e.detail.value.telephone;
 
-    if (community == "") {
-      wx.showModal({
-        title: '提示',
-        content: '请填写地区',
-        showCancel: false
-      })
-      return
-    }
+    // if (community == "") {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请填写地区',
+    //     showCancel: false
+    //   })
+    //   return
+    // }
 
 
 
-    if (consignee == "") {
-      wx.showModal({
-        title: '提示',
-        content: '请填写联系人姓名',
-        showCancel: false
-      })
-      return
-    }
-    if (telephone == "") {
-      wx.showModal({
-        title: '提示',
-        content: '请填写手机号码',
-        showCancel: false
-      })
-      return
-    }
+    // if (consignee == "") {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请填写联系人姓名',
+    //     showCancel: false
+    //   })
+    //   return
+    // }
+    // if (telephone == "") {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请填写手机号码',
+    //     showCancel: false
+    //   })
+    //   return
+    // }
 
-    if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(telephone))) {
-      wx.showModal({
-        title: '提示',
-        content: '手机号格式错误',
-        showCancel: false
-      })
-      return
-    }
+    // if (!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(telephone))) {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '手机号格式错误',
+    //     showCancel: false
+    //   })
+    //   return
+    // }
    
 
-    if (address == "") {
-      wx.showModal({
-        title: '提示',
-        content: '请填写详细地址',
-        showCancel: false
-      })
-      return
-    }
+    // if (address == "") {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '请填写详细地址',
+    //     showCancel: false
+    //   })
+    //   return
+    // }
 
     r.req(u + '/api/user/bind', {
       community_id: that.data.communitylist,
@@ -223,7 +225,6 @@ Page({
 
 
   showroom: function() {
-
     var that = this
     r.req(u + '/api/Community/changeCommunity', {
       community_id: that.data.community_id,
@@ -233,7 +234,7 @@ Page({
       console.log(res)
       that.setData({
         showroom: !this.data.showroom,
-        donglist: res.data.community
+        roomlist: res.data.community
       })
     })
 

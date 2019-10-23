@@ -2,7 +2,7 @@
   <view class="item">
     <text>警戒余额</text>
     <view class="input">
-      <input type="number" maxlength="3"></input>
+      <input type="number" maxlength="3" bindblur="dlInput" placeholder="{{dl}}"></input>
       元
     </view>
   </view>

@@ -10,6 +10,7 @@ Page({
   data: {
     hasbind: true,
     is_admin: true,
+    user:''
   },
 
   /**
@@ -82,8 +83,12 @@ Page({
     this.setData({
       is_admin: app.globalData.is_admin
     })
-
-    // console.log(e.detail.userInfo)
+    var adminHasBind = wx.getStorageSync('adminHasBind')
+    if (adminHasBind) {
+      this.setData({
+        hasbind: !0
+      })
+    }
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')
@@ -146,11 +151,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // loginout:function(){
-  //   this.setData({
-  //     hasbind:false
-  //   })
-  // },
+
 
   loginout: function () {
     var that = this
@@ -164,16 +165,17 @@ Page({
              token: wx.getStorageSync('token')
           }, 'post').then((res) => {
             console.log(res)
-            if (res.status == 1) {
-              wx.showToast({
-              title: '成功退出登录',
+            wx.showToast({
+              title: res.mes,
               icon: 'none'
             })
-            }else{
-              wx.showToast({
-                title: '退出失败',
-                icon: 'none'
+            if (res.code == 1) {
+              that.setData({
+                hasbind:!1
               })
+              wx.clearStorage()
+            }else{
+              
             }
           })
         }

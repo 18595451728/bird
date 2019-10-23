@@ -1,6 +1,6 @@
 <block wx:if="{{is_select}}">
   <view wx:if="{{is_admin}}" class="header">
-    <text>XX小区 3幢</text>
+    <text>{{community}}小区 {{dos}}幢</text>
     <view bindtap="changeitem">
       <text>切换</text>
       <image src="/images/arrow-right.png" class="right_icon"></image>
@@ -55,14 +55,14 @@
         <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
         <image class="admin_up" src="/images/up.png"></image>
         <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
-          <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假的假的据开发的贷款</text>
+          <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-index='{{index}}' bindtap='choosecom'>{{item.class_name}}</text>
         </view>
       </view>
       <view class="admin_dong" bindtap="showdong">
-        <input disabled="true" placeholder="请选择幢"></input>
+        <input disabled="true" value='{{dos}}' placeholder="请选择幢"></input>
         <image class="admin_up" src="/images/up.png"></image>
         <view wx:if="{{showdong}}" class="admin_dongitems">
-          <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假</text>
+          <text wx:for="{{dong}}" data-index='{{index}}' bindtap='choosedong' class="admin_xiaoquitem">{{item.class_name}}</text>
         </view>
       </view>
     </view>
