@@ -178,6 +178,9 @@ page {
   width: 26rpx;
   height: 26rpx;
   margin-right: 8rpx;
+  border-radius: 50%;
+  border:1rpx solid #000 ;
+  box-sizing: border-box;
 }
 
 .xufei_item {

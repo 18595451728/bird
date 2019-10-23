@@ -10,6 +10,7 @@ Page({
   data: {
     hasbind: true,
     is_admin: true,
+    user:''
   },
 
   /**
@@ -83,7 +84,6 @@ Page({
       is_admin: app.globalData.is_admin
     })
 
-    // console.log(e.detail.userInfo)
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')
@@ -146,11 +146,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // loginout:function(){
-  //   this.setData({
-  //     hasbind:false
-  //   })
-  // },
+
 
   loginout: function () {
     var that = this

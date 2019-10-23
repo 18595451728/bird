@@ -9,20 +9,26 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"coverView": true
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
 	"appid": "wx49377c96496c3e5d",
 	"projectname": "bird",
+	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -37,7 +43,6 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -101,22 +106,29 @@
 				},
 				{
 					"id": -1,
-					"name": "房东登录",
-					"pathName": "pages/adminlogin/index",
+					"name": "会员中心",
+					"pathName": "pages/mine/members/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "房东",
-					"pathName": "pages/mine/mine",
+					"name": "pages/withdrawal/index",
+					"pathName": "pages/withdrawal/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "电表绑定",
-					"pathName": "pages/mine/bindammeter/index",
+					"name": "pages/mine/setupprice/index",
+					"pathName": "pages/mine/setupprice/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/updatepassword/index",
+					"pathName": "pages/mine/updatepassword/index",
 					"query": "",
 					"scene": null
 				},

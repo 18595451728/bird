@@ -7,6 +7,7 @@ Page({
   data: {
     showmodal: false,
     showmsg: false,
+    dl:''
   },
 
   /**
@@ -27,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.init();
   },
 
   /**
@@ -64,6 +65,28 @@ Page({
   onShareAppMessage: function() {
 
   },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/remindGet',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+        that.setData({
+          dl:res.data.data.remind
+        })
+      },
+
+    })
+  },
+  dlInput(e){
+    this.setData({
+      dl:e.detail.value
+    })
+  },
   preventTouchMove: function() {},
   /**
    * 隐藏模态对话框
@@ -80,9 +103,40 @@ Page({
     })
   },
   submit: function() {
-    this.setData({
-      showmodal: true,
-      showmsg: true,
-    });
+    let that=this;
+
+    if(this.data.dl==''){
+      wx.showModal({
+        title:'提示',
+        content:'请设置警戒值',
+        showCancel:false
+      })
+    }else{
+      wx.request({
+        url: app.globalData.url+'/api/landlord/remindSet',
+        data: {
+          token:wx.getStorageSync('token'),
+          remind:that.data.dl
+        },
+        method: 'post', 
+        success: function(res){
+          console.log(res)
+          if(res.data.code==1){
+            that.setData({
+              showmodal: true,
+              showmsg: true,
+            });
+          }else{
+            wx.showToast({
+              title:'设置失败',
+              icon:'none'
+            })
+          }
+
+        },
+  
+      })
+    }
+
   }
 })
