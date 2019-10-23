@@ -88,7 +88,7 @@
           if (res.code == 1) {
             wx.setStorageSync('adminHasBind', !0)
             wx.switchTab({
-              url: '/pages/index/index',
+              url: '/pages/mine/mine',
             })
           } else {
             wx.showToast({
