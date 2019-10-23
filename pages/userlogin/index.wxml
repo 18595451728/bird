@@ -1,15 +1,16 @@
 <view class="content">
   <image class="logo" src="/images/logo.png"></image>
+  <form bindsubmit="bindSave">
   <view class="inputitems">
     <view class="xiaoqu" bindtap="showxiaoqu">
       <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showxiaoqu}}" class="xiaoquitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
+        <text wx:for="{{communitylist}}" class="xiaoquitem"  bindtap="tklyChoose" data-index="{{index}}" wx:key="{{index}}">{{communitylist[index]}}</text>
       </view>
     </view>
     <view class="dong" bindtap="showdong">
-      <input disabled="true" placeholder="请选择幢"></input>
+      <input disabled="true" placeholder="请选择幢">{{checkReason}}</input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showdong}}" class="dongitems">
         <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
@@ -23,10 +24,11 @@
       </view>
     </view>
   </view>
-  <input class="name" placeholder="请输入您的姓名"></input>
-  <input class="name" placeholder="请输入您的手机号"></input>
-  <input class="name" placeholder="请输入密码"></input>
+  <input class="name" name="consignee" placeholder="请输入您的姓名"></input>
+  <input class="name" name="telephone" placeholder="请输入您的手机号"></input>
+  <input class="name" name="password" placeholder="请输入密码"></input>
   <view class='bind'>绑定密码请在公众号（波得物联）中获取</view>
-  <view class="binduser" bindtap="login">快速绑定</view>
+  <button class="binduser"  formType="submit">快速绑定</button>
   <view class="out" bindtap="login">跳过此步</view>
+  </form>
 </view>

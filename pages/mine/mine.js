@@ -1,4 +1,7 @@
-const app = getApp()
+const app = getApp(),
+  r = require('../../utils/request.js'),
+  l = require('../../utils/login.js'),
+  u = app.globalData.url
 Page({
 
   /**
@@ -75,10 +78,33 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function(e) {
     this.setData({
       is_admin: app.globalData.is_admin
     })
+
+    // console.log(e.detail.userInfo)
+    var that = this
+ 
+    var haslogin = wx.getStorageSync('haslogin')
+   
+    r.req(u + '/api/user/center', {
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+
+
+      console.log(res)
+      that.setData({
+        userinfo: res.data.user,
+        haslogin: haslogin
+      })
+    })
+    // that.setData({
+     
+    // })
+
+
+
   },
 
   /**
@@ -115,11 +141,59 @@ Page({
   onShareAppMessage: function() {
 
   },
-  loginout:function(){
-    this.setData({
-      hasbind:false
+  // loginout:function(){
+  //   this.setData({
+  //     hasbind:false
+  //   })
+  // },
+
+  loginout: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否退出登录',
+      success: function (res) {
+        if (res.confirm) {
+          console.log(1111)
+          r.req(u + '/api/Wx/signOut', {
+             token: wx.getStorageSync('token')
+          }, 'post').then((res) => {
+            console.log(res)
+            if (res.status == 1) {
+              wx.showToast({
+              title: '成功退出登录',
+              icon: 'none'
+            })
+            }else{
+              wx.showToast({
+                title: '退出失败',
+                icon: 'none'
+              })
+            }
+          })
+        }
+      }
     })
+
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '是否退出登录',
+    //   success: function (res) {
+    //     if (res.confirm) {
+    //       wx.clearStorage();
+    //       var token = wx.getStorageSync('token')
+    //       if (!token) {
+    //         wx.showToast({
+    //           title: '成功退出登录',
+    //           icon: 'none'
+    //         })
+    //         that.onLoad();
+    //       }
+    //     }
+    //   }
+    // })
   },
+
   gotologin:function(){
     wx.navigateTo({
       url: '/pages/login/index',

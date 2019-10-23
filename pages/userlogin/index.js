@@ -1,4 +1,7 @@
-const app = getApp()
+const app = getApp(), 
+r = require('../../utils/request.js'), 
+l = require('../../utils/login.js'), 
+u = app.globalData.url
 Page({
 
   /**
@@ -8,8 +11,10 @@ Page({
     showxiaoqu: false,
     showdong: false,
     showroom: false,
-    communitylist: ['', '', '', '', '', ''],
-    community: ''
+    communitylist: ['1111', '2222', '3333', '4444', '5555', '243'],
+    community: '',
+
+   
   },
 
   /**
@@ -67,6 +72,43 @@ Page({
   onShareAppMessage: function() {
 
   },
+  tklyChoose: function (e) {
+  
+    this.setData({
+      showxiaoqu: !this.data.showxiaoqu,
+      community: this.data.communitylist[e.currentTarget.dataset.index]
+    })
+    // console.log(this.data.communitylist[e.currentTarget.dataset.index]);
+  },
+
+
+
+
+  bindSave: function (e) {
+    console.log(e)
+    var that = this
+
+    r.req(u + '/api/user/bind', {
+      community_id: that.data.community_id,
+      community_build_id: that.data.community_build_id,
+      community_room_id: that.data.community_room_id,
+      name: e.detail.value.consignee,
+      tel: e.detail.value.telephone,
+      password: e.detail.value.password,
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+
+    })
+
+
+  },
+
+
+
+
+
+
   showxiaoqu: function() {
     this.setData({
       showxiaoqu: !this.data.showxiaoqu
@@ -82,6 +124,8 @@ Page({
       showroom: !this.data.showroom
     })
   },
+
+  
   login: function() {
     app.globalData.is_admin = false
     wx.switchTab({
