@@ -42,8 +42,8 @@
 }
 
 .qigesha image {
-  width: 6rpx;
-  height: 12rpx;
+  width: 9rpx;
+  height: 18rpx;
 }
 
 .qigesha image:last-child {
@@ -131,7 +131,6 @@
 }
 
 .todaytop, .todaylow {
-  width: 333rpx;
   line-height: 41rpx;
   font-size: 26rpx;
   color: #515151;
@@ -141,18 +140,23 @@
   text-align: center;
   margin-bottom: 20rpx;
 }
-
+.todaylow {
+   width: 353rpx;
+}
+.todaytop{
+  max-width: 420rpx;
+}
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 690rpx;
   padding: 0 30rpx;
-  height: 50rpx;
+  height: 70rpx;
   font-size: 26rpx;
   font-family: PingFangSC;
   color: rgba(78, 77, 77, 1);
-  line-height: 50rpx;
+  line-height: 70rpx;
   border-bottom: 1rpx solid #eee;
 }
 
@@ -237,14 +241,16 @@
   height: 400rpx;
   background-color: #f5f5f5;
   z-index: 99;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   line-height: 40rpx;
   padding: 0 10rpx;
   font-weight: bold;
   overflow-y: scroll;
 }
-
+.admin_xiaoquitems::-webkit-scrollbar{
+  display: none;
+}
 .admin_dongitems {
   position: absolute;
   top: 62rpx;
@@ -262,7 +268,12 @@
 }
 
 .admin_xiaoquitem {
-  margin-top: 15rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 60rpx;
+  height: 60rpx;
+  display: block;
 }
 
 .admin_up {
@@ -286,4 +297,23 @@
   height: 60rpx;
   width: 150rpx;
   padding: 0 10rpx;
+}
+.tt{
+  display: flex;
+  align-items: center;
+}
+.tt view{
+  display: flex;
+  align-items: center;
+}
+.tt view:last-child{
+  margin-left: 10rpx;
+}
+.tt view text{
+  display: block;
+  max-width: 150rpx;
+  overflow: hidden;
+  margin-right: 10rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

@@ -1,6 +1,6 @@
 <block wx:if="{{is_select}}">
   <view wx:if="{{is_admin}}" class="header">
-    <text>{{community}}小区 {{dos}}幢</text>
+    <view class='tt'><view><text>{{community}}</text> <text>小区</text></view> <view><text>{{dos}}</text> <text>幢</text></view></view>
     <view bindtap="changeitem">
       <text>切换</text>
       <image src="/images/arrow-right.png" class="right_icon"></image>
@@ -11,12 +11,12 @@
     <view class="hd">
       <view wx:for='{{time}}' data-index='{{index}}' bindtap="choose" class="{{choose==index?'active':''}}">{{item}}</view>
     </view>
-    <view class="qigesha">
+    <view class="qigesha" wx:if='{{choose!=2}}'>
       <image src="/images/small-arrow.png" bindtap="prevMonth"></image>
       <text>{{year}}年{{month}}月</text>
       <image src="/images/small-arrow.png" bindtap="nextMonth"></image>
     </view>
-    <scroll-view scroll-x class="calendar" bindscroll='bindscroll' scroll-into-view='{{scrollLeft}}' wx:if='{{choose!=1}}'>
+    <scroll-view scroll-x class="calendar" bindscroll='bindscroll' scroll-into-view='{{scrollLeft}}' wx:if='{{choose==0}}'>
       <view id="{{currentTab1==index+4?'currentTime':''}}" class="day {{currentTab==index?'active':''}}" wx:for='{{days}}' data-index='{{index}}' bindtap="changeTab">{{item+1}}</view>
     </scroll-view>
     <view class="ec-title">
