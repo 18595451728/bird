@@ -6,21 +6,21 @@
       <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showxiaoqu}}" class="xiaoquitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem"  bindtap="tklyChoose" data-index="{{index}}" wx:key="{{index}}">{{communitylist[index]}}</text>
+        <text wx:for="{{communitylist}}" class="xiaoquitem"  bindtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{communitylist[index]}}</text>
       </view>
     </view>
     <view class="dong" bindtap="showdong">
-      <input disabled="true" placeholder="请选择幢">{{checkReason}}</input>
+      <input disabled="true" placeholder="请选择幢" value="{{community_build}}"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showdong}}" class="dongitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
+        <text wx:for="{{commbuildlist}}" class="xiaoquitem" bindtap="dongchoose" data-index="{{index}}" wx:key="{{index}}">{{commbuildlist[index]}}</text>
       </view>
     </view>
     <view class="room" bindtap="showroom">
-      <input disabled="true" placeholder="选择门牌"></input>
+      <input disabled="true" placeholder="选择门牌" value="{{community_room}}"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showroom}}" class="roomitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
+        <text wx:for="{{roomlist}}" class="xiaoquitem" bindtap="roomchoose" data-index="{{index}}" wx:key="{{index}}">{{roomlist[index]}}</text>
       </view>
     </view>
   </view>

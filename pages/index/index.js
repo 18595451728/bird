@@ -1,3 +1,6 @@
+const app = getApp(),
+  r = require('../../utils/request.js'),
+  u = app.globalData.url
 //index.js
 //获取应用实例
 const app = getApp()
@@ -29,6 +32,7 @@ Page({
        is_admin: app.globalData.is_admin
      })
   },
+
   changestate() {
     this.setData({
       is_open: !this.data.is_open,
@@ -163,11 +167,38 @@ Page({
       showdong: !this.data.showdong
     })
   },
-  showinfo:function(){
+
+
+  showinfo:function(e){
+    console.log(e)
+    var that = this
+
+    r.req(u + '/api/device/deviceLandlord', {
+      community_id: that.data.communitylist,
+      community_build_id: that.data.community_build,
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      wx.showModal({
+        title: '提示',
+        content: '查看成功',
+        showCancel: false
+      })
+      wx.navigateTo({
+        url: '/pages/index/index',
+      })
+    }, 500)
+
+
+
+
+
     this.setData({
       showinfo: true
     })
   },
+
+
   changeselect:function(){
     this.setData({
       showinfo: false

@@ -1,7 +1,9 @@
+<!-- 房东 -->
 <block wx:if="{{is_admin}}">
   <block wx:if="{{!showinfo}}">
     <view class="admin_content">
       <image class="admin_logo" src="/images/logo.png"></image>
+
       <view class="admin_inputitems">
         <view class="admin_xiaoqu" bindtap="showxiaoqu">
           <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
@@ -10,6 +12,7 @@
             <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假的假的据开发的贷款</text>
           </view>
         </view>
+
         <view class="admin_dong" bindtap="showdong">
           <input disabled="true" placeholder="请选择幢"></input>
           <image class="admin_up" src="/images/up.png"></image>
@@ -18,6 +21,7 @@
           </view>
         </view>
       </view>
+      
       <view class="admin_binduser" bindtap="showinfo">立即查看</view>
     </view>
   </block>
@@ -60,6 +64,9 @@
     <image src="/images/gouser.png" bindtap="gouserinfo" class="gouser"></image>
   </view>
 </block>
+
+
+<!-- 租客 -->
 <block wx:else>
   <view class="content">
     <view class="header">
