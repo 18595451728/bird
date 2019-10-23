@@ -164,16 +164,16 @@ Page({
              token: wx.getStorageSync('token')
           }, 'post').then((res) => {
             console.log(res)
-            if (res.status == 1) {
-              wx.showToast({
-              title: '成功退出登录',
+            wx.showToast({
+              title: res.mes,
               icon: 'none'
             })
-            }else{
-              wx.showToast({
-                title: '退出失败',
-                icon: 'none'
+            if (res.code == 1) {
+              that.setData({
+                hasbind:!1
               })
+            }else{
+              
             }
           })
         }
