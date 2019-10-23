@@ -11,7 +11,8 @@ Page({
       state: 1
     }, {
       state: 2
-    }]
+    }],
+    user:[]
   },
 
   /**
@@ -32,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.init();
   },
 
   /**
@@ -68,6 +69,24 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/bindList',
+      data: {
+        token:wx.getStorageSync('token'),
+        type:1,
+        keyword:''
+      },
+      method: 'post', 
+      success: function(res){
+          console.log(res)
+          that.setData({
+            user:res.data.data.user
+          })
+      }
+    })
   },
   change: function(e) {
     var id = e.currentTarget.dataset.id

@@ -4,18 +4,26 @@
     <image class="icon" src="/images/search.png"></image>
   </view>
 
-  <view class="item" wx:for="{{list}}">
+  <view class="item" wx:for="{{user}}">
     <view class="logo">
       <image src="/images/logo1.png"></image>
     </view>
     <view class="msg">
-      <text class="name">陈鸿宇</text>
-      <text>大家都假的假的假的假的假的假的就XX小区 3幢 603室</text>
+      <text class="name">{{item.name}}</text>
+      <text>{{item.community_room}}</text>
     </view>
     <view class="itembto" data-index="{{index}}" bindtap="changestate">
       解除绑定
     </view>
   </view>
+
+
+    
+    <view class="nozuke" wx:if="{{user.length==0}}">
+  
+      暂无任何租客信息
+    </view>
+
 </view>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
 <view wx:if="{{showmsg}}" class="tixing">

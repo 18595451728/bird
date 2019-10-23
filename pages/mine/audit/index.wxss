@@ -25,7 +25,11 @@ page {
   height: 23rpx;
   margin-left: 10rpx;
 }
-
+.nozuke{
+  margin-top: 500rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
 .room {
   font-size: 26rpx;
 }

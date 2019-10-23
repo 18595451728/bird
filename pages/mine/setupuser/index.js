@@ -8,6 +8,7 @@ Page({
     list: [],
     showmodal: true,
     showmsg: true,
+    user:[]
   },
 
   /**
@@ -28,7 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.init();
   },
 
   /**
@@ -100,5 +101,23 @@ Page({
   },
   submit:function(){
     this.hideModal()
-  }
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/bindList',
+      data: {
+        token:wx.getStorageSync('token'),
+        type:2,
+        keyword:''
+      },
+      method: 'post', 
+      success: function(res){
+          console.log(res)
+          that.setData({
+            user:res.data.data.user
+          })
+      }
+    })
+  },
 })
