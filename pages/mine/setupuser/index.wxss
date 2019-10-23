@@ -128,3 +128,9 @@ input {
   margin-top: 40rpx;
   margin-left: 52rpx;
 }
+.nozuke{
+  margin-top: 400rpx;
+text-align: center;
+font-size: 30rpx;
+
+}

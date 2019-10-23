@@ -1,20 +1,26 @@
 <view class="content">
-  <view class="item" wx:for="{{list}}">
+
+  <view class="item" wx:for="{{user.length}}" wx:if="{{user.length>0}}">
     <view>
       <view>
-        <text class="name">陈鸿宇</text>
+        <text class="name">{{item.name}}</text>
         <image src="/images/new.png" class="icon"></image>
       </view>
-      <text class="room">很多很多哈哈动画基督教XX小区 3幢 603室</text>
+      <text class="room">{{item.community_room}}</text>
     </view>
     <view class="two">
-      <text class="time">2019年9月23日</text>
+      <text class="time">{{item.create_time}}</text>
       <view class="caozuoitem">
-        <view wx:if="{{item.state==0}}" class="caozuo" data-index="{{index}}" data-id='0' bindtap="change">忽略</view>
-        <view wx:if="{{item.state==0}}" class="caozuo tongguo" data-index="{{index}}" data-id='1' bindtap="change">通过</view>
-        <view wx:if="{{item.state==1}}" class="caozuo">已通过</view>
-        <view wx:if="{{item.state==2}}" class="caozuo">已忽略</view>
+        <view wx:if="{{item.status==0}}" class="caozuo" data-index="{{index}}" data-id='0' bindtap="change">忽略</view>
+        <view wx:if="{{item.status==0}}" class="caozuo tongguo" data-index="{{index}}" data-id='1' bindtap="change">通过</view>
+        <view wx:if="{{item.status==1}}" class="caozuo">已通过</view>
+        <view wx:if="{{item.status==2}}" class="caozuo">已忽略</view>
       </view>
     </view>
+  </view>
+  
+  <view class="nozuke" wx:if="{{user.length==0}}">
+
+    暂无任何租客信息
   </view>
 </view>
