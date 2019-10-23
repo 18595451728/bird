@@ -17,13 +17,18 @@ Page({
   bindGetUserInfo: function (e) {
     var that = this
     console.log(e)
-    var id =e.currentTarget
+    var id =e.currentTarget.dataset.id
     if (e.detail.userInfo) {
       console.log(e.detail.userInfo)
       l.login(function (t) {
         console.log(t)
         wx.setStorageSync('token', t)
         wx.setStorageSync('haslogin', !0)
+        if(id==0){
+          that.gotologin();
+        }else{
+          that.adminlogin()
+        }
       });
     } else {
       wx.showModal({
@@ -93,8 +98,16 @@ Page({
     })
   },
   adminlogin:function(){
-    wx.navigateTo({
-      url: '/pages/adminlogin/index',
-    })
+    var adminHasBind = wx.getStorageSync('adminHasBind')
+    if (adminHasBind){
+      wx.switchTab({
+        url: '/pages/mine/mine',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/adminlogin/index',
+      })
+    }
+    
   }
 })

@@ -85,10 +85,31 @@ Page({
     })
 
     var that = this
-
  
-
-    this.init();
+    var haslogin = wx.getStorageSync('haslogin')
+   
+   if(!this.data.is_admin){
+     r.req(u + '/api/user/center', {
+       token: wx.getStorageSync('token')
+     }, 'post').then((res) => {
+       console.log(res)
+       that.setData({
+         userinfo: res.data.user,
+         haslogin: haslogin
+       })
+     })
+   }else{
+     r.req(u + '/api/landlord/center', {
+       token: wx.getStorageSync('token')
+     }, 'post').then(res => {
+       console.log(res)
+       that.setData({
+         userinfo: res.data,
+         haslogin: haslogin
+       })
+       console.log(that.data.userinfo.bind_num)
+     })
+   }
   },
 
   /**
@@ -125,26 +146,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  init(){
-     
-    var haslogin = wx.getStorageSync('haslogin')
-    let that=this;
-    wx.request({
-      url: app.globalData.url+'/api/landlord/center',
-      data: {
-        token:wx.getStorageSync('token')
-      },
-      method: 'POST', 
-      success: function(res){
-        console.log(res)
-        that.setData({
-          user:res.data.data,
-          haslogin: haslogin
-        })
-      },
 
-    })
-  },
 
   loginout: function () {
     var that = this

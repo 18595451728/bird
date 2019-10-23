@@ -29,10 +29,10 @@
     <block wx:for="{{timelist}}">
       <view wx:if="{{index!=3&&index!=7}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem" data-index="{{index}}" bindtap="choose">{{item}}</view>
       <view wx:if="{{index==3}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem tesu" data-index="{{index}}" bindtap="choose">
-        <input type="number" class="mounthinput"></input>
+        <input type="number" class="mounthinput" bindinput="monthInput" value="{{yue}}" ></input>
         个月</view>
       <view wx:if="{{index==7}}" style="{{index==selectindex?'border:2rpx solid #EC6217;color:#EB5E2B;':''}}" class="timeitem tesu" data-index="{{index}}" bindtap="choose">
-        <input type="number" class="yearinput"></input>
+        <input type="number" class="yearinput" bindinput="yearInput" value="{{nian}}" ></input>
         年</view>
     </block>
   </view>
@@ -40,10 +40,11 @@
 <view class="vipheader xufei">
   <view class="xufei_item">
     <image src="/images/vip4.png" class="vipicon3"></image>
-    <text style='color: rgba(235, 94, 43, 1);font-size:45rpx;'>120</text>元
+    <text style='color: rgba(235, 94, 43, 1);font-size:45rpx;'>{{month*user.vip_config.vip_price}}</text>元
   </view>
   <view class="xufei_item">
-    <image src="/images/vip5.png" class="vipicon4"></image>
+    <!-- <image src="/images/vip5.png" class="vipicon4"></image> -->
+    <view class="vipicon4" style="background: {{xufei==0 ? '' : '#EB5F2C'}};" bindtap="changeXufei"></view>
     <text>到期自动续费</text>
   </view>
 </view>

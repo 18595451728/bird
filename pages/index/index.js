@@ -21,13 +21,32 @@ Page({
     showinfo:false,
     list:['','',''],
     showmodal: false,
-    showcoupon: true,
+    showcoupon: false,
   },
   onLoad: function() {},
   onShow: function() {
      this.setData({
        is_admin: app.globalData.is_admin
      })
+     this.init();
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/is_use_card',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        // success
+        console.log(res)
+        that.setData({
+          showcoupon:res.data.data.is_use_card==0 ?  true : false
+        })
+      },
+
+    })
   },
   changestate() {
     this.setData({

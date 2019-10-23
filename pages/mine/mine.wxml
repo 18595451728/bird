@@ -4,17 +4,14 @@
       <view class="logo">
         <view>
           <image src="/images/logo1.png" class="admin_logo1"></image>
-          <text class="admin_username">{{user.landlord_name=='' ? '房东' : user.landlord_name}}</text>
+          <text class="admin_username">{{userinfo.landlord_name}}</text>
         </view>
       </view>
       <view class="func">
         <view class="yue" bindtap="huiyuan">
           <view class="y-left">会员中心</view>
           <view class="y-right">
-            <view style="color:#989898;font-size:24rpx;">
-
-            {{!user.end_time ? '' : '有效期至'+user.end_time}}
-            </view>
+            <text style="color:#989898;font-size:24rpx;">有效期至{{userinfo.end_time}}</text>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>
@@ -45,7 +42,7 @@
         <view class="yue" bindtap="bindaudit">
           <view class="y-left">绑定审核</view>
           <view class="y-right">
-            <view class="auditnum">99</view>
+            <view class="auditnum">{{userinfo.bind_num}}</view>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>

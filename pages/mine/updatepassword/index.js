@@ -123,10 +123,40 @@ Page({
       })
       return
     }
-    this.setData({
-      showmodal: true,
-      showmsg: true,
-    })
+
+    else{
+      let that=this;
+      wx.request({
+        url: app.globalData.url+'/api/landlord/changePassword',
+        data: {
+          token:wx.getStorageSync('token'),
+          o_pass:that.data.old_password,
+          n_pass:that.data.new_password,
+          con_pass:that.data.check_password
+        },
+        method: 'POST', 
+        success: function(res){
+          console.log(res)
+          if(res.data.code==0){
+    
+            wx.showModal({
+              title:'提示',
+              content:res.data.mes+'',
+              showCancel:false
+            })
+          }else{
+            that.setData({
+              showmodal: true,
+              showmsg: true,
+            })
+          }
+
+        },
+  
+      })
+    }
+
+  
   },
   preventTouchMove: function() {},
   /**

@@ -36,7 +36,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    is_admin: false,
+    is_admin: !0,
     url:'https://www.boardiot.com'
   },
   updateicon: function() {

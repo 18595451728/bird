@@ -77,11 +77,11 @@
 
   <view class='prices'>
     <scroll-view scroll-y>
-      <view class='pric' wx:for='{{10}}'>
-        <view class='p-left'>XX小区</view>
+      <view class='pric' wx:for='{{dlList}}'>
+        <view class='p-left'>{{item.community}}</view>
         <view class='p-right'>
-          <view>峰电价：0.560元/千瓦时 </view>
-          <view>谷电价：0.288元/千瓦时 </view>
+          <view>峰电价：{{item.high_price ?  item.high_price+'元/千瓦时 ' : '暂无'}}</view>
+          <view>谷电价：{{item.low_price ?  item.low_price+'元/千瓦时': '暂无'}} </view>
         </view>
       </view>
     </scroll-view>

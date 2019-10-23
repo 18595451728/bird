@@ -17,18 +17,74 @@ Page({
     showmodal: false,
     showmsg: !1,
     chooseStyle:0,
-    commu:['绿城理想家','西湖杨柳郡']
+    commu:['绿城理想家','西湖杨柳郡'],
+    xiaoqu:[],
+    community_id:'',
+    high_price:'',
+    low_price:'',
+    dlList:[]
   },
   bto:function(){
-    this.setData({
-      showmsg:!0
-    })
+    let that=this;
+    var highPrice=that.data.feng_one+'.'+that.data.feng_two+''+that.data.feng_three+''+that.data.feng_four;
+    var lowPrice=that.data.gu_one+'.'+that.data.gu_two+''+that.data.gu_three+''+that.data.gu_four
+
+    console.log(that.data.community_id)
+    if(lowPrice>highPrice){
+      wx.showModal({
+        title:'提示',
+        content:'谷电价必须小于等于峰电价',
+        showCancel:false
+      })
+    }else{
+      if(this.data.chooseStyle==0){
+        wx.request({
+          url: app.globalData.url+'/api/Landlord/setElectricityPrice',
+          data: {
+            token:wx.getStorageSync('token'),
+            high_price:highPrice,
+            low_price: lowPrice,
+            type:1,
+            
+          },
+          method: 'POST', 
+          success: function(res){
+           console.log(res)
+           that.setData({
+            showmsg:!0
+          })
+          },
+        })
+      }else if(this.data.chooseStyle=='1'){
+        wx.request({
+          url: app.globalData.url+'/api/Landlord/setElectricityPrice',
+          data: {
+            token:wx.getStorageSync('token'),
+            community_id:that.data.community_id,
+            high_price:highPrice,
+            low_price: lowPrice,
+            type:2
+          },
+          method: 'POST', 
+          success: function(res){
+            console.log(res)
+            that.setData({
+              showmsg:!0
+            })
+          },
+    
+        })
+      }
+    }
+ 
+
+
   },
   bindPickerChange:function(e){
-    console.log(e.detail.value)
-    console.log(this.data.commu[e.detail.value])
+   
     this.setData({
-      community: this.data.commu[e.detail.value]
+      community: this.data.commu[e.detail.value],
+      community_id:this.data.xiaoqu[e.detail.value].community_id
     })
   },
   /**
@@ -54,7 +110,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.init();
+    this.initFeng();
   },
 
   /**
@@ -91,6 +148,65 @@ Page({
   onShareAppMessage: function() {
 
   },
+  initFeng(){
+    let that=this;
+    wx.request({
+      url:app.globalData.url+'/api/landlord/priceGet',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+
+
+        if(res.data.data!=''){
+          that.setData({
+            feng_one:parseInt(res.data.data[0].high_price.split("")[0] ? res.data.data[0].high_price.split("")[0] : '0'),
+            feng_two:parseInt(res.data.data[0].high_price.split("")[2] ? res.data.data[0].high_price.split("")[2] : '0'),
+            feng_three:parseInt(res.data.data[0].high_price.split("")[3] ? res.data.data[0].high_price.split("")[3] : '0'),
+            feng_four:parseInt(res.data.data[0].high_price.split("")[4] ? res.data.data[0].high_price.split("")[4] : '0'),
+
+
+            gu_one:parseInt(res.data.data[0].low_price.split("")[0] ? res.data.data[0].low_price.split("")[0] : '0'),
+            gu_two:parseInt(res.data.data[0].low_price.split("")[2] ? res.data.data[0].low_price.split("")[2] : '0'),
+            gu_three:parseInt(res.data.data[0].low_price.split("")[3] ? res.data.data[0].low_price.split("")[3] : '0'),
+            gu_four:parseInt(res.data.data[0].low_price.split("")[4] ? res.data.data[0].low_price.split("")[4] : '0'), 
+
+            dlList:res.data.data
+          })
+        }
+      },
+    })
+  },
+  init(){
+    let arr=[]
+    let that=this;
+    wx.request({
+      url:app.globalData.url+'/api/Community/getCommunity',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+  
+        res.data.data.community.forEach(function(item,index){
+          arr.push(item.class_name)
+        })
+        that.setData({
+          xiaoqu:res.data.data.community,
+          commu:arr
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
+
   up_feng_one: function(e) {
     var id = e.currentTarget.dataset.id
     if (id == '1') {
