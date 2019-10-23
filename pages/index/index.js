@@ -3,7 +3,7 @@ const app = getApp(),
   u = app.globalData.url
 //index.js
 //获取应用实例
-const app = getApp()
+
 var is_change = false
 Page({
   data: {
