@@ -46,7 +46,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -136,6 +136,13 @@
 					"id": -1,
 					"name": "实时监测",
 					"pathName": "pages/check/check",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Exportdata/index",
+					"pathName": "pages/Exportdata/index",
 					"query": "",
 					"scene": null
 				}

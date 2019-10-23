@@ -58,7 +58,7 @@
   <view wx:if="{{showcoupon}}" class="mycoupon">
     <image src="/images/close.png" bindtap="hideModal" class="close"></image>
     <text class="coupon_title">您有一张30天的会员体验券未使用</text>
-    <view class="coupon_bto">
+    <view class="coupon_bto" bindtap="userCoupon">
       立即使用
     </view>
     <image src="/images/gouser.png" bindtap="gouserinfo" class="gouser"></image>

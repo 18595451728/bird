@@ -21,7 +21,7 @@
 </view>
 <view class="vipheader username">
   <image src="/images/vip2.png" class="vipicon1"></image>
-  <text>{{user.nickname}}</text>
+  <text>{{user.name}}</text>
 </view>
 <view class="vipheader time">
   <image src="/images/vip3.png" class="vipicon2"></image>

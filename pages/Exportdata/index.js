@@ -8,10 +8,16 @@ Page({
     showxiaoqu: false,
     showdong: false,
     showroom: false,
-    communitylist: ['', '', '', '', '', ''],
+    communitylist: [],
+    communitylist2: [],
     community: '',
-    showmodal: true,
-    showmsg: true,
+    showmodal: false,
+    showmsg: false,
+    quname:'',
+    dongname:'',
+    email:'',
+    id1:'',
+    id2:''
   },
 
   /**
@@ -32,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**
@@ -94,4 +100,93 @@ Page({
       showmsg: false,
     });
   },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Community/getCommunity',
+      data: {
+        token:wx.getStorageSync('token'),
+
+      },
+      method: 'post', 
+      success: function(res){
+        that.setData({
+          communitylist:res.data.data.community
+        })
+      },
+
+    })
+  },
+  changQu(e){
+
+    this.setData({
+      quname:e.currentTarget.dataset.name,
+      id1:e.currentTarget.dataset.id
+    })
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Community/changeCommunity',
+      data: {
+        community_id:e.currentTarget.dataset.id
+      },
+      method: 'post', 
+      success: function(res){
+ 
+        that.setData({
+          communitylist2:res.data.data.community
+        })
+     
+      },
+
+    })
+  },
+  changDong(e){
+    console.log(e.currentTarget.dataset.id)
+    this.setData({
+      dongname:e.currentTarget.dataset.name,
+      id2:e.currentTarget.dataset.id
+    })
+  },
+  daochu(){
+    let that=this;
+    console.log(this.data.id2)
+    var emreg=/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+    if(that.data.email==''){
+      wx.showToast({
+        title:'邮箱不能为空',
+        icon:'none'
+      })
+    }else if(emreg.test(that.data.email)==false){
+      wx.showToast({
+        title:'邮箱错误',
+        icon:'none'
+      })
+    }
+    else{
+      wx.request({
+        url: app.globalData.url+'/api/device/sendEmail',
+        data: {
+          community_id:that.data.id1,
+          community_build_id:that.data.id2,
+          token:wx.getStorageSync('token'),
+          email:that.data.email
+        },
+        method: 'post',
+        success: function(res){
+          that.setData({
+            showmodal: true,
+            showmsg: true,
+          })
+ 
+        },
+  
+      })
+    }
+
+  },
+  emInput(e){
+    this.setData({
+      email:e.detail.value
+    })
+  }
 })

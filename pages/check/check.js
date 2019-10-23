@@ -394,6 +394,7 @@ Page({
     });
   },
   daochu: function() {
+
     wx.navigateTo({
       url: '/pages/Exportdata/index',
     })

@@ -237,5 +237,24 @@ Page({
     wx.switchTab({
       url: '/pages/mine/mine',
     })
-  }
+  },
+    userCoupon(){
+      let that=this;
+      wx.request({
+        url: app.globalData.url+'/api/Landlord/useCard',
+        data: {
+          token:wx.getStorageSync('token')
+        },
+        method: 'POST', 
+        success: function(res){
+          wx.showToast({
+            title:'使用成功',
+            icon:'success',
+            duration:1000
+          })
+          that.init();
+        },
+  
+      })
+    }
 })
