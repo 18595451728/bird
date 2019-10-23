@@ -15,7 +15,7 @@
       </view>
     </view>
   </view>
-  <input class="name" placeholder="请输入您的邮箱" bindblur="emInput"></input>
+  <input class="name" placeholder="请输入您的邮箱" bindinput="emInput"></input>
   <view class="binduser" bindtap="daochu">确认导出</view>
 </view>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
