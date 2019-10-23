@@ -19,19 +19,69 @@ Page({
     showxiaoqu: false,
     showdong: false,
     showroom: false,
-    communitylist: ['', '', '', '', '', ''],
+    communitylist:[],
+    donglist:[],
     community: '',
+    community_build:'',
+    community_build_id:'',
+    community_id:'',
     showinfo:false,
-    list:['','',''],
+    // list:['','',''],
     showmodal: false,
     showcoupon: true,
   },
-  onLoad: function() {},
+
+
+
+  commChoose: function (e) {
+    this.setData({
+      showxiaoqu: true,
+      community: this.data.communitylist[e.currentTarget.dataset.index].class_name,
+      community_id: this.data.communitylist[e.currentTarget.dataset.index].community_id,
+      community_build:''
+    })
+    console.log(this.data.communitylist[e.currentTarget.dataset.index].community_id);
+
+
+   
+  },
+
+
+  onLoad: function(e) {
+    var that = this
+    r.req(u + '/api/Community/getCommunity', {
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      that.setData({
+        communitylist: res.data.community,
+      })
+    })
+   
+  },
+
+
   onShow: function() {
      this.setData({
        is_admin: app.globalData.is_admin
      })
+     
   },
+
+
+
+  dongchoose: function (e) {
+    this.setData({
+      showdong: true,
+      community_build: this.data.donglist[e.currentTarget.dataset.index].class_name,
+      community_build_id: this.data.donglist[e.currentTarget.dataset.index].community_build_id,
+    })
+  },
+
+
+
+
+
 
   changestate() {
     this.setData({
@@ -163,39 +213,76 @@ Page({
     })
   },
   showdong: function () {
-    this.setData({
-      showdong: !this.data.showdong
+    // this.setData({
+    //   showdong: !this.data.showdong
+    // })
+    var that=this
+    r.req(u + '/api/Community/changeCommunity', {
+      community_id: that.data.community_id,
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      that.setData({
+        showdong: !this.data.showdong,
+        donglist: res.data.community
+      })
     })
+
   },
 
 
   showinfo:function(e){
     console.log(e)
     var that = this
-
-    r.req(u + '/api/device/deviceLandlord', {
-      community_id: that.data.communitylist,
-      community_build_id: that.data.community_build,
-      token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
-      console.log(res)
+    var community = that.data.community;
+    var community_build = that.data.community_build;
+    if (community == "") {
       wx.showModal({
         title: '提示',
-        content: '查看成功',
+        content: '请选择小区',
         showCancel: false
       })
-      wx.navigateTo({
-        url: '/pages/index/index',
+      return
+    }
+    if (community_build == "") {
+      wx.showModal({
+        title: '提示',
+        content: '请选择幢',
+        showCancel: false
       })
+      return
+    }
+
+    // this.setData({
+    //   showinfo: true
+    // })
+
+
+    r.req(u + '/api/device/deviceLandlord', {
+      community_id: that.data.community_id,
+      community_build_id: that.data.community_build_id,
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+       console.log(res)
+      that.setData({
+        showinfo: true,
+        dedevicebox:res.data,
+        community_device: res.data.community_device
+      })
+      console.log(res.data.community_device)
+     
+
+      // wx.showModal({
+      //   title: '提示',
+      //   content: '查看成功',
+      //   showCancel: false
+      // })
+      // wx.navigateTo({
+      //   url: '/pages/index/index',
+      // })
+
     }, 500)
 
-
-
-
-
-    this.setData({
-      showinfo: true
-    })
   },
 
 

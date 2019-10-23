@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -118,6 +118,19 @@
 					"name": "电表绑定",
 					"pathName": "pages/mine/bindammeter/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userlogin/index",
+					"pathName": "pages/userlogin/index",
 					"scene": null
 				}
 			]

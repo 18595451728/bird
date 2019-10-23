@@ -1,56 +1,61 @@
 <!-- 房东 -->
+
+
 <block wx:if="{{is_admin}}">
   <block wx:if="{{!showinfo}}">
     <view class="admin_content">
       <image class="admin_logo" src="/images/logo.png"></image>
-
       <view class="admin_inputitems">
+
         <view class="admin_xiaoqu" bindtap="showxiaoqu">
           <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
           <image class="admin_up" src="/images/up.png"></image>
           <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
-            <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假的假的据开发的贷款</text>
+
+            <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-id="{{item.community_id}}" bindtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
+            
           </view>
         </view>
 
+
         <view class="admin_dong" bindtap="showdong">
-          <input disabled="true" placeholder="请选择幢"></input>
+          <input disabled="true" placeholder="请选择幢" value="{{community_build}}"></input>
           <image class="admin_up" src="/images/up.png"></image>
           <view wx:if="{{showdong}}" class="admin_dongitems">
-            <text wx:for="{{communitylist}}" class="admin_xiaoquitem">假的假的假</text>
+            <text wx:for="{{donglist}}" class="admin_xiaoquitem" bindtap="dongchoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
           </view>
         </view>
       </view>
-      
+
       <view class="admin_binduser" bindtap="showinfo">立即查看</view>
     </view>
   </block>
   <block wx:else>
     <view class="admin_header">
-      <text>XX小区  3幢</text>
+      <text>{{dedevicebox.community}}  {{dedevicebox.community_build}}</text>
       <view class="admin_change" bindtap="changeselect">
         <text>切换</text>
         <image class="rightimg" src="/images/arrow-right.png"></image>
       </view>
     </view>
 
-    <view class="admin_items" wx:for="{{list}}">
+    <view class="admin_items" wx:for="{{community_device}}">
       <view class="item_header">
-        <text>3幢</text>
-        <text style="margin-left:20rpx">601室</text>
+        <text>{{dedevicebox.community_build}}</text>
+        <text style="margin-left:20rpx">{{item.community_room}}室</text>
       </view>
       <view class="item_msg">
         <view>
           已使用电量：
-          <text class="admin_price">37.66</text>
+          <text class="admin_price">{{item.device.use_electricity_many==null?'0.00':''}}</text>
           <text style="color: #EB5E2B;">度</text>
         </view>
         <view>
           已使用电费：
-          <text class="admin_price">37.66</text>
+          <text class="admin_price">{{item.device.use_electricity_cost==null?'0.00':''}}</text>
           <text style="color: #EB5E2B;">元</text>
         </view>
-        <text class="admin_item_state">当前状态：关闭</text>
+        <text class="admin_item_state">当前状态：{{item.device.device_status==1?'开启':'关闭'}}</text>
       </view>
     </view>
   </block>

@@ -1,6 +1,6 @@
 const app = getApp(), 
 r = require('../../utils/request.js'), 
-l = require('../../utils/login.js'), 
+// l = require('../../utils/login.js'), 
 u = app.globalData.url
 Page({
 
@@ -11,9 +11,11 @@ Page({
     showxiaoqu: false,
     showdong: false,
     showroom: false,
-    communitylist: ['碧桂园', '万科', '未来城', '柏悦园', '绿城', '避暑山庄'],
-    commbuildlist:['21栋','22栋','23栋','24栋','25栋',],
-    roomlist:['208','207','206','205','204','203','202','201'],
+    communitylist: [],
+    donglist:[],
+    roomlist:[],
+    community_id: '',
+    community_build_id:'',
     consignee: '',
     community: '',
 
@@ -26,12 +28,15 @@ Page({
   onLoad: function(options) {
      var that =this
     r.req(u + '/api/Community/getCommunity', {
-        token: wx.getStorageSync('token')
+        // token: wx.getStorageSync('token')
       }, 'post').then((res) => {
         console.log(res)
-
+        that.setData({
+          communitylist: res.data.community
+        })
+        console.log(res.data.community)
       })
-
+ 
   },
 
   /**
@@ -75,17 +80,17 @@ Page({
   onReachBottom: function() {
 
   },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
   },
   commChoose: function (e) {
     this.setData({
       showxiaoqu: true,
-      community: this.data.communitylist[e.currentTarget.dataset.index]
+      community: this.data.communitylist[e.currentTarget.dataset.index].class_name,
+      community_id: this.data.communitylist[e.currentTarget.dataset.index].community_id,
+      community_build: ''
     })
     // console.log(this.data.communitylist[e.currentTarget.dataset.index]);
   },
@@ -93,7 +98,7 @@ Page({
   dongchoose:function(e){
     this.setData({
       showdong: true,
-      community_build: this.data.commbuildlist[e.currentTarget.dataset.index]
+      community_build: this.data.donglist[e.currentTarget.dataset.index].class_name
     })
   },
 
@@ -194,15 +199,47 @@ Page({
       showxiaoqu: !this.data.showxiaoqu
     })
   },
+
+
   showdong: function() {
-    this.setData({
-      showdong: !this.data.showdong
+    var that = this
+    r.req(u + '/api/Community/changeCommunity', {
+      community_id: that.data.community_id,
+      // token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      that.setData({
+        showdong: !this.data.showdong,
+        donglist: res.data.community
+      })
     })
+
+
+    // this.setData({
+    //   showdong: !this.data.showdong
+    // })
   },
+
+
+
   showroom: function() {
-    this.setData({
-      showroom: !this.data.showroom
+
+    var that = this
+    r.req(u + '/api/Community/changeCommunity', {
+      community_id: that.data.community_id,
+      community_build_id: that.data.community_build_id,
+      // token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      that.setData({
+        showroom: !this.data.showroom,
+        donglist: res.data.community
+      })
     })
+
+    // this.setData({
+    //   showroom: !this.data.showroom
+    // })
   },
 
   
