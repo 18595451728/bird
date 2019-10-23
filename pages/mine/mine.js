@@ -88,23 +88,28 @@ Page({
  
     var haslogin = wx.getStorageSync('haslogin')
    
-    r.req(u + '/api/user/center', {
-      token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
-
-
-      console.log(res)
-      that.setData({
-        userinfo: res.data.user,
-        haslogin: haslogin
-      })
-    })
-    // that.setData({
-     
-    // })
-
-
-
+   if(!this.data.is_admin){
+     r.req(u + '/api/user/center', {
+       token: wx.getStorageSync('token')
+     }, 'post').then((res) => {
+       console.log(res)
+       that.setData({
+         userinfo: res.data.user,
+         haslogin: haslogin
+       })
+     })
+   }else{
+     r.req(u + '/api/landlord/center', {
+       token: wx.getStorageSync('token')
+     }, 'post').then(res => {
+       console.log(res)
+       that.setData({
+         userinfo: res.data,
+         haslogin: haslogin
+       })
+       console.log(that.data.userinfo.bind_num)
+     })
+   }
   },
 
   /**

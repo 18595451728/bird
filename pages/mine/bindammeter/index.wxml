@@ -2,17 +2,17 @@
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="form">
       <view class="inputmsg">
-        <input class="xiaoqu" name="xiaoqu" value="{{xiaoqu}}" placeholder="请输入小区"></input>
-        <input class="xiaoqu dong" placeholder="请输入幢"></input>
-        <input class="xiaoqu room" placeholder="输入门牌"></input>
+        <input class="xiaoqu" placeholder="请输入小区" value='{{xiaoqu}}' bindinput='xiaoqu'></input>
+        <input class="xiaoqu dong" value='{{dong}}' placeholder="请输入幢" bindinput='dong'></input>
+        <input class="xiaoqu room" value='{{menpai}}' placeholder="输入门牌" bindinput='menpai'></input>
       </view>
-      <input class="dianbiao" placeholder="请输入电表ID"></input>
+      <input class="dianbiao" placeholder="请输入电表ID" value='{{dianbiao}}' bindinput='dianbiao'></input>
       <text class="tishi">WIFI版本请在公众号（波得物联）进行配网</text>
       <block wx:if="{{!showpassword}}">
-        <input class="password" placeholder="请输入统一登录密码"></input>
+        <input class="password" placeholder="请输入统一登录密码" bindinput='loginword'></input>
       </block>
       <block wx:else>
-        <text style="margin-top:260rpx; margin-bottom: 50rpx;">统一登录密码:123456</text>
+        <text style="margin-top:260rpx; margin-bottom: 50rpx;">统一登录密码:{{loginword}}</text>
       </block>
       <button class="bto" formType="submit">确认绑定</button>
     </view>
