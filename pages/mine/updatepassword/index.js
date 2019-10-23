@@ -71,7 +71,7 @@ Page({
 
   },
   oldinput: function(e) {
-    console.log(e)
+ 
     this.setData({
       old_password: e.detail.value,
       old_state: 2

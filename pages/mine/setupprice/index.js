@@ -36,7 +36,8 @@ Page({
         content:'谷电价必须小于等于峰电价',
         showCancel:false
       })
-    }else{
+    }
+    else{
       if(this.data.chooseStyle==0){
         wx.request({
           url: app.globalData.url+'/api/Landlord/setElectricityPrice',
@@ -56,24 +57,33 @@ Page({
           },
         })
       }else if(this.data.chooseStyle=='1'){
-        wx.request({
-          url: app.globalData.url+'/api/Landlord/setElectricityPrice',
-          data: {
-            token:wx.getStorageSync('token'),
-            community_id:that.data.community_id,
-            high_price:highPrice,
-            low_price: lowPrice,
-            type:2
-          },
-          method: 'POST', 
-          success: function(res){
-            console.log(res)
-            that.setData({
-              showmsg:!0
-            })
-          },
+        if(that.data.community_id==''){
+          wx.showModal({
+            title:'提示',
+            content:'请选择小区',
+            showCancel:false
+          })
+        }else{
+          wx.request({
+            url: app.globalData.url+'/api/Landlord/setElectricityPrice',
+            data: {
+              token:wx.getStorageSync('token'),
+              community_id:that.data.community_id,
+              high_price:highPrice,
+              low_price: lowPrice,
+              type:2
+            },
+            method: 'POST', 
+            success: function(res){
+              console.log(res)
+              that.setData({
+                showmsg:!0
+              })
+            },
+      
+          })
+        }
     
-        })
       }
     }
  
