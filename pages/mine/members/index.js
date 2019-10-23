@@ -144,7 +144,13 @@ Page({
       },
       method: 'POST', 
       success: function(res){
-        console.log(res)
+    
+        wx.showToast({
+          title:'使用成功',
+          icon:'success',
+          duration:1000
+        })
+        that.onShow();
       },
 
     })

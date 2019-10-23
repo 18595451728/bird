@@ -1,22 +1,22 @@
 <view class="content">
   <view class="inputitems">
     <view class="xiaoqu" bindtap="showxiaoqu">
-      <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+      <input disabled="true" value="{{community}}" placeholder="请选择所在小区" value="{{quname}}"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showxiaoqu}}" class="xiaoquitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
+        <text wx:for="{{communitylist}}" class="xiaoquitem" bindtap="changQu" data-id="{{item.community_id}}" data-name="{{item.class_name}}">{{item.class_name}}</text>
       </view>
     </view>
     <view class="dong" bindtap="showdong">
-      <input disabled="true" placeholder="请选择幢"></input>
+      <input disabled="true" placeholder="请选择幢" value="{{dongname}}"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showdong}}" class="dongitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem">假的假的假的假的据开发的贷款</text>
+        <text wx:for="{{communitylist2}}" class="xiaoquitem" data-name="{{item.class_name}}" bindtap="changDong" data-id="{{item.community_build_id}}">{{item.class_name}}</text>
       </view>
     </view>
   </view>
-  <input class="name" placeholder="请输入您的邮箱"></input>
-  <view class="binduser">确认导出</view>
+  <input class="name" placeholder="请输入您的邮箱" bindblur="emInput"></input>
+  <view class="binduser" bindtap="daochu">确认导出</view>
 </view>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
 <view wx:if="{{showmsg}}" class="tishimsg">

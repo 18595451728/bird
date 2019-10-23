@@ -47,10 +47,14 @@
 		},
 		"miniprogram": {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"current": 12,
 =======
 			"current": 11,
 >>>>>>> 8c707a8e1fe8920fe238389fb9a37776f0a6bc43
+=======
+			"current": 13,
+>>>>>>> 9214c882b98588f2fffa6fd0fb4d2aa0c858d0f0
 			"list": [
 				{
 					"id": -1,
@@ -145,6 +149,7 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
@@ -155,6 +160,12 @@
 					"name": "pages/userlogin/index",
 					"pathName": "pages/userlogin/index",
 					"scene": null
+=======
+					"name": "pages/Exportdata/index",
+					"pathName": "pages/Exportdata/index",
+					"query": "",
+					"scene": null
+>>>>>>> 9214c882b98588f2fffa6fd0fb4d2aa0c858d0f0
 				}
 			]
 		}
