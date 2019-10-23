@@ -36,7 +36,7 @@
       <ec-canvas ec='{{ec}}'></ec-canvas>
     </view>
     <block wx:if="{{is_admin}}">
-      <view class="todaytop">峰值：4.01度 谷值：3.12度</view>
+      <view class="todaytop">峰值：{{total.high ||0}}度 谷值：{{total.low||0}}度</view>
       <view class="daochu" bindtap="daochu">
         一键导出
       </view>

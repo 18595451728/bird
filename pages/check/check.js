@@ -429,12 +429,15 @@ Page({
       community_id: this.data.communityid,
       community_build_id: this.data.dosid,
       year: this.data.year,
-      month: this.data.month,
       type: type
     }
     var choose=this.data.choose
     if(choose==0){
       d.day=this.data.day
+      d.month = this.data.month
+    }
+    if (choose == 1){
+      d.month = this.data.month
     }
     r.req(u + '/api/device/detectionLandlord', d, 'post').then(res => {
 
@@ -454,7 +457,8 @@ Page({
         }
         console.log(source)
         that.setData({
-          source: source
+          source: source,
+          total: res.data.total
         })
         // var option = getOption();
         // chartLine.setOption(option);
