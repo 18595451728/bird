@@ -221,7 +221,7 @@ Page({
   },
   handletouchtart: function(event) {
     this.data.lastY = event.touches[0].pageY
-  
+    console.log(event.touches[0].pageY)
   },
 
   // r.req(u + '/api/User/checkBind', {

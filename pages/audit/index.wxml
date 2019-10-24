@@ -1,0 +1,4 @@
+<!--pages/audit/index.wxml-->
+<view class="editce">
+  <image src="/images/examinebg.jpg" mode="widthFix"></image>   
+</view>
