@@ -29,7 +29,7 @@ Page({
   onLoad: function(options) {
      var that =this
     r.req(u + '/api/Community/getCommunity', {
-        // token: wx.getStorageSync('token')
+        usertoken: wx.getStorageSync('token')
       }, 'post').then((res) => {
         console.log(res)
         that.setData({
@@ -142,7 +142,7 @@ Page({
       })
       return
     }
-    
+
     if (community_room == "") {
       wx.showModal({
         title: '提示',
@@ -152,7 +152,7 @@ Page({
       return
     }
 
-    if (consignee == "") {
+    if (!consignee) {
       wx.showModal({
         title: '提示',
         content: '请填写联系人姓名',
@@ -199,17 +199,34 @@ Page({
       token: wx.getStorageSync('token')
     }, 'post').then((res) => {
       console.log(res)
-      if(res.code==1){
-        wx.showToast({
-          title: res.mes,
-          icon:'none'
-        })
-        setTimeout(function(){
-           wx.navigateTo({
+
+
+      if (res.code == 1) {
+        app.globalData.is_admin = false
+        wx.switchTab({
           url: '/pages/index/index',
         })
-        },1000)
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: res.mes,
+          icon: 'none'
+        })
+
       }
+     
+
+      // if(res.code==1){
+      //   wx.showToast({
+      //     title: res.mes,
+      //     icon:'none'
+      //   })
+      //   setTimeout(function(){
+      //      wx.navigateTo({
+      //     url: '/pages/index/index',
+      //   })
+      //   },1000)
+      // }
       // that.setData({
         // wx.showModal({
         //   title: '提示',
@@ -217,6 +234,7 @@ Page({
         //   showCancel: false
         // })
       // })
+// >>>>>>> f8a97bb118e6ce6c2b90ae73d42e88436d56a15e
      
         // wx.navigateTo({
         //   url: '/pages/index/index',
