@@ -158,10 +158,8 @@ Page({
                   duration:1000
                 })
               }else{
-                wx.showToast({
-                  title:'请等待审核',
-                  icon:'none',
-                  duration:1000
+                wx.navigateTo({
+                  url: "/pages/audit/index",
                 })
               }
           },
@@ -202,10 +200,8 @@ Page({
                 duration:1000
               })
             }else{
-              wx.showToast({
-                title:'请等待审核',
-                icon:'none',
-                duration:1000
+              wx.navigateTo({
+                url: "/pages/audit/index",
               })
             }
           },

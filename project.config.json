@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 22,
 			"list": [
 				{
 					"id": -1,
@@ -201,6 +201,13 @@
 					"id": -1,
 					"name": "pages/bemanager/bemanager",
 					"pathName": "pages/bemanager/bemanager",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "充值记录",
+					"pathName": "pages/usemsg/index",
 					"scene": null
 				}
 			]

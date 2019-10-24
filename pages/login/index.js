@@ -96,6 +96,8 @@ Page({
 
   },
   gotologin: function() {
+    wx.setStorageSync('adminHasBind',false)
+    wx.setStorageSync('userBind', true)
     r.req(u + '/api/User/checkBind', {
       token: wx.getStorageSync('token')
     }, 'post').then(res => {
@@ -118,6 +120,9 @@ Page({
   },
   adminlogin: function() {
     var adminHasBind = wx.getStorageSync('adminHasBind')
+
+    wx.setStorageSync('adminHasBind', true)
+    wx.setStorageSync('userBind', false)
 
     console.log(wx.getStorageSync('adminHasBind'))
     if (adminHasBind) {
