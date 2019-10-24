@@ -73,22 +73,20 @@ Page({
                 devicelist: res.data.device,
                 decicessum: res.data,
                 is_open: res.data.device.device_status,
-                is_time: res.data.device.time_status,  
-                star_time: res.data.device.star_time.split(':'),
-                end_time: res.data.device.end_time.split(':'),
+                is_time: res.data.device.device_status? res.data.device.time_status:!1,  
+                star_time: res.data.device.star_time,
+                end_time: res.data.device.end_time
               })
-             
-              // console.log(res.data.device.star_time.split(':'))
+
+              var endTime = that.data.end_time, star_time = that.data.star_time, dd = star_time.split(':'),cc = endTime.split(':')
+              console.log(cc[0])
+              that.setData({
+                end_hour:cc[0],
+                end_minute:cc[1],
+                start_hour:dd[0],
+                start_minute:dd[1]
+              })
             }
-            // if (res.data.device.device_status == 0) {
-            //   // console.log(111);
-            //   this.data.is_time = 0
-            // }
-
-            
-
-            console.log(res.data.device.device_status)
-            console.log(res.data)
           })
         }else{
           that.setData({
@@ -160,10 +158,21 @@ Page({
 
   changestate() {
     if(!this.data.notap){
-      this.setData({
-        is_open: !this.data.is_open,
-        is_time: !1
+      r.req(u +'/api/Device/deviceControl',{
+        device_id: this.data.decicessum.device_id,
+        device_status: this.data.is_open?0:1,
+        token:wx.getStorageSync('token')
+      },'post').then(res=>{
+        console.log(res)
+        if(res.code==1){
+
+          this.setData({
+            is_open: !this.data.is_open,
+            is_time: !1
+          })
+        }
       })
+      
     }
     
   },
@@ -221,12 +230,9 @@ Page({
   },
   handletouchtart: function(event) {
     this.data.lastY = event.touches[0].pageY
-    console.log(event.touches[0].pageY)
+    // this.data.start_hour = this.data.star_time[0]
+  
   },
-
-  // r.req(u + '/api/User/checkBind', {
-  //   token: wx.getStorageSync('token')
-  // }, 'post').then(re => {
   changetime: function() {
     var that = this
     // if (!this.data.is_time == 1) {
@@ -240,27 +246,29 @@ Page({
     //     console.log(res)
     //   })
     // }
-    var isOpen=this.data.is_time
-    console.log(isOpen, this.data.decicessum)
-    isOpen = !isOpen
-    if(isOpen){
-      r.req(u +'/api/device/deviceCrontab',{
-        token: wx.getStorageSync('token'),
-        device_id: this.data.decicessum.device_id,
-        time_status: isOpen?1:0,
-        star_time: this.data.start_hour + ':' + this.data.start_minute,
-        end_time: this.data.end_hour + ':' + this.data.end_minute
-      },'post').then(res=>{
-        console.log(res)
-
-      })
-    }
-
-    if (this.data.is_open) {
+    if(this.data.is_open){
+      var isOpen = this.data.is_time
+      console.log(isOpen, this.data.decicessum)
+      isOpen = !isOpen
       this.setData({
-        is_time: !this.data.is_time
+        is_time: isOpen
       })
+      if (isOpen) {
+        r.req(u + '/api/device/deviceCrontab', {
+          token: wx.getStorageSync('token'),
+          device_id: this.data.decicessum.device_id,
+          time_status: isOpen ? 1 : 0,
+          star_time: this.data.start_hour + ':' + this.data.start_minute,
+          end_time: this.data.end_hour + ':' + this.data.end_minute
+        }, 'post').then(res => {
+          console.log(res)
+
+        })
+      }
+    }else{
+
     }
+    
     
   },
   upstarthour() {

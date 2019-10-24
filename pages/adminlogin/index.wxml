@@ -3,7 +3,7 @@
   <form bindsubmit="formSubmit">
     <view class="form">
       <input class="account" placeholder="请输入账号" bindinput='username'></input>
-      <input class="account" placeholder="请输入密码" bindinput='password'></input>
+      <input type="password" class="account" placeholder="请输入密码" bindinput='password'></input>
       <button formType="submit" class="bto">快速登录</button>
     </view>
   </form>

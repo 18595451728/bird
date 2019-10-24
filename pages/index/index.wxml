@@ -172,7 +172,9 @@
         
         <view class="time_header">
           <view class="time_num">
-            <text bindtap="downstarthour" style="width:35rpx;">{{start_hour<9?'0':''}}{{start_hour=='23'?'':start_hour+1}}</text>
+            <text bindtap="downstarthour" style="width:35rpx;">{{start_hour}}+1</text>
+
+                 <!-- <text bindtap="downstarthour" style="width:35rpx;">{{start_hour<9?'0':''}}{{start_hour=='23'?'':start_hour+1}}</text> -->
             <text bindtap="downstartminute" style="width:35rpx;">{{start_minute<9?'0':''}}{{start_minute=='59'?'':start_minute+1}}</text>
           </view>
           <view class="time_num">
