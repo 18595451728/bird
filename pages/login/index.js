@@ -104,7 +104,7 @@ Page({
         app.globalData.is_admin = false
         wx.setStorageSync('userBind', !0)
         wx.switchTab({
-          url: '/pages/mine/mine',
+          url: '/pages/index/index',
         })
       } else {
         wx.navigateTo({
@@ -121,7 +121,7 @@ Page({
     console.log(wx.getStorageSync('adminHasBind'))
     if (adminHasBind) {
       wx.switchTab({
-        url: '/pages/mine/mine',
+        url: '/pages/index/index',
       })
     } else {
       wx.navigateTo({
