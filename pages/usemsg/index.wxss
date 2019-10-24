@@ -11,21 +11,23 @@
 }
 
 .type {
-  width: 343rpx;
+  width: auto;
   height: 60rpx;
   border: 3rpx solid rgba(235, 94, 43, 1);
   border-radius: 6rpx;
   margin-top: 30rpx;
   display: flex;
   margin-bottom: 10rpx;
+  
 }
 
 .typeitem {
-  width: 50%;
+  width: auto;
   text-align: center;
   font-size: 30rpx;
   color: rgba(77, 77, 77, 1);
   line-height: 60rpx;
+  padding:0 10rpx;
 }
 
 .msgitems{

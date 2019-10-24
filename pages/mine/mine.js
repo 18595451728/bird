@@ -9,7 +9,7 @@ Page({
    */
   data: {
     hasbind: true,
-    is_admin: true,
+    is_admin:true,
     user:'',
     zuke:''
   },
@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.onShow();
   },
   bemanager: function() {
     wx.navigateTo({
@@ -82,7 +82,6 @@ Page({
    */
   onShow: function(e) {
 
-
     this.setData({
       is_admin: app.globalData.is_admin
     })
@@ -92,11 +91,19 @@ Page({
         hasbind: !0
       })
     }
-    if(wx.getStorageSync('userBind')){
+
+    if (this.data.hasbind==true && wx.getStorageSync('userBind') == false && wx.getStorageSync('adminHasBind') == true){
       this.setData({
-        hasbind: !0
+        hasbind: true,
+        is_admin: true,
+      })
+    } else if (this.data.hasbind == false && wx.getStorageSync('userBind') == true && wx.getStorageSync('adminHasBind') == false){
+      this.setData({
+        hasbind: true,
+        is_admin: false,
       })
     }
+    console.log(this.data.is_admin)
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')
@@ -169,6 +176,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log(1111)
+
           r.req(u + '/api/Wx/signOut', {
              token: wx.getStorageSync('token')
           }, 'post').then((res) => {
@@ -180,8 +188,9 @@ Page({
             if (res.code == 1) {
               that.setData({
                 hasbind:!1
-              })
+              })      
               wx.clearStorage()
+            
             }else{
               
             }
@@ -214,5 +223,11 @@ Page({
       url: '/pages/login/index',
     })
   },
+  getChongzhi(){
+    wx.setStorageSync('adminChongzhi', true)
+    wx.navigateTo({
+      url: '/pages/usemsg/index',
+    })
 
+  }
 })

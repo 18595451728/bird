@@ -7,7 +7,8 @@ Page({
   data: {
     selectindex: 0,
     msg: [],
-    type:0
+    type:0,
+    admin:false
   },
 
   /**
@@ -28,6 +29,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+
+    this.setData({
+      type: this.data.admin ? 1 :0
+    })
+    if(wx.getStorageSync('adminChongzhi')==true){
+      this.setData({
+        admin:true
+      })
+    }
+    console.log(this.data.admin)
     this.init();
   },
 
@@ -42,7 +53,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    wx.removeStorageSync('adminChongzhi')
   },
 
   /**
@@ -84,9 +95,17 @@ Page({
       method: 'post',
       success: function(res){
         console.log(res)
+        if(res.data.data.length==0){
+          wx.showToast({
+            title: '暂无数据',
+            duration:1500,
+            icon:'none'
+          })
+        }
           that.setData({
             msg:res.data.data
           })
+          
       },
     })
   }

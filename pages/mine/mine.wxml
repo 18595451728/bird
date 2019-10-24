@@ -36,6 +36,15 @@
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>
+
+        <view class="yue" bindtap="getChongzhi">
+          <view class="y-left">充值记录</view>
+          <view class="y-right">
+            <text></text>
+            <image src="/images/arrow-right.png"></image>
+          </view>
+        </view>
+
       </view>
 
       <view class="func">

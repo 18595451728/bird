@@ -97,7 +97,7 @@ Page({
     var index=e.currentTarget.dataset.index
     this.setData({
       selectindex:index,
-      month:index==0 ? 1 : index==1 ? 3 : index==2 ? 6 : index==4 ? 24 : index==5 ? 48 : index==6 ? 36 :0,
+      month:index==0 ? 1 : index==1 ? 3 : index==2 ? 6 : index==4 ? 12 : index==5 ? 24 : index==6 ? 36 :0,
       yue:'',
       nian:''
     })
@@ -163,7 +163,7 @@ Page({
   },
   yearInput(e){
     this.setData({
-      month:parseInt(e.detail.value)*24,
+      month:parseInt(e.detail.value)*12,
 
     })
   },
