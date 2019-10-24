@@ -205,14 +205,19 @@ Page({
     this.getCurrentTime();
     var that = this
 
-    r.req(u + '/api/Community/getCommunity', {
-      token: wx.getStorageSync('token')
-    }, 'post').then(res => {
-      console.log(res)
-      that.setData({
-        communitylist: res.data.community
+    if (app.globalData.is_admin){
+      r.req(u + '/api/Community/getCommunity', {
+        token: wx.getStorageSync('token')
+      }, 'post').then(res => {
+        console.log(res)
+        that.setData({
+          communitylist: res.data.community
+        })
       })
-    })
+    }else{
+      that.getUserChart(1);
+    }
+    
 
   },
   choose: function(e) {
@@ -221,7 +226,11 @@ Page({
       choose: index
     })
     var dian = this.data.dian?1:2
-    this.getCharts(dian);
+    if (this.data.is_admin) {
+      this.getCharts(dian)
+    } else {
+      this.getUserChart(dian)
+    }
   },
   changeTab: function(e) {
     var index = e.currentTarget.dataset.index
@@ -231,7 +240,11 @@ Page({
       day:index+1
     })
     var dian = this.data.dian?1:2
-    this.getCharts(dian)
+    if(this.data.is_admin){
+      this.getCharts(dian)
+    }else{
+      this.getUserChart(dian)
+    }
     console.log(this.data.year, this.data.month, index + 1)
   },
   bindscroll: function(e) {
@@ -243,13 +256,21 @@ Page({
         dian: !0
       })
       this.updatemsg("(度)")
-      this.getCharts(1);
+      if (this.data.is_admin) {
+        this.getCharts(1);
+      } else {
+        this.getUserChart(1);
+      }
     } else {
       this.setData({
         dian: !1
       })
       this.updatemsg("(元)")
-      this.getCharts(2);
+      if(this.data.is_admin){
+        this.getCharts(2);
+      }else{
+        this.getUserChart(2);
+      }
     }
   },
   /**
@@ -258,7 +279,79 @@ Page({
   onReady: function() {
 
   },
+  getUserChart:function(type){
+    var that=this
+    r.req(u + '/api/Device/detectionUser', {
+      token: wx.getStorageSync('token'),
+      year: this.data.year,
+      month: this.data.month,
+      day: this.data.day,
+      type: type
+    }, 'post').then(res => {
+      console.log(res)
+      if (res.code == 1) {
+        var data = res.data.device_record.device_record
+        console.log(data)
+        if (data.length > 0) {
+          var source = []
+          for (var i = 0; i < data.length; i++) {
+            var arr = [], jsonlength = -1;
+            for (var j in data[i]) {
+              jsonlength++;
+              console.log(data[i][j])
+              arr[jsonlength] = data[i][j]
+            }
+            console.log(arr)
+            source[i] = arr
+          }
+          console.log(source)
+          that.setData({
+            source: source,
+            total: res.data.device_record.total
+          })
+        } else {
+          var source = [
+            ['1', 0, 0],
+            ['2', 0, 0],
+            ['3', 0, 0],
+            ['4', 0, 0],
+            ['5', 0, 0]
+          ]
+          wx.showToast({
+            title: '暂无数据',
+            icon: 'none'
+          })
+        }
+        // var option = getOption();
+        // chartLine.setOption(option);
+        //如果上面初始化时候，已经chartLine已经setOption了，
+        //那么建议不要重新setOption，官方推荐写法，重新赋数据即可。
+        chartLine.setOption({
+          dataset: {
+            source: source,
+          },
+        });
 
+
+      } else {
+        chartLine.setOption({
+          dataset: {
+            source: [
+              ['1', 0, 0],
+              ['2', 0, 0],
+              ['3', 0, 0],
+              ['4', 0, 0],
+              ['5', 0, 0]
+            ],
+          },
+        });
+        wx.showToast({
+          title: res.mes,
+          icon: 'none'
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -272,13 +365,24 @@ Page({
         this.setData({
           is_select: true
         })
+        var dian = this.data.dian ? 1 : 2
+        this.getCharts(dian)
+      }else{
+        this.setData({
+          is_select: false
+        })
       }
       
+    }else{
+      var dian = this.data.dian ? 1 : 2
+      this.getUserChart(dian)
+      this.setData({
+        is_select: true
+      })
     }
 
 
-    var dian = this.data.dian?1:2
-    this.getCharts(dian)
+    
   },
 
   /**
@@ -361,7 +465,11 @@ Page({
     }, 1)
 
     var dian = this.data.dian?1:2
-    this.getCharts(dian)
+    if(this.data.is_admin){
+      this.getCharts(dian)
+    }else{
+      this.getUserChart(dian)
+    }
   },
   nextMonth: function() {
     var year = this.data.year,
@@ -386,7 +494,11 @@ Page({
       })
     }, 1)
     var dian =this.data.dian?1:2
-    this.getCharts(dian)
+    if (this.data.is_admin) {
+      this.getCharts(dian)
+    } else {
+      this.getUserChart(dian)
+    }
   },
   updatemsg: function(text) {
     var option = getOption();

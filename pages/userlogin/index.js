@@ -199,6 +199,7 @@ Page({
       token: wx.getStorageSync('token')
     }, 'post').then((res) => {
       console.log(res)
+
       if (res.code == 1) {
         app.globalData.is_admin = false
         wx.switchTab({
@@ -212,6 +213,26 @@ Page({
         })
       }
      
+
+      // if(res.code==1){
+      //   wx.showToast({
+      //     title: res.mes,
+      //     icon:'none'
+      //   })
+      //   setTimeout(function(){
+      //      wx.navigateTo({
+      //     url: '/pages/index/index',
+      //   })
+      //   },1000)
+      // }
+      // that.setData({
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '保存成功',
+        //   showCancel: false
+        // })
+      // })
+// >>>>>>> f8a97bb118e6ce6c2b90ae73d42e88436d56a15e
      
         // wx.navigateTo({
         //   url: '/pages/index/index',

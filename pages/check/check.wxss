@@ -141,7 +141,7 @@
   margin-bottom: 20rpx;
 }
 .todaylow {
-   width: 353rpx;
+  max-width: 420rpx;
 }
 .todaytop{
   max-width: 420rpx;

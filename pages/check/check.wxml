@@ -42,8 +42,8 @@
       </view>
     </block>
     <block wx:else>
-      <view class="todaytop">今日峰值:4.01度</view>
-      <view class="todaylow">今日谷值:3.12度</view>
+      <view class="todaytop">今日峰值:{{total.high||0}}度</view>
+      <view class="todaylow">今日谷值:{{total.low||0}}度</view>
     </block>
   </view>
 </block>
