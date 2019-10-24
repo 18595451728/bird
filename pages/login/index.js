@@ -117,6 +117,8 @@ Page({
   },
   adminlogin: function() {
     var adminHasBind = wx.getStorageSync('adminHasBind')
+
+    console.log(wx.getStorageSync('adminHasBind'))
     if (adminHasBind) {
       wx.switchTab({
         url: '/pages/mine/mine',

@@ -1,7 +1,6 @@
 <!-- 房东 -->
-
-
 <block wx:if="{{is_admin}}">
+
   <block wx:if="{{!showinfo}}">
     <view class="admin_content">
       <image class="admin_logo" src="/images/logo.png"></image>
@@ -30,6 +29,7 @@
       <view class="admin_binduser" bindtap="showinfo">立即查看</view>
     </view>
   </block>
+
   <block wx:else>
     <view class="admin_header">
       <text>{{dedevicebox.community}}  {{dedevicebox.community_build}}</text>
@@ -59,6 +59,7 @@
       </view>
     </view>
   </block>
+
   <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showcoupon}}"></view>
   <view wx:if="{{showcoupon}}" class="mycoupon">
     <image src="/images/close.png" bindtap="hideModal" class="close"></image>
@@ -73,27 +74,30 @@
 
 <!-- 租客 -->
 <block wx:else>
+
   <view class="content">
     <view class="header">
+
       <view class="header_img {{is_open?'check_on':'check_off'}}" bindtap="changestate">
         <image src="{{is_open?'/images/index1.png':'/images/index2.png'}}"></image>
       </view>
+      
       <view class="kaiguan">
         <text>OFF</text>
         <text>ON</text>
       </view>
 
       <view class="state">
-        <text>当前状态：{{is_open?'开启':'关闭'}}</text>
+        <text>当前状态：{{devicelist.device_status==1?'开启':'关闭'}}</text>
       </view>
       <view class="electricity" style="margin-top:30rpx;">
         <text>已使用电量：</text>
-        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{is_open?money:'00.00'}}</text>
+        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{devicelist.device_status==1?'00.00':12}}</text>
         <text style="color:rgba(235,94,43,1);">度</text>
       </view>
       <view class="electricity">
         <text>已使用电费：</text>
-        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{is_open?'37.66':'00.00'}}</text>
+        <text style="font-size:36rpx;color:rgba(235,94,43,1);">{{devicelist.device_status==1?devicelist.use_electricity_cost:'00.00'}}</text>
         <text style="color:rgba(235,94,43,1);">元</text>
       </view>
     </view>
@@ -103,21 +107,21 @@
         <image src="/images/index3.png"></image>
         <view class="itemmsg">
           <text style="letter-spacing: 4rpx;">使用电量</text>
-          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'37.66':'00.00'}}度</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{devicelist.device_status==1?devicelist.use_electricity_many:'12.00'}}度</text>
         </view>
-      </view>
+      </view> 
       <view class="miditem" style="border-right:1rpx solid #BFBFBF">
         <image src="/images/index4.png"></image>
         <view class="itemmsg">
           <text style="letter-spacing: 4rpx;">电费余额</text>
-          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'37.66':'00.00'}}元</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{devicelist.device_status==1?devicelist.electricity_balance:'00.00'}}元</text>
         </view>
       </view>
       <view class="miditem">
         <image src="/images/index5.png" style='width:47rpx;height:47rpx;'></image>
         <view class="itemmsg">
           <text style="letter-spacing: 4rpx;">功率</text>
-          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{is_open?'6.6':'0.0'}}W</text>
+          <text style="color:#EB5E2B;letter-spacing: 2rpx;">{{devicelist.device_status==1?devicelist.power:'0.0'}}W</text>
         </view>
       </view>
     </view>
