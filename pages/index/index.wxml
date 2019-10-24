@@ -129,7 +129,7 @@
     <view class="foot">
       <view class="foot_header">
         <text>定时任务</text>
-        <image bindtap="changetime" src="{{is_time?'/images/check.png':'/images/nocheck.png'}}"></image>
+        <image bindtap="changetime" src="{{is_time==1?'/images/check.png':'/images/nocheck.png'}}"></image>
       </view>
       <view class="choosetime">
         <view class="time_header" style="margin-top:30rpx;color:#4D4D4D">
@@ -146,6 +146,7 @@
             <text bindtap="upendminute" style="width:35rpx;">{{end_minute<11&&end_minute!=0?'0':''}}{{end_minute=='0'?'':end_minute-1}}</text>
           </view>
         </view>
+
         <view class="check_time">
           <view class="time_num">
             <text style="width:35rpx;" data-id='0' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{start_hour<10?'0':''}}{{start_hour}}</text>
@@ -168,6 +169,7 @@
             <text style="width:35rpx;" data-id='3' bindtouchstart="handletouchtart" bindtouchmove="handletouchmove">{{end_minute<10?'0':''}}{{end_minute}}</text>
           </view>
         </view>
+        
         <view class="time_header">
           <view class="time_num">
             <text bindtap="downstarthour" style="width:35rpx;">{{start_hour<9?'0':''}}{{start_hour=='23'?'':start_hour+1}}</text>
