@@ -126,7 +126,9 @@
 }
 
 .xiaoquitem {
-  margin-top: 15rpx;
+  line-height: 48rpx;
+
+
 }
 
 .up {
