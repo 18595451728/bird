@@ -29,7 +29,7 @@ Page({
   onLoad: function(options) {
      var that =this
     r.req(u + '/api/Community/getCommunity', {
-        // token: wx.getStorageSync('token')
+        usertoken: wx.getStorageSync('token')
       }, 'post').then((res) => {
         console.log(res)
         that.setData({
