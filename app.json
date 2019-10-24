@@ -1,6 +1,8 @@
 {
   "pages": [
+   
     "pages/login/index",
+    "pages/audit/index",
     "pages/check/check",
     "pages/withdrawal/index",
     "pages/Exportdata/index",
