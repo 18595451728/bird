@@ -65,7 +65,7 @@ function getOption(xData, data_cur, data_his) {
 
     textStyle: {
       fontWeight: '400',
-      fontSize: 12,
+      fontSize: 14,
       color: '#989898'
     },
     color: ['#eb5e2b', '#f5aa33'],
@@ -182,7 +182,9 @@ Page({
       communitylist = this.data.communitylist
     this.setData({
       community: communitylist[index].class_name,
-      communityid: communitylist[index].community_id
+      communityid: communitylist[index].community_id,
+      dos:'',
+      dosid:''
     })
     this.getdong();
   },
@@ -273,6 +275,10 @@ Page({
       }
       
     }
+
+
+    var dian = this.data.dian?1:2
+    this.getCharts(dian)
   },
 
   /**
@@ -391,6 +397,11 @@ Page({
       yAxis: {
         name: text,
       },
+      textStyle: {
+        fontWeight: '400',
+        fontSize: 14,
+        color: '#989898'
+      }
     });
   },
   daochu: function() {
@@ -408,7 +419,8 @@ Page({
       })
       return false;
     }
-    if (dosid != 0 && !dosid) {
+    console.log(dosid)
+    if (!dosid) {
       wx.showToast({
         title: '请选择幢',
         icon: 'none'
@@ -440,26 +452,40 @@ Page({
       d.month = this.data.month
     }
     r.req(u + '/api/device/detectionLandlord', d, 'post').then(res => {
-
+      console.log(res)
       if (res.code == 1) {
         var data = res.data.device_record
         console.log(data)
-        var source = []
-        for (var i = 0; i < data.length; i++) {
-          var arr = [], jsonlength = -1;
-          for (var j in data[i]) {
-            jsonlength++;
-            console.log(data[i][j])
-            arr[jsonlength] = data[i][j]
+        if(data.length>0){
+          var source = []
+          for (var i = 0; i < data.length; i++) {
+            var arr = [], jsonlength = -1;
+            for (var j in data[i]) {
+              jsonlength++;
+              console.log(data[i][j])
+              arr[jsonlength] = data[i][j]
+            }
+            console.log(arr)
+            source[i] = arr
           }
-          console.log(arr)
-          source[i] = arr
+          console.log(source)
+          that.setData({
+            source: source,
+            total: res.data.total
+          })
+        }else{
+          var source = [
+            ['1', 0, 0],
+            ['2', 0, 0],
+            ['3', 0, 0],
+            ['4', 0, 0],
+            ['5', 0, 0]
+          ]
+          wx.showToast({
+            title: '暂无数据',
+            icon: 'none'
+          })
         }
-        console.log(source)
-        that.setData({
-          source: source,
-          total: res.data.total
-        })
         // var option = getOption();
         // chartLine.setOption(option);
         //如果上面初始化时候，已经chartLine已经setOption了，
@@ -469,6 +495,8 @@ Page({
             source: source,
           },
         });
+
+        
       }else{
         chartLine.setOption({
           dataset: {
@@ -481,6 +509,10 @@ Page({
             ],
           },
         });
+        wx.showToast({
+          title: res.mes,
+          icon:'none'
+        })
       }
     })
   },
