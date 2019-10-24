@@ -142,7 +142,7 @@ Page({
       })
       return
     }
-    
+
     if (community_room == "") {
       wx.showModal({
         title: '提示',
@@ -152,7 +152,7 @@ Page({
       return
     }
 
-    if (consignee == "") {
+    if (!consignee) {
       wx.showModal({
         title: '提示',
         content: '请填写联系人姓名',
@@ -199,13 +199,19 @@ Page({
       token: wx.getStorageSync('token')
     }, 'post').then((res) => {
       console.log(res)
-      // that.setData({
-        // wx.showModal({
-        //   title: '提示',
-        //   content: '保存成功',
-        //   showCancel: false
-        // })
-      // })
+      if (res.code == 1) {
+        app.globalData.is_admin = false
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: res.mes,
+          icon: 'none'
+        })
+      }
+     
      
         // wx.navigateTo({
         //   url: '/pages/index/index',

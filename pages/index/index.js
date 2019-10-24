@@ -8,7 +8,7 @@ var is_change = false
 Page({
   data: {
     is_open: true,
-    money: '37.66',
+    // money: '37.66',
     is_time: true,
     start_minute: 11,
     start_hour: 11,
@@ -57,6 +57,17 @@ Page({
         communitylist: res.data.community,
       })
     })
+
+
+    r.req(u + '/api/Device/deviceUser', {
+      token: wx.getStorageSync('token')
+    }, 'post').then((res) => {
+      console.log(res)
+      that.setData({
+        devicelist: res.data.device,
+      })
+    })
+
    
   },
 
