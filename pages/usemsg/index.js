@@ -6,7 +6,8 @@ Page({
    */
   data: {
     selectindex: 0,
-    msg: ['', '','','','','']
+    msg: [],
+    type:0
   },
 
   /**
@@ -27,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.init();
   },
 
   /**
@@ -67,7 +68,26 @@ Page({
   changetype(e) {
     var id = e.currentTarget.dataset.id
     this.setData({
-      selectindex: Number(id)
+      selectindex: Number(id),
+      type:Number(id)
+    })
+    this.init();
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/user/userRecord',
+      data: {
+        token:wx.getStorageSync('token'),
+        type:that.data.type
+      },
+      method: 'post',
+      success: function(res){
+        console.log(res)
+          that.setData({
+            msg:res.data.data
+          })
+      },
     })
   }
 })

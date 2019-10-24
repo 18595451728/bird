@@ -42,7 +42,7 @@
         <view class="yue" bindtap="bindaudit">
           <view class="y-left">绑定审核</view>
           <view class="y-right">
-            <view class="auditnum">{{userinfo.bind_num-1}}</view>
+            <view class="auditnum">{{userinfo.bind_num}}</view>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>
@@ -101,15 +101,15 @@
       <view class="logo">
         <view>
           <image src="/images/logo1.png" class="logo1"></image>
-          <text class="username">陈鸿宇</text>
-          <text class="usermes">XX小区  3幢  606—A室</text>
+          <text class="username">{{userinfo.name}}</text>
+          <text class="usermes">{{userinfo.community_room}}</text>
         </view>
       </view>
       <view class="func">
         <view class="yue" bindtap="chongzhi">
           <view class="y-left">余额充值</view>
           <view class="y-right">
-            <text>170.66</text>
+            <text>{{!userinfo.balance ? '0' : userinfo.balance }}</text>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>

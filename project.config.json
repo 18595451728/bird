@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 21,
 			"list": [
 				{
 					"id": -1,
@@ -166,6 +166,41 @@
 					"id": -1,
 					"name": "pages/mine/setupuser/index",
 					"pathName": "pages/mine/setupuser/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recharge/index",
+					"pathName": "pages/recharge/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recharge/index",
+					"pathName": "pages/recharge/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/withdrawal/index",
+					"pathName": "pages/withdrawal/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/usemsg/index",
+					"pathName": "pages/usemsg/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bemanager/bemanager",
+					"pathName": "pages/bemanager/bemanager",
 					"scene": null
 				}
 			]

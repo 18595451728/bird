@@ -7,16 +7,16 @@
 
   <view wx:for="{{msg}}" class="msgitems">
     <view>
-      <text>2019年9月9日</text>
-      <text style="margin-left:30rpx;">星期一</text>
+      <text>{{item.time.year}}</text>
+      <text style="margin-left:30rpx;">{{item.time.week}}</text>
     </view>
     <view class="endmsg">
       <block wx:if="{{selectindex==0}}">
-        <text>6.5度</text>
-        <text>-6.5元</text>
+        <text>{{item.use_electricity_many}}度</text>
+        <text>-{{item.amount}}元</text>
       </block>
       <block wx:if="{{selectindex==1}}">
-        <text>+6.5元</text>
+        <text>+{{item.amount}}元</text>
       </block>
     </view>
   </view>

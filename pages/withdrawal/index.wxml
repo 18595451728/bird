@@ -1,7 +1,7 @@
 <view class="content">
   <text class="header">可用余额：</text>
-  <text class="mymoney">￥170.66</text>
-  <view class="buttom">确认提现</view>
+  <text class="mymoney">￥{{userinfo.balance=='' ? '0' : userinfo.balance }}</text>
+  <view class="buttom" bindtap="tixian">确认提现</view>
 </view>
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
 <view wx:if="{{showmsg}}" class="tishimsg">

@@ -5,8 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showmodal: true,
-    showmsg: true,
+    showmodal: false,
+    showmsg: false,
   },
 
   /**
@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**
@@ -74,4 +74,45 @@ Page({
       showmsg: false,
     });
   },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/user/center',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'post',
+      success: function(res){
+        console.log(res)
+        that.setData({
+          userinfo:res.data.data.user
+        })
+      },
+
+    })
+  },
+  tixian(){
+    let that=this;
+    if(this.data.userinfo.balance=='0'){
+      wx.showToast({
+        title:'提现失败',
+        icon:'none',
+        duration:1000
+      })
+    }else{
+      wx.request({
+        url: app.globalData.url+'/api/Pay/withdraw',
+        data: {
+          token:wx.getStorageSync('token'),
+          amount:that.data.userinfo.balance
+        },
+        method: 'post', 
+        success: function(res){
+          console.log(res)
+        },
+
+      })
+    }
+
+  }
 })
