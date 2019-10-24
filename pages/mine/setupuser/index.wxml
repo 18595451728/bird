@@ -1,7 +1,7 @@
 <view class="content">
   <view class="header">
-    <input placeholder="输入您要搜索的用户" bindinput="search"></input>
-    <image class="icon" src="/images/search.png"></image>
+    <input placeholder="输入您要搜索的用户" bindinput="search" ></input>
+    <image class="icon" src="/images/search.png" bindtap="sousuo"></image>
   </view>
 
   <view class="item" wx:for="{{user}}">

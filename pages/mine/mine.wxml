@@ -42,7 +42,7 @@
         <view class="yue" bindtap="bindaudit">
           <view class="y-left">绑定审核</view>
           <view class="y-right">
-            <view class="auditnum">{{userinfo.bind_num}}</view>
+            <view class="auditnum">{{userinfo.bind_num-1}}</view>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>

@@ -76,8 +76,8 @@ Page({
       url: app.globalData.url+'/api/Landlord/bindList',
       data: {
         token:wx.getStorageSync('token'),
-        type:1,
-        keyword:''
+        type:2,
+    
       },
       method: 'post', 
       success: function(res){

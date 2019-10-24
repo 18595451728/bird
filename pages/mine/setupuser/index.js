@@ -10,7 +10,8 @@ Page({
     showmsg: false,
     user:[],
     username:'',
-    userId:''
+    userId:'',
+    keyword:''
   },
 
   /**
@@ -77,12 +78,13 @@ Page({
       })
       return
     }
-    var list = this.data.list
-    list.push({})
-    console.log(list)
     this.setData({
-      list: list
+      keyword:value
     })
+ 
+  },
+  sousuo(){
+    this.init();
   },
   preventTouchMove: function () { },
   /**
@@ -127,8 +129,8 @@ Page({
       url: app.globalData.url+'/api/Landlord/bindList',
       data: {
         token:wx.getStorageSync('token'),
-        type:2,
-        keyword:''
+        type:1,
+        keyword:that.data.keyword
       },
       method: 'post', 
       success: function(res){
