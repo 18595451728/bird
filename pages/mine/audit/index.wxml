@@ -1,6 +1,6 @@
 <view class="content">
 
-  <view class="item" wx:for="{{user.length}}" wx:if="{{user.length>0}}">
+  <view class="item" wx:for="{{user}}" wx:if="{{user.length>0}}">
     <view>
       <view>
         <text class="name">{{item.name}}</text>
@@ -11,10 +11,11 @@
     <view class="two">
       <text class="time">{{item.create_time}}</text>
       <view class="caozuoitem">
-        <view wx:if="{{item.status==0}}" class="caozuo" data-index="{{index}}" data-id='0' bindtap="change">忽略</view>
-        <view wx:if="{{item.status==0}}" class="caozuo tongguo" data-index="{{index}}" data-id='1' bindtap="change">通过</view>
+          <view wx:if="{{item.status==2}}" class="caozuo tongguo" data-index="{{index}}" data-id='{{item.user_id}}' bindtap="change" data-status='1'>通过</view>
+        <view wx:if="{{item.status==2}}" class="caozuo" data-index="{{index}}" data-id='{{item.user_id}}' bindtap="change" data-status='3'>忽略</view>
+ 
         <view wx:if="{{item.status==1}}" class="caozuo">已通过</view>
-        <view wx:if="{{item.status==2}}" class="caozuo">已忽略</view>
+        <!-- <view wx:if="{{item.status==2}}" class="caozuo">待审核</view> -->
       </view>
     </view>
   </view>

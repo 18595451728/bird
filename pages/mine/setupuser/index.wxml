@@ -1,6 +1,6 @@
 <view class="content">
   <view class="header">
-    <input placeholder="输入您要搜索的用户" bindblur="search"></input>
+    <input placeholder="输入您要搜索的用户" bindinput="search"></input>
     <image class="icon" src="/images/search.png"></image>
   </view>
 
@@ -12,7 +12,7 @@
       <text class="name">{{item.name}}</text>
       <text>{{item.community_room}}</text>
     </view>
-    <view class="itembto" data-index="{{index}}" bindtap="changestate">
+    <view class="itembto" data-index="{{index}}" bindtap="changestate" data-id="{{item.user_id}}" data-name="{{item.name}}">
       解除绑定
     </view>
   </view>
@@ -28,7 +28,7 @@
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showmodal}}"></view>
 <view wx:if="{{showmsg}}" class="tixing">
   <image src="/images/close.png" bindtap="hideModal" class="close"></image>
-  <text>确定与用户陈鸿宇取消绑定？</text>
+  <text>确定与用户{{username}}取消绑定？</text>
   <view class="caozuo">
     <view class="caozuo1" bindtap="submit">确 定</view>
     <view class="caozuo2" bindtap="hideModal">取 消</view>

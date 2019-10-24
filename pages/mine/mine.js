@@ -10,7 +10,8 @@ Page({
   data: {
     hasbind: true,
     is_admin: true,
-    user:''
+    user:'',
+    zuke:''
   },
 
   /**
@@ -80,6 +81,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function(e) {
+
+
     this.setData({
       is_admin: app.globalData.is_admin
     })
@@ -205,5 +208,6 @@ Page({
     wx.navigateTo({
       url: '/pages/login/index',
     })
-  }
+  },
+
 })

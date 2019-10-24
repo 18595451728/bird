@@ -89,10 +89,12 @@ Page({
     })
   },
   change: function(e) {
+    let that=this;
     var id = e.currentTarget.dataset.id
     var index = e.currentTarget.dataset.index
+    var status=e.currentTarget.dataset.status
     var text = '是否确定通过该审核？'
-    if (id == '0') {
+    if (status == '3') {
       text = "是否确定忽略该审核？"
     }
     wx.showModal({
@@ -101,6 +103,20 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+          wx.request({
+            url: app.globalData.url+'/api/Landlord/bindCheck',
+            data: {
+              user_id:id,
+              status:status,
+              token:wx.getStorageSync('token')
+            },
+            method: 'post', 
+            success: function(res){
+              console.log(res)
+              that.init();
+            },
+
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

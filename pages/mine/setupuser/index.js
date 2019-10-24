@@ -6,9 +6,11 @@ Page({
    */
   data: {
     list: [],
-    showmodal: true,
-    showmsg: true,
-    user:[]
+    showmodal: false,
+    showmsg: false,
+    user:[],
+    username:'',
+    userId:''
   },
 
   /**
@@ -97,10 +99,27 @@ Page({
     this.setData({
       showmodal: true,
       showmsg: true,
+      username:e.currentTarget.dataset.name,
+      userId:e.currentTarget.dataset.id
     });
+
   },
   submit:function(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/releaseBind',
+      data: {
+        token:wx.getStorageSync('token'),
+        user_id:that.data.userId
+      },
+      method: 'post', 
+      success: function(res){
+        console.log(res)
+      },
+
+    })
     this.hideModal()
+    this.init();
   },
   init(){
     let that=this;
