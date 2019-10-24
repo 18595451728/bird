@@ -205,9 +205,9 @@ Page({
           icon:'none'
         })
         setTimeout(function(){
-           wx.navigateTo({
-          url: '/pages/index/index',
-        })
+           wx.switchTab({
+             url: '/pages/index/index',
+           })
         },1000)
       }
       // that.setData({
