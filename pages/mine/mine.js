@@ -92,6 +92,11 @@ Page({
         hasbind: !0
       })
     }
+    if(wx.getStorageSync('userBind')){
+      this.setData({
+        hasbind: !0
+      })
+    }
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')

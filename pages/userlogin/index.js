@@ -199,6 +199,17 @@ Page({
       token: wx.getStorageSync('token')
     }, 'post').then((res) => {
       console.log(res)
+      if(res.code==1){
+        wx.showToast({
+          title: res.mes,
+          icon:'none'
+        })
+        setTimeout(function(){
+           wx.navigateTo({
+          url: '/pages/index/index',
+        })
+        },1000)
+      }
       // that.setData({
         // wx.showModal({
         //   title: '提示',
