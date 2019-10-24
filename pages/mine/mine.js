@@ -81,7 +81,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function(e) {
-
+    console.log(wx.getStorageSync('userBind'))
 
     this.setData({
       is_admin: app.globalData.is_admin
@@ -92,11 +92,17 @@ Page({
         hasbind: !0
       })
     }
-    if(wx.getStorageSync('userBind')){
+    console.log(wx.getStorageSync('userBind'))
+    if(wx.getStorageSync('userBind')==true){
       this.setData({
-        hasbind: !0
+        hasbind: true
+      })
+    }else{
+      this.setData({
+        hasbind: false
       })
     }
+
     var that = this
  
     var haslogin = wx.getStorageSync('haslogin')
@@ -169,6 +175,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           console.log(1111)
+
           r.req(u + '/api/Wx/signOut', {
              token: wx.getStorageSync('token')
           }, 'post').then((res) => {
@@ -180,8 +187,9 @@ Page({
             if (res.code == 1) {
               that.setData({
                 hasbind:!1
-              })
+              })      
               wx.clearStorage()
+              that.onShow();
             }else{
               
             }

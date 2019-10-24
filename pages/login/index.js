@@ -103,6 +103,7 @@ Page({
       if (res.code == 1) {
         app.globalData.is_admin = false
         wx.setStorageSync('userBind', !0)
+        console.log(wx.getStorageSync('userBind'))
         wx.switchTab({
           url: '/pages/index/index',
         })
