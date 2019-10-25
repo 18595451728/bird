@@ -87,7 +87,13 @@ Page({
       selectindex: Number(id),
       type:Number(id)
     })
-    this.init();
+
+
+    if(wx.getStorageSync('adminChongzhi')==true){
+      this.init2();
+    }else{
+      this.init();
+    }
   },
   init(){
     let that=this;
