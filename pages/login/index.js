@@ -125,15 +125,18 @@ Page({
     wx.setStorageSync('userBind', false)
 
     console.log(wx.getStorageSync('adminHasBind'))
-    if (adminHasBind) {
-      wx.switchTab({
-        url: '/pages/index/index',
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/adminlogin/index',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/adminlogin/index',
+    })
+    // if (adminHasBind) {
+    //   wx.switchTab({
+    //     url: '/pages/index/index',
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '/pages/adminlogin/index',
+    //   })
+    // }
 
   }
 })
