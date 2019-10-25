@@ -371,6 +371,7 @@ Page({
         this.setData({
           is_select: false
         })
+       
       }
       
     }else{

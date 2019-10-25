@@ -81,7 +81,7 @@
         <view class="yue">
           <view class="y-left">余额充值</view>
           <view class="y-right">
-            <text>170.66</text>
+            <text></text>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>
@@ -148,7 +148,7 @@
         <view class="yue">
           <view class="y-left">余额充值</view>
           <view class="y-right">
-            <text>170.66</text>
+            <text></text>
             <image src="/images/arrow-right.png"></image>
           </view>
         </view>
