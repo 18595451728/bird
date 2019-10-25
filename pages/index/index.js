@@ -7,9 +7,7 @@ const app = getApp(),
 var is_change = false
 Page({
   data: {
-    // is_open: !1,
-    // money: '37.66',
-    // is_time: !1,
+   
     start_minute: 11,
     start_hour: 11,
     end_hour: 12,
@@ -84,15 +82,25 @@ Page({
                 star_time: res.data.device.star_time,
                 end_time: res.data.device.end_time
               })
-
+              console.log(res.data.device.star_time)
               var end_time = that.data.end_time, star_time = that.data.star_time, dd = star_time.split(':'), cc = end_time.split(':')
-              console.log(end_time)
+             
               that.setData({
                 end_hour:parseInt(cc[0]),
                 end_minute:parseInt(cc[1]),
                 start_hour:parseInt(dd[0]),
                 start_minute: parseInt(dd[1])
               })
+
+  // var end_time = that.data.end_time, star_time = that.data.star_time
+  //             console.log(end_time)
+  //             // that.setData({
+  //             //   end_hour:parseInt(cc[0]),
+  //             //   end_minute:parseInt(cc[1]),
+  //             //   start_hour:parseInt(dd[0]),
+  //             //   start_minute: parseInt(dd[1])
+  //             // })
+
             }
           })
         }else{
