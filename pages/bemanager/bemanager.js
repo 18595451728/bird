@@ -90,6 +90,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   nameInput(e){
     this.setData({
       name:e.detail.value
@@ -199,10 +200,11 @@ Page({
                 icon:'success',
                 duration:1000
               })
-            }else{
-              wx.navigateTo({
-                url: "/pages/audit/index",
-              })
+              setTimeout(() => {
+                wx.navigateTo({
+                  url: "/pages/audit/index",
+                })
+              }, 1000);
             }
           },
   

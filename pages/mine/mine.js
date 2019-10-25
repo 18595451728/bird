@@ -11,7 +11,8 @@ Page({
     hasbind: true,
     is_admin:true,
     user:'',
-    zuke:''
+    zuke:'',
+    is_admin_status:-1
   },
 
   /**
@@ -21,9 +22,16 @@ Page({
     this.onShow();
   },
   bemanager: function() {
-    wx.navigateTo({
-      url: '/pages/bemanager/bemanager',
-    })
+    if(this.data.is_admin_status==3){
+      wx.navigateTo({
+        url: "/pages/audit/index",
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/bemanager/bemanager',
+      })
+    }
+  
   },
   chongzhi: function() {
     wx.navigateTo({
@@ -82,6 +90,7 @@ Page({
    */
   onShow: function(e) {
 
+    this.init();
     this.setData({
       is_admin: app.globalData.is_admin
     })
@@ -229,5 +238,21 @@ Page({
       url: '/pages/usemsg/index',
     })
 
+  },
+  init(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Wx/checkAdmin',
+      data: {
+        token:wx.getStorageSync('token')
+      },
+      method: 'POST', 
+      success: function(res){
+        console.log(res)
+        that.setData({
+          is_admin_status:res.data.is_admin.is_admin_status
+        })
+      },
+    })
   }
 })

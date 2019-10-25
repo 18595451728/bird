@@ -35,11 +35,16 @@ Page({
     })
     if(wx.getStorageSync('adminChongzhi')==true){
       this.setData({
-        admin:true
+        admin:true,
+        type:1,
+        selectindex:1
       })
+      this.init2();
+    }else{
+      this.init();
     }
     console.log(this.data.admin)
-    this.init();
+
   },
 
   /**
@@ -82,12 +87,41 @@ Page({
       selectindex: Number(id),
       type:Number(id)
     })
-    this.init();
+    if(wx.getStorageSync('adminChongzhi')==true){
+      this.init2();
+    }else{
+      this.init();
+    }
   },
   init(){
     let that=this;
     wx.request({
       url: app.globalData.url+'/api/user/userRecord',
+      data: {
+        token:wx.getStorageSync('token'),
+        type:that.data.type
+      },
+      method: 'post',
+      success: function(res){
+        console.log(res)
+        if(res.data.data.length==0){
+          wx.showToast({
+            title: '暂无数据',
+            duration:1500,
+            icon:'none'
+          })
+        }
+          that.setData({
+            msg:res.data.data
+          })
+          
+      },
+    })
+  },
+  init2(){
+    let that=this;
+    wx.request({
+      url: app.globalData.url+'/api/Landlord/Record',
       data: {
         token:wx.getStorageSync('token'),
         type:that.data.type

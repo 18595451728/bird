@@ -26,7 +26,7 @@
   </view>
   <input class="name" name="consignee" placeholder="请输入您的姓名"></input>
   <input class="name" name="telephone" placeholder="请输入您的手机号"></input>
-  <input class="name" name="password" placeholder="请输入密码"></input>
+  <input type="password" class="name" name="password" placeholder="请输入密码"></input>
   <view class='bind'>绑定密码请在公众号（波得物联）中获取</view>
   <button class="binduser"  formType="submit">快速绑定</button>
   <view class="out" bindtap="login">跳过此步</view>
