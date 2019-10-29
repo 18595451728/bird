@@ -281,13 +281,22 @@ Page({
   },
   getUserChart:function(type){
     var that=this
-    r.req(u + '/api/Device/detectionUser', {
+
+    var d = {
       token: wx.getStorageSync('token'),
       year: this.data.year,
-      month: this.data.month,
-      day: this.data.day,
       type: type
-    }, 'post').then(res => {
+    }
+    var choose = this.data.choose
+    if (choose == 0) {
+      d.day = this.data.day
+      d.month = this.data.month
+    }
+    if (choose == 1) {
+      d.month = this.data.month
+    }
+
+    r.req(u + '/api/Device/detectionUser', d, 'post').then(res => {
       console.log(res)
       if (res.code == 1) {
         var data = res.data.device_record.device_record
