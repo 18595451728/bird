@@ -382,7 +382,16 @@ Page({
         })
        
       }
-      
+      var that =this
+
+      r.req(u + '/api/Community/getCommunity', {
+        token: wx.getStorageSync('token')
+      }, 'post').then(res => {
+        console.log(res)
+        that.setData({
+          communitylist: res.data.community
+        })
+      })
     }else{
       var dian = this.data.dian ? 1 : 2
       this.getUserChart(dian)

@@ -119,6 +119,7 @@ Page({
 
   },
   adminlogin: function() {
+    app.globalData.is_admin = !0
     var adminHasBind = wx.getStorageSync('adminHasBind')
 
     wx.setStorageSync('adminHasBind', true)
