@@ -1,12 +1,12 @@
 <view class="content">
   <text class="header">可用余额：</text>
-  <text class="mymoney">￥{{userinfo.balance=='' ? '0' : userinfo.balance }}</text>
+  <text class="mymoney">￥{{userinfo.balance||'0.00'}}</text>
   <view class="xian">
   </view>
   <text class="header">请输入充值金额：</text>
   <view class="inputmoney">
     <text>￥</text>
-    <input type="digit" focus cursor-spacing="50" bindinput="jineInput"></input>
+    <input type="digit" focus cursor-spacing="50" bindinput="jineInput" placeholder='0.00'></input>
   </view>
 
   <view class="buttom" bindtap="chongzhi">确认充值</view>

@@ -76,4 +76,44 @@
 }
 .tishidata{
   font-size: 30rpx;
+}.header {
+  margin-top: 120rpx;
+  margin-left: 218rpx;
+}
+
+.mymoney {
+  margin-left: 206rpx;
+  font-size: 80rpx;
+  margin-top: 40rpx;
+}
+
+.xian {
+  width: 690rpx;
+  height: 2rpx;
+  background-color: rgba(221, 221, 221, 1);
+  margin-left: 30rpx;
+  margin-top: 160rpx;
+}
+
+.inputmoney {
+  margin-left: 206rpx;
+  font-size: 80rpx;
+  margin-top: 40rpx;
+  display: flex;
+  line-height: 80rpx;
+}
+
+.inputmoney input {
+  width: 350rpx;
+  font-size: 80rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+
+
+.gohistory{
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;
 }

@@ -12,105 +12,107 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    var is_admin = app.globalData.is_admin
+    this.setData({
+      is_admin: is_admin
+    })
 
   },
-
+  gohistory:function(){
+    wx.navigateTo({
+      url: '/pages/xiaofei/xiaofei',
+    })
+  },
+  jineInput: function(e) {
+    this.setData({
+      money: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.init();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  preventTouchMove: function () { },
+  preventTouchMove: function() {},
   /**
    * 隐藏模态对话框
    */
-  hideModal: function () {
+  hideModal: function() {
     this.setData({
       showmodal: false,
       showmsg: false,
     });
   },
-  init(){
-    let that=this;
+  init() {
+    let that = this;
     wx.request({
-      url: app.globalData.url+'/api/user/center',
+      url: app.globalData.url + '/api/landlord/getBalance',
       data: {
-        token:wx.getStorageSync('token')
+        token: wx.getStorageSync('token')
       },
       method: 'post',
-      success: function(res){
+      success: function(res) {
         console.log(res)
         that.setData({
-          userinfo:res.data.data.user
+          balance: res.data.data.balance
         })
       },
 
     })
   },
-  tixian(){
-    let that=this;
-    if(this.data.userinfo.balance=='0'){
-      wx.showToast({
-        title:'提现失败',
-        icon:'none',
-        duration:1000
+  tixian() {
+    if (this.data.money) {
+      wx.navigateTo({
+        url: '/pages/tixian/tixian?money=' + this.data.money,
       })
     }else{
-      wx.request({
-        url: app.globalData.url+'/api/Pay/withdraw',
-        data: {
-          token:wx.getStorageSync('token'),
-          amount:that.data.userinfo.balance
-        },
-        method: 'post', 
-        success: function(res){
-          console.log(res)
-        },
-
+      wx.showToast({
+        title: '请输入提现金额',
+        icon:'none'
       })
     }
 

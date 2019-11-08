@@ -1,7 +1,9 @@
 {
   "pages": [
-   
+    
     "pages/login/index",
+    "pages/xiaofei/xiaofei",
+   "pages/tixian/tixian",
     "pages/audit/index",
     "pages/check/check",
     "pages/withdrawal/index",
@@ -16,7 +18,6 @@
     "pages/index/index",
     "pages/mine/bindammeter/index",
     "pages/mine/members/index",
-    
     "pages/userlogin/index",
     "pages/recharge/index",
     "pages/usemsg/index"

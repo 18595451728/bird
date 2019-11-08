@@ -29,8 +29,8 @@
 }
 
 .username {
-  font-size: 30rpx;
-  margin: 30rpx 0;
+  font-size: 36rpx;
+  margin: 20rpx 0;
 }
 
 .admin_username {
@@ -73,7 +73,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  line-height: 75rpx;
+  line-height: 80rpx;
   font-size: 26rpx;
   color: #4d4d4d;
   letter-spacing: 2rpx;

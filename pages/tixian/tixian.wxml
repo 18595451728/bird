@@ -1,0 +1,27 @@
+<!--pages/bemanager/bemanager.wxml-->
+<view class="container">
+  <view class="hd">
+    <view bindtap="change" data-index='0'>
+      <image src="{{choose?'/images/choosed.png':'/images/unchoosed.png'}}"></image>
+      <text>支付宝</text>
+    </view>
+    <view bindtap="change">
+      <image src="{{!choose?'/images/choosed.png':'/images/unchoosed.png'}}"></image>
+      <text>银行卡</text>
+    </view>
+  </view>
+  <view class="bd">
+    <view wx:if='{{choose}}'>
+      <input placeholder-class='placeholder' placeholder="请输入您的姓名" bindinput="name" ></input>
+      <input placeholder-class='placeholder' placeholder="请输入电话号" bindinput="tel"></input>
+      <input placeholder-class='placeholder' placeholder="请输入您的支付宝账号" bindinput="zhifubao"></input>
+    </view>
+    <view wx:else>
+      <input placeholder-class='placeholder' placeholder="请输入您的姓名" bindinput="cardname"></input>
+      <input placeholder-class='placeholder' placeholder="请输入电话号" bindinput="cardtel"></input>
+      <input placeholder-class='placeholder' placeholder="请输入银行" bindinput="bank"></input>
+      <input placeholder-class='placeholder' placeholder="请输入银行卡号" bindinput="bankcard"></input>
+    </view>
+  </view>
+  <view class="apply"  bindtap="reply">确认提现</view>
+</view>

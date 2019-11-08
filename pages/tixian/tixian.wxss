@@ -1,0 +1,81 @@
+/* pages/bemanager/bemanager.wxss */
+
+.container {
+  width: 100%;
+  padding: 116rpx 60rpx 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 100%;
+  height: 460rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo image {
+  width: 266rpx;
+  height: 246rpx;
+}
+
+.hd {
+  width: 266rpx;
+  margin: 0 auto 58rpx;
+  display: flex;
+  align-items: center;
+}
+
+.hd view {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+}
+
+.hd view image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 12rpx;
+}
+
+.bd {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 400rpx;
+}
+
+.bd input {
+  width: 406rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 2rpx solid rgba(236, 98, 23, 1);
+  border-radius: 6rpx;
+  margin-bottom: 40rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  color: #4e4d4d;
+  font-size: 26rpx;
+  letter-spacing: 1rpx;
+}
+
+.placeholder {
+  color: #4e4d4d;
+  font-size: 26rpx;
+  letter-spacing: 1rpx;
+}
+
+.apply {
+  width: 630rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+  border-radius: 6rpx;
+  color: #fff;
+  font-size: 33rpx;
+  letter-spacing: 4rpx;
+  text-align: center;
+  margin-top: 100rpx;
+}
