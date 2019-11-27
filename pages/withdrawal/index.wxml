@@ -1,9 +1,9 @@
 <view class="content">
-  <text class="header">可用余额：</text>
+  <text class="header">可提现金额：</text>
   <text class="mymoney">￥{{balance||0.00}}</text>
     <view class="xian">
   </view>
-  <text class="header">请输入充值金额：</text>
+  <text class="header">请输入提现金额：</text>
   <view class="inputmoney">
     <text>￥</text>
     <input type="digit" focus cursor-spacing="50" bindinput="jineInput" placeholder='0.00'></input>

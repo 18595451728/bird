@@ -67,20 +67,49 @@ Page({
   },
   changetype(e) {
     var id = e.currentTarget.dataset.id
+    console.log(id)
     if(id==0){
       this.setData({
         type:2
       })
-    }else{
+      this.init()
+    }else if(id==1){
       this.setData({
         type: 1
       })
+      this.init()
+    }else{
+      this.init2()
     }
-    this.init()
+    
     this.setData({
       selectindex: Number(id),
     })
 
+  },
+  init2(){
+    var that=this
+    wx.request({
+      url: app.globalData.url+'/api/Withdraw/record',
+      method:'post',
+      data:{
+        token: wx.getStorageSync('token'),
+        type:2
+      },
+      success:function(res){
+        console.log(res)
+        if (res.data.data.data.length == 0) {
+          wx.showToast({
+            title: '暂无数据',
+            duration: 1500,
+            icon: 'none'
+          })
+        }
+        that.setData({
+          msg: res.data.data.data
+        })
+      }
+    })
   },
   init() {
     let that = this;

@@ -36,14 +36,14 @@
       <ec-canvas ec='{{ec}}'></ec-canvas>
     </view>
     <block wx:if="{{is_admin}}">
-      <view class="todaytop">峰值：{{total.high ||0}}度 谷值：{{total.low||0}}度</view>
+      <view class="todaytop">峰值：{{total.high ||0}}{{dians}} 谷值：{{total.low||0}}{{dians}}</view>
       <view class="daochu" bindtap="daochu">
         一键导出
       </view>
     </block>
     <block wx:else>
-      <view class="todaytop">今日峰值:{{total.high||0}}度</view>
-      <view class="todaylow">今日谷值:{{total.low||0}}度</view>
+      <view class="todaytop">今日峰值:{{total.high||0}}{{dians}}</view>
+      <view class="todaylow">今日谷值:{{total.low||0}}{{dians}}</view>
     </block>
   </view>
 </block>
@@ -52,10 +52,10 @@
     <image class="admin_logo" src="/images/logo.png"></image>
     <view class="admin_inputitems">
       <view class="admin_xiaoqu" bindtap="showxiaoqu">
-        <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+        <input bindinput="searchCom" value="{{community}}" placeholder="请选择所在小区"></input>
         <image class="admin_up" src="/images/up.png"></image>
         <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
-          <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-index='{{index}}' bindtap='choosecom'>{{item.class_name}}</text>
+          <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-index='{{index}}' catchtap='choosecom'>{{item.class_name}}</text>
         </view>
       </view>
       <view class="admin_dong" bindtap="showdong">

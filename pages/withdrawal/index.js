@@ -89,8 +89,13 @@ Page({
   },
   init() {
     let that = this;
+    if(this.data.is_admin){
+      var url = app.globalData.url + '/api/landlord/getBalance'
+    }else{
+      var url = app.globalData.url + '/api/User/getBalance'
+    }
     wx.request({
-      url: app.globalData.url + '/api/landlord/getBalance',
+      url: url,
       data: {
         token: wx.getStorageSync('token')
       },
@@ -105,10 +110,34 @@ Page({
     })
   },
   tixian() {
-    if (this.data.money) {
-      wx.navigateTo({
-        url: '/pages/tixian/tixian?money=' + this.data.money,
+    console.log('10.00'>8)
+    console.log(this.data.money-this.data.balance)
+    if(this.data.money==0){
+      wx.showToast({
+        title: '提现金额不能为0',
+        icon: 'none'
       })
+      return false;
+    }
+    if(this.data.money == 0){
+      wx.showToast({
+        title: '提现金额不能为0',
+        icon: 'none'
+      })
+      return false;
+    }
+    if (this.data.money) {
+      if(this.data.money-this.data.balance>0){
+        wx.showToast({
+          title: '提现金额不能大于可提现余额',
+          icon:'none'
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/tixian/tixian?money=' + this.data.money,
+        })
+      }
+     
     }else{
       wx.showToast({
         title: '请输入提现金额',

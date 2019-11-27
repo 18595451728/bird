@@ -124,9 +124,12 @@
   height: 24rpx;
   margin-right: 17rpx;
 }
+.chooseStyle input{
+  width: 180rpx;
+}
 .chooseStyle image.up{
-  width: 12rpx;
-  height: 6rpx;
+  width: 21rpx;
+  height: 10rpx;
 }
 .chooseStyle>view{
   display: flex;

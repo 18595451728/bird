@@ -71,7 +71,9 @@ page {
   line-height: 70rpx;
   letter-spacing: 4rpx;
 }
-
+.revise{
+  text-decoration: underline
+}
 .tishimsg {
   height: 350rpx;
   width: 630rpx;

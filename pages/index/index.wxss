@@ -254,7 +254,7 @@ page {
 }
 
 .admin_xiaoqu {
-  width: 235rpx;
+  width: 240rpx;
   height: 60rpx;
   border: 2rpx solid rgba(236, 98, 23, 1);
   border-radius: 6rpx;
@@ -312,12 +312,12 @@ page {
 }
 
 .admin_up {
-  width: 12rpx;
-  height: 6rpx;
+  width: 21rpx;
+  height: 10rpx;
 }
 
 .admin_dong {
-  width: 193rpx;
+  width: 200rpx;
   height: 60rpx;
   border: 2rpx solid rgba(236, 98, 23, 1);
   border-radius: 6rpx;

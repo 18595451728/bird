@@ -12,7 +12,10 @@
         <input class="password" placeholder="请输入统一登录密码" bindinput='loginword'></input>
       </block>
       <block wx:else>
-        <text style="margin-top:260rpx; margin-bottom: 50rpx;">统一登录密码:{{loginword}}</text>
+        <view style="width:460rpx;display:flex;justify-content:space-between; margin-top:260rpx; margin-bottom: 50rpx;">
+          <text>统一登录密码:{{loginword}}</text>
+          <text class='revise' bindtap='revise'>修改密码</text>
+        </view>
       </block>
       <button class="bto" formType="submit">确认绑定</button>
     </view>

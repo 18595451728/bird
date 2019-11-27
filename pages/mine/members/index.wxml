@@ -42,11 +42,11 @@
     <image src="/images/vip4.png" class="vipicon3"></image>
     <text style='color: rgba(235, 94, 43, 1);font-size:45rpx;'>{{month*user.vip_config.vip_price}}</text>元
   </view>
-  <view class="xufei_item" bindtap="changeXufei"  >
-    <!-- <image src="/images/vip5.png" class="vipicon4"></image> -->
+  <!-- <view class="xufei_item" bindtap="changeXufei"  >
     <view class="vipicon4" style="background: {{xufei==0 ? '' : '#EB5F2C'}};" ></view>
     <text>到期自动续费</text>
-  </view>
+  </view> -->
+  <view></view>
 </view>
 <view class="bto" bindtap="kaitong">
   立即开通

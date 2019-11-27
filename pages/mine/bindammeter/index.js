@@ -17,20 +17,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this
-    r.req(u + '/api/landlord/getPassword', {
-      token: wx.getStorageSync('token')
-    }, 'post').then(res => {
-      console.log(res)
-      if (res.code == 1) {
-        that.setData({
-          showpassword: !0,
-          loginword: res.data.room_password
-        })
-      }
+    
+  },
+  revise(){
+    wx.navigateTo({
+      url: '/pages/revise/revise?loginword='+this.data.loginword,
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,7 +60,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this
+    r.req(u + '/api/landlord/getPassword', {
+      token: wx.getStorageSync('token')
+    }, 'post').then(res => {
+      console.log(res)
+      if (res.code == 1) {
+        that.setData({
+          showpassword: !0,
+          loginword: res.data.room_password
+        })
+      }
+    })
   },
 
   /**
@@ -113,6 +117,13 @@ Page({
       showmodal: false,
       showmsg: false,
     });
+    this.setData({
+      xiaoqu: '',
+      dong: '',
+      menpai: '',
+      dianbiao: ''
+    })
+    this.onLoad()
   },
   formSubmit: function(e) {
     var that=this
@@ -143,11 +154,6 @@ Page({
   formReset: function() {
     console.log('form发生了reset事件')
     this.hideModal();
-    this.setData({
-      xiaoqu:'',
-      dong:'',
-      menpai:'',
-      dianbiao:''
-    })
+    this.onLoad()
   },
 })

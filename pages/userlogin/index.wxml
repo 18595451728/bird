@@ -3,10 +3,10 @@
   <form bindsubmit="bindSave">
   <view class="inputitems">
     <view class="xiaoqu" bindtap="showxiaoqu">
-      <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+      <input value="{{community}}" bindinput='searchCom' placeholder="请选择所在小区"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showxiaoqu}}" class="xiaoquitems">
-        <text wx:for="{{communitylist}}" class="xiaoquitem"  bindtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
+        <text wx:for="{{communitylist}}" class="xiaoquitem"  catchtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
       </view>
     </view>
     <view class="dong" bindtap="showdong">
@@ -24,9 +24,11 @@
       </view>
     </view>
   </view>
-  <input class="name" name="consignee" placeholder="请输入您的姓名"></input>
+ <view class='put'>
+   <input class="name" name="consignee" placeholder="请输入您的姓名"></input>
   <input class="name" name="telephone" placeholder="请输入您的手机号"></input>
   <input type="password" class="name" name="password" placeholder="请输入密码"></input>
+ </view>
   <view class='bind'>绑定密码请在公众号（波得物联）中获取</view>
   <button class="binduser"  formType="submit">快速绑定</button>
   <view class="out" bindtap="login">跳过此步</view>

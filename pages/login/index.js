@@ -30,7 +30,37 @@ Page({
         if (id == 0) {
           that.gotologin();
         } else {
-          that.adminlogin()
+          if (wx.getStorageSync('token')) {
+            wx.request({
+              url: app.globalData.url + '/api/landlord/isAdmin',
+              method: 'post',
+              data: {
+                token: wx.getStorageSync('token')
+              },
+              success: function (res) {
+                console.log(res)
+                if (res.data.code == 1) {
+                  that.setData({
+                    is_admin: res.data.data.is_admin
+                  })
+                  if (that.data.is_admin) {
+                    wx.setStorageSync('adminHasBind', !0)
+                    app.globalData.is_admin = !0
+                    wx.switchTab({
+                      url: '/pages/mine/mine',
+                    })
+                  } else {
+                    that.adminlogin()
+                  }
+                } else {
+                  wx.showToast({
+                    title: res.data.mes,
+                    icon: 'none'
+                  })
+                }
+              }
+            })
+          }
         }
       });
     } else {
@@ -58,9 +88,51 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log(wx.getStorageSync('token'))
+    this.setData({
+      token:wx.getStorageSync('token')
+    })
+   
   },
 
+
+  usergo(){
+    this.gotologin()
+  },
+  admingo(){
+    var that = this
+    if (wx.getStorageSync('token')) {
+      wx.request({
+        url: app.globalData.url + '/api/landlord/isAdmin',
+        method: 'post',
+        data: {
+          token: wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.code == 1) {
+            app.globalData.is_admin = !0
+            that.setData({
+              is_admin: res.data.data.is_admin
+            })
+            if (that.data.is_admin) {
+              wx.setStorageSync('adminHasBind', !0)
+              wx.switchTab({
+                url: '/pages/mine/mine',
+              })
+            } else {
+              that.adminlogin()
+            }
+          } else {
+            wx.showToast({
+              title: res.data.mes,
+              icon: 'none'
+            })
+          }
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

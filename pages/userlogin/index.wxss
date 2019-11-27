@@ -23,7 +23,7 @@
   border-radius: 6rpx;
   line-height: 60rpx;
   padding: 0 10rpx;
-  margin-top: 60rpx;
+  margin: 60rpx auto 0;
 }
 
 .binduser {
@@ -74,7 +74,7 @@
 .xiaoqu input {
   height: 60rpx;
   width: 190rpx;
-  padding: 0 10rpx;
+  padding-left: 10rpx;
 }
 
 .xiaoquitems {
@@ -132,8 +132,8 @@
 }
 
 .up {
-  width: 12rpx;
-  height: 6rpx;
+  width: 21rpx;
+  height: 10rpx;
 }
 
 .dong {
@@ -151,7 +151,7 @@
 .dong input {
   height: 60rpx;
   width: 150rpx;
-  padding: 0 10rpx;
+  padding-left: 10rpx;
 }
 
 .room {
@@ -169,11 +169,12 @@
 .room input {
   height: 60rpx;
   width: 110rpx;
-  padding: 0 10rpx;
+  padding-left: 10rpx;
 }
 
 .bind{
   color: #4e4d4d;
   font-size: 26rpx;
   line-height: 60rpx;
+  text-align: center;
 }

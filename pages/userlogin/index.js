@@ -88,7 +88,7 @@ Page({
   },
   commChoose: function (e) {
     this.setData({
-      showxiaoqu: true,
+      showxiaoqu: !1,
       community: this.data.communitylist[e.currentTarget.dataset.index].class_name,
       community_id: this.data.communitylist[e.currentTarget.dataset.index].community_id,
       community_build: '',
@@ -247,7 +247,29 @@ Page({
 
 
 
-
+  searchCom(e){
+    var that = this
+    if (!e.detail.value) {
+      this.setData({
+        showxiaoqu: !1
+      })
+      return;
+    }
+    r.req(u + '/api/Community/getCommunity', {
+      usertoken: wx.getStorageSync('token'),
+      keyword:e.detail.value
+    }, 'post').then((res) => {
+      console.log(res)
+      if (res.code == 1 && res.data.community.length != 0){
+        that.setData({
+          communitylist: res.data.community,
+          showxiaoqu: !0
+        })
+      }
+      
+      console.log(res.data.community)
+    })
+  },
 
   showxiaoqu: function() {
     this.setData({
@@ -258,16 +280,24 @@ Page({
 
   showdong: function() {
     var that = this
-    r.req(u + '/api/Community/changeCommunity', {
-      community_id: that.data.community_id,
-      // token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
-      console.log(res)
-      that.setData({
-        showdong: !this.data.showdong,
-        donglist: res.data.community
+    if (that.data.community_id){
+      r.req(u + '/api/Community/changeCommunity', {
+        community_id: that.data.community_id,
+        // token: wx.getStorageSync('token')
+      }, 'post').then((res) => {
+        console.log(res)
+        that.setData({
+          showdong: !this.data.showdong,
+          donglist: res.data.community
+        })
       })
-    })
+    }else{
+      wx.showToast({
+        title: '请先选择小区',
+        icon:'none'
+      })
+    }
+    
 
 
     // this.setData({
@@ -279,17 +309,25 @@ Page({
 
   showroom: function() {
     var that = this
-    r.req(u + '/api/Community/changeCommunity', {
-      community_id: that.data.community_id,
-      community_build_id: that.data.community_build_id,
-      // token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
-      console.log(res)
-      that.setData({
-        showroom: !this.data.showroom,
-        roomlist: res.data.community
+    if (that.data.community_id && that.data.community_build_id){
+      r.req(u + '/api/Community/changeCommunity', {
+        community_id: that.data.community_id,
+        community_build_id: that.data.community_build_id,
+        // token: wx.getStorageSync('token')
+      }, 'post').then((res) => {
+        console.log(res)
+        that.setData({
+          showroom: !this.data.showroom,
+          roomlist: res.data.community
+        })
       })
-    })
+    }else{
+      wx.showToast({
+        title: '请先选择小区和幢',
+        icon:'none'
+      })
+    }
+    
 
     // this.setData({
     //   showroom: !this.data.showroom

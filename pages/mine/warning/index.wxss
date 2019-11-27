@@ -31,6 +31,7 @@ page {
   line-height: 50rpx;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-left: 20rpx;
 }
 

@@ -51,9 +51,17 @@ Page({
           method: 'POST', 
           success: function(res){
            console.log(res)
-           that.setData({
-            showmsg:!0
-          })
+           if(res.data.code ==1){
+             that.setData({
+               showmsg: !0
+             })
+           }else{
+             wx.showToast({
+               title: res.data.mes,
+               icon:'none'
+             })
+           }
+           
           },
         })
       }else if(this.data.chooseStyle=='1'){
@@ -76,9 +84,17 @@ Page({
             method: 'POST', 
             success: function(res){
               console.log(res)
-              that.setData({
-                showmsg:!0
-              })
+              if(res.data.code==1){
+                that.setData({
+                  showmsg: !0
+                })
+              }else{
+                wx.showToast({
+                  title: res.data.mes,
+                  icon:'none'
+                })
+              }
+              
             },
       
           })

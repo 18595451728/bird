@@ -7,11 +7,11 @@
       <view class="admin_inputitems">
 
         <view class="admin_xiaoqu" bindtap="showxiaoqu">
-          <input disabled="true" value="{{community}}" placeholder="请选择所在小区"></input>
+          <input value="{{community}}" bindinput='searchCom' placeholder="请选择所在小区"></input>
           <image class="admin_up" src="/images/up.png"></image>
           <view wx:if="{{showxiaoqu}}" class="admin_xiaoquitems">
 
-            <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-id="{{item.community_id}}" bindtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
+            <text wx:for="{{communitylist}}" class="admin_xiaoquitem" data-id="{{item.community_id}}" catchtap="commChoose" data-index="{{index}}" wx:key="{{index}}">{{item.class_name}}</text>
             
           </view>
         </view>
@@ -47,12 +47,12 @@
       <view class="item_msg">
         <view>
           已使用电量：
-          <text class="admin_price">{{item.device.use_electricity_many==null?'0.00':''}}</text>
+          <text class="admin_price">{{item.device.use_electricity_many|| '0.00'}} </text>
           <text style="color: #EB5E2B;">度</text>
         </view>
         <view>
           已使用电费：
-          <text class="admin_price">{{item.device.use_electricity_cost==null?'0.00':''}}</text>
+          <text class="admin_price">{{item.device.use_electricity_cost|| '0.00'}} </text>
           <text style="color: #EB5E2B;">元</text>
         </view>
         <text class="admin_item_state">当前状态：{{item.device.device_status==1?'开启':'关闭'}}</text>

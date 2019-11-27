@@ -33,14 +33,14 @@
 }
 
 .inputitems {
-  width: 455rpx;
+  width: 480rpx;
   display: flex;
   justify-content: space-between;
   margin-top: 137rpx;
 }
 
 .xiaoqu {
-  width: 235rpx;
+  width: 240rpx;
   height: 60rpx;
   border: 2rpx solid rgba(236, 98, 23, 1);
   border-radius: 6rpx;
@@ -94,12 +94,12 @@
 }
 
 .up {
-  width: 12rpx;
-  height: 6rpx;
+  width: 21rpx;
+  height: 10rpx;
 }
 
 .dong {
-  width: 193rpx;
+  width: 200rpx;
   height: 60rpx;
   border: 2rpx solid rgba(236, 98, 23, 1);
   border-radius: 6rpx;

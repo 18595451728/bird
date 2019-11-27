@@ -26,7 +26,43 @@ Page({
   onLoad: function (options) {
 
   },
+  searchCom(e){
+    if(!e.detail.value){
+      return;
+    }
+    this.setData({
+      keyword:e.detail.value
+    })
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/api/Community/getCommunity',
+      data: {
+        token: wx.getStorageSync('token'),
+        keyword: this.data.keyword
+      },
+      method: 'post',
+      success: function (res) {
+        console.log(res)
+        if(res.data.code==1){
+          that.setData({
+            communitylist: res.data.data.community
+          })
+          if(that.data.communitylist.length!=0){
+            that.setData({
+              showxiaoqu: !0
+            })
+          }
+        }else{
+          wx.showToast({
+            title: res.data.mes,
+            icon:'none'
+          })
+        }
+        
+      },
 
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -106,7 +142,7 @@ Page({
       url: app.globalData.url+'/api/Community/getCommunity',
       data: {
         token:wx.getStorageSync('token'),
-
+        keyword:this.data.keyword
       },
       method: 'post', 
       success: function(res){
@@ -133,6 +169,7 @@ Page({
       success: function(res){
  
         that.setData({
+          showxiaoqu:!1,
           communitylist2:res.data.data.community
         })
      
@@ -177,11 +214,18 @@ Page({
         method: 'post',
         success: function(res){
           wx.hideLoading();
-          that.setData({
-            showmodal: true,
-            showmsg: true,
-          })
- 
+
+          if(res.data.code==1){
+            that.setData({
+              showmodal: true,
+              showmsg: true,
+            })
+          }else{
+            wx.showToast({
+              title: res.data.mes,
+              icon:'none'
+            })
+          }
         },
   
       })

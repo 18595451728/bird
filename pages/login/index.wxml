@@ -1,9 +1,11 @@
 <view class="content">
   <image src="/images/logo.png"></image>
-  <button class="user" data-id='0' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" style="margin-top:150rpx;">
+  <button class="user" data-id='0' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" style="margin-top:150rpx;" wx:if='{{!token}}'>
     用户端
   </button>
-  <button class="user" data-id='1' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+  <button class="user" data-id='1' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" wx:if='{{!token}}'>
     管理端
   </button>
+  <view class="user" bindtap='usergo' wx:if='{{token}}'>用户端</view>
+  <view class="user" bindtap='admingo' wx:if='{{token}}'>管理端</view>
 </view>

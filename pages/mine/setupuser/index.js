@@ -117,11 +117,21 @@ Page({
       method: 'post', 
       success: function(res){
         console.log(res)
+
+      if(res.data.code==1){
+
+      }else{
+        wx.showToast({
+          title: res.data.mes,
+          icon:'none'
+        })
+      }
+        that.hideModal()
+        that.init();
       },
 
     })
-    this.hideModal()
-    this.init();
+    
   },
   init(){
     let that=this;

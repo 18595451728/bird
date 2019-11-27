@@ -1,0 +1,6 @@
+<!--pages/revise/revise.wxml-->
+<view class='contain'>
+  <text>统一登录密码：{{loginword}}</text>
+  <input bindinput='changeword' placeholder='请输入新密码'></input>
+  <view class='revise' bindtap='sure'>确认修改</view>
+</view>

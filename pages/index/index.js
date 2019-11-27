@@ -33,7 +33,7 @@ Page({
 
   commChoose: function (e) {
     this.setData({
-      showxiaoqu: true,
+      showxiaoqu: !1,
       community: this.data.communitylist[e.currentTarget.dataset.index].class_name,
       community_id: this.data.communitylist[e.currentTarget.dataset.index].community_id,
       community_build:''
@@ -126,6 +126,7 @@ Page({
 
   onShow: function() {
     this.onLoad();
+    console.log(app.globalData.is_admin)
      this.setData({
        is_admin: app.globalData.is_admin
      })
@@ -179,14 +180,22 @@ Page({
       },'post').then(res=>{
         console.log(res)
         if(res.code==1){
-
           this.setData({
             is_open: !this.data.is_open,
             is_time: !1
           })
+        }else{
+          wx.showToast({
+            title: res.mes,
+            icon:'none'
+          })
         }
+      })   
+    }else{
+      wx.showToast({
+        title: '您尚未绑定房间',
+        icon:'none'
       })
-      
     }
     
   },
@@ -241,6 +250,33 @@ Page({
     //将当前坐标进行保存以进行下一次计算
     this.data.lastY = currentY
     is_change = false
+    this.dingshi()
+  },
+  dingshi(){
+    var that = this
+    var isOpen = this.data.is_time
+
+    if (isOpen) {
+      r.req(u + '/api/device/deviceCrontab', {
+        token: wx.getStorageSync('token'),
+        device_id: this.data.decicessum.device_id,
+        time_status: 1,
+        star_time: this.data.start_hour + ':' + this.data.start_minute,
+        end_time: this.data.end_hour + ':' + this.data.end_minute
+      }, 'post').then(res => {
+        console.log(res)
+        wx.showToast({
+          title: res.mes,
+          icon: 'none'
+        })
+        if (res.code == 1) {
+          that.setData({
+            is_time: isOpen
+          })
+        }
+
+      })
+    }
   },
   handletouchtart: function(event) {
     this.data.lastY = event.touches[0].pageY
@@ -264,10 +300,8 @@ Page({
       var isOpen = this.data.is_time
       console.log(isOpen, this.data.decicessum)
       isOpen = !isOpen
-      this.setData({
-        is_time: isOpen
-      })
-      if (isOpen) {
+      
+      var that =this
         r.req(u + '/api/device/deviceCrontab', {
           token: wx.getStorageSync('token'),
           device_id: this.data.decicessum.device_id,
@@ -276,12 +310,18 @@ Page({
           end_time: this.data.end_hour + ':' + this.data.end_minute
         }, 'post').then(res => {
           console.log(res)
-
+          wx.showToast({
+            title: res.mes,
+            icon:'none'
+          })
+          if(res.code==1){
+            that.setData({
+              is_time: isOpen
+            })
+          }
+          
         })
       }
-    }else{
-
-    }
     
     
   },
@@ -290,6 +330,7 @@ Page({
       this.setData({
         start_hour: this.data.start_hour - 1
       })
+      this.dingshi()
     }
   },
   upstartminute() {
@@ -297,6 +338,7 @@ Page({
       this.setData({
         start_minute: this.data.start_minute - 1
       })
+      this.dingshi()
     }
   },
   upendhour() {
@@ -304,6 +346,7 @@ Page({
       this.setData({
         end_hour: this.data.end_hour - 1
       })
+      this.dingshi()
     }
   },
   upendminute() {
@@ -311,6 +354,7 @@ Page({
       this.setData({
         end_minute: this.data.end_minute - 1
       })
+      this.dingshi()
     }
   },
   downstarthour() {
@@ -318,6 +362,7 @@ Page({
       this.setData({
         start_hour: this.data.start_hour + 1
       })
+      this.dingshi()
     }
   },
   downstartminute() {
@@ -325,6 +370,7 @@ Page({
       this.setData({
         start_minute: this.data.start_minute + 1
       })
+      this.dingshi()
     }
   },
   downendhour() {
@@ -332,6 +378,7 @@ Page({
       this.setData({
         end_hour: this.data.end_hour + 1
       })
+      this.dingshi()
     }
   },
 
@@ -341,10 +388,36 @@ Page({
       this.setData({
         end_minute: this.data.end_minute + 1
       })
+      this.dingshi()
     }
 
   },
+  searchCom(e) {
+    var that = this
+    if(!e.detail.value){
+      this.setData({
+        showxiaoqu: !1
+      })
+      return;
+    }
+    r.req(u + '/api/Community/getCommunity', {
+      token: wx.getStorageSync('token'),
+      keyword:e.detail.value
+    }, 'post').then((res) => {
+      console.log(res)
+      if (res.code == 1 && res.data.community.length!=0) {
+        that.setData({
+          communitylist: res.data.community,
+          showxiaoqu: !0
+        })
+      } else {
+        that.setData({
+          showinfo: false
+        })
+      }
 
+    })
+  },
   showxiaoqu: function () {
     this.setData({
       showxiaoqu: !this.data.showxiaoqu
@@ -355,16 +428,24 @@ Page({
     //   showdong: !this.data.showdong
     // })
     var that=this
-    r.req(u + '/api/Community/changeCommunity', {
-      community_id: that.data.community_id,
-      token: wx.getStorageSync('token')
-    }, 'post').then((res) => {
-      console.log(res)
-      that.setData({
-        showdong: !this.data.showdong,
-        donglist: res.data.community
+    if (that.data.community_id){
+      r.req(u + '/api/Community/changeCommunity', {
+        community_id: that.data.community_id,
+        token: wx.getStorageSync('token')
+      }, 'post').then((res) => {
+        console.log(res)
+        that.setData({
+          showdong: !this.data.showdong,
+          donglist: res.data.community
+        })
       })
-    })
+    }else{
+      wx.showToast({
+        title: '请先选择小区',
+        icon:'none',
+      })
+    }
+    
 
   },
 

@@ -2,6 +2,7 @@
   "pages": [
     
     "pages/login/index",
+    "pages/revise/revise",
     "pages/xiaofei/xiaofei",
    "pages/tixian/tixian",
     "pages/audit/index",

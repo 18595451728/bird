@@ -59,12 +59,12 @@
   </view>
 
   <view class='chooseStyle'>
-    <view class='alls'>
-      <image bindtap='chooseStyle' data-style='0' src="{{chooseStyle==0?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
+    <view class='alls' bindtap='chooseStyle' data-style='0'>
+      <image src="{{chooseStyle==0?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
       <text>所有小区统一设置</text>
     </view>
-    <view class='special'>
-      <image bindtap='chooseStyle' data-style='1' src="{{chooseStyle==1?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
+    <view class='special' bindtap='chooseStyle' data-style='1' >
+      <image src="{{chooseStyle==1?'/images/choosestyle1.png':'/images/choosestyle.png'}}"></image>
       <text>指定小区</text>
       <picker mode='selector' range='{{commu}}' bindchange="bindPickerChange">
         <view class='choosecom'>

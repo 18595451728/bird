@@ -205,6 +205,11 @@ Page({
                   url: "/pages/audit/index",
                 })
               }, 1000);
+            }else{
+              wx.showToast({
+                title: res.data.mes,
+                icon:'none'
+              })
             }
           },
   

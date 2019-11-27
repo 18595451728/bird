@@ -162,6 +162,7 @@ Page({
     month: 9,
     days: '',
     dian: !0,
+    dians:'度',
     is_admin: true,
     is_select: false,
     communitylist: ['', '', '', '', '', ''],
@@ -181,6 +182,7 @@ Page({
     var index = e.currentTarget.dataset.index,
       communitylist = this.data.communitylist
     this.setData({
+      showxiaoqu:!1,
       community: communitylist[index].class_name,
       communityid: communitylist[index].community_id,
       dos:'',
@@ -201,6 +203,7 @@ Page({
       }
     })
   },
+
   onLoad: function(options) {
     this.getCurrentTime();
     var that = this
@@ -217,8 +220,6 @@ Page({
     }else{
       that.getUserChart(1);
     }
-    
-
   },
   choose: function(e) {
     var index = e.currentTarget.dataset.index
@@ -253,7 +254,8 @@ Page({
   dian: function(e) {
     if (e.currentTarget.dataset.index) {
       this.setData({
-        dian: !0
+        dian: !0,
+        dians:'度'
       })
       this.updatemsg("(度)")
       if (this.data.is_admin) {
@@ -263,7 +265,8 @@ Page({
       }
     } else {
       this.setData({
-        dian: !1
+        dian: !1,
+        dians: '元'
       })
       this.updatemsg("(元)")
       if(this.data.is_admin){
@@ -299,7 +302,7 @@ Page({
     r.req(u + '/api/Device/detectionUser', d, 'post').then(res => {
       console.log(res)
       if (res.code == 1) {
-        var data = res.data.device_record.device_record
+        var data = res.data.device_record
         console.log(data)
         if (data.length > 0) {
           var source = []
@@ -654,14 +657,47 @@ Page({
       is_select: false
     })
   },
+  searchCom(e){
+    var that = this
+    console.log(e.detail.value)
+    if(!e.detail.value){
+      this.setData({
+        showxiaoqu:!1
+      })
+      return;
+    }
+    console.log(e.detail.value)
+    r.req(u + '/api/Community/getCommunity', {
+      token: wx.getStorageSync('token'),
+      keyword:e.detail.value
+    }, 'post').then(res => {
+      console.log(res)
+      if(res.code ==1 && res.data.community.length!=0){
+        that.setData({
+          communitylist: res.data.community,
+          showxiaoqu: !0
+        })
+      }
+      
+    })
+  },
   showxiaoqu: function() {
     this.setData({
       showxiaoqu: !this.data.showxiaoqu
     })
   },
   showdong: function() {
-    this.setData({
-      showdong: !this.data.showdong
-    })
+    console.log()
+    if (this.data.communityid){
+      this.setData({
+        showdong: !this.data.showdong
+      })
+    }else{
+      wx.showToast({
+        title: '请先选择小区',
+        icon:'none'
+      })
+    }
+    
   },
 })

@@ -88,10 +88,52 @@ Page({
       type:Number(id)
     })
     if(wx.getStorageSync('adminChongzhi')==true){
-      this.init2();
+      if(id==2){
+        this.tixian();
+      }else{
+        this.init2();
+      }
+      
     }else{
-      this.init();
+      if(id==2){
+        this.tixian();
+      }else{
+        this.init();
+      }
+      
     }
+  },
+  tixian(){
+    var that=this
+    wx.request({
+      url: app.globalData.url+'/api/Withdraw/record',
+      data:{
+        token:wx.getStorageSync('token'),
+        type: this.data.admin ? 2 : 1,
+      },
+        method:'post',
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==1){
+            if(res.data.data.data.length==0){
+              wx.showToast({
+                title: '暂无数据',
+                icon: 'none'
+              }) 
+            }
+            that.setData({
+              msg: res.data.data.data
+            })
+            
+          }else{
+            wx.showToast({
+              title: res.data.mes,
+              icon:'none'
+            })
+          }
+        }
+      
+    })
   },
   init(){
     let that=this;

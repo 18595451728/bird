@@ -1,7 +1,7 @@
 <view class="content">
   <view class="inputitems">
     <view class="xiaoqu" bindtap="showxiaoqu">
-      <input disabled="true" value="{{community}}" placeholder="请选择所在小区" value="{{quname}}"></input>
+      <input value="{{community}}" bindinput='searchCom' placeholder="请选择所在小区" value="{{quname}}"></input>
       <image class="up" src="/images/up.png"></image>
       <view wx:if="{{showxiaoqu}}" class="xiaoquitems">
         <text wx:for="{{communitylist}}" class="xiaoquitem" bindtap="changQu" data-id="{{item.community_id}}" data-name="{{item.class_name}}">{{item.class_name}}</text>

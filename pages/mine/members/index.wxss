@@ -112,6 +112,7 @@ page {
 }
 
 .time {
+  width: 690rpx;
   border-bottom: 0;
   font-size: 26rpx;
   letter-spacing: 2rpx;
@@ -120,13 +121,13 @@ page {
 
 .timeitems {
   height: 100%;
-  width: 560rpx;
+  width: 600rpx;
   display: flex;
   flex-wrap: wrap;
 }
 
 .timeitem {
-  width: 107rpx;
+  width: 117rpx;
   height: 60rpx;
   border: 2rpx solid rgba(152, 152, 152, 1);
   border-radius: 6rpx;

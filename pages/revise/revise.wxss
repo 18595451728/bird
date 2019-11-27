@@ -1,0 +1,31 @@
+/* pages/revise/revise.wxss */
+.contain{
+  text-align: center;
+  padding-top: 170rpx;
+}
+.contain text{
+  color: #4e4d4d;
+  font-size: 30rpx;
+}
+.contain input{
+  width: 406rpx;
+  margin: 60rpx auto 155rpx;
+  border: 1px solid #ec6217;
+  border-radius: 6rpx;
+  text-align: left;
+  height: 60rpx;
+  font-size: 26rpx;
+  color: #4e4d4d;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+
+.revise{
+  width: 690rpx;
+  line-height: 70rpx;
+  color: white;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  font-size: 33rpx;
+  background: linear-gradient(120deg, rgba(235, 95, 44, 1) 0%, rgba(235, 95, 43, 1) 28.000000000000004%, rgba(239, 128, 33, 1) 79%, rgba(245, 170, 51, 1) 100%);
+}

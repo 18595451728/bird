@@ -132,7 +132,7 @@ Page({
     })
   },
   reply() {
-
+    console.log(this.data.type)
     if(this.data.choose){
       var data ={
         type: this.data.type,
@@ -152,7 +152,7 @@ Page({
         tel: this.data.cardtel,
         account_number: this.data.bankcard,
         amount: this.data.money,
-        bank_name:bank
+        bank_name:this.data.bank
       }
     }
 
@@ -162,9 +162,9 @@ Page({
       data:data,
       success:function(res){
         console.log(res)
-        if(res.data.code==1){
+        if (res.statusCode==1){
           wx.showToast({
-            title: '提现成功',
+            title: '提交成功',
             icon: 'none'
           })
         }else{
